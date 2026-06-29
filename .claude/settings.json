@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Edit(//c/Users/Mr.FX/hojin-urikae/**)",
+      "Write(//c/Users/Mr.FX/hojin-urikae/**)",
+      "Bash(npm *)",
+      "Bash(npx *)",
+      "Bash(node *)",
+      "Bash(curl *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(rm *)",
+      "Bash(cp *)",
+      "Bash(mv *)",
+      "Bash(mkdir *)",
+      "Bash(sleep *)"
+    ]
+  }
+}

@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream font-sans text-ink antialiased;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+@layer components {
+  .container-lp {
+    @apply mx-auto w-full max-w-content px-6;
+  }
+
+  /* Hero 見出し3行（PC専用・各行が独立／共通サイズ制御なし） */
+  .hero-heading-lead {
+    width: 90%;
+    margin: 24px 0 2px 0;
+    padding-left: 40px;
+    font-size: 42px;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: #1a1a1a;
+    white-space: nowrap;
+    word-break: keep-all;
+  }
+
+  .hero-heading-main {
+    width: 90%;
+    margin: 0 0 2px 0;
+    padding-left: 40px;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+    word-break: keep-all;
+  }
+
+  .hero-heading-main .hero-main-accent {
+    font-size: 110px;
+    font-weight: 900;
+    line-height: 0.9;
+    color: #e8550a;
+  }
+
+  .hero-heading-close {
+    width: 90%;
+    margin: 0 0 22px 0;
+    padding-left: 40px;
+    font-size: 62px;
+    font-weight: 900;
+    line-height: 1;
+    color: #1a1a1a;
+    white-space: nowrap;
+    word-break: keep-all;
+  }
+
+  .hero-close-marker {
+    position: relative;
+    display: inline-block;
+  }
+  .hero-close-marker::before {
+    content: '';
+    position: absolute;
+    left: -4px;
+    right: -4px;
+    bottom: 7px;
+    height: 30%;
+    background: rgba(232, 85, 10, 0.35);
+    border-radius: 2px 3px 2px 4px;
+    transform: rotate(-0.5deg) skewX(-0.8deg);
+  }
+
+  /* Hero 赤CTA：心拍のようなパルス（scale のみ／box-shadow禁止）。60秒バッジは子要素として一体で拡縮 */
+  .hero-cta-pulse {
+    animation: heroCtaPulse 1.8s ease-in-out infinite;
+    will-change: transform;
+  }
+}
+
+@keyframes heroCtaPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-cta-pulse {
+    animation: none;
+  }
+}
