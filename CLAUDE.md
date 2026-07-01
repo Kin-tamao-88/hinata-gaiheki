@@ -1,82 +1,61 @@
-# 法人売却センター LP - プロジェクトルール
+# レストレーション(外壁塗装・住宅総合メンテナンス) LP - プロジェクトルール
 
-## デザイン原則（必ず守ること）
+## 重要:このファイルの経緯
+本リポジトリは法人売却センター(hojin-urikae/JCAO)のフォルダをコピーして作成されたため、
+2026-07-01時点で大半のコンポーネント・アセット・本CLAUDE.mdがJCAO用の内容で汚染されていました。
+汚染ファイルは削除・スタブ化済みです。各セクションは順次フルリライトが必要です。
 
-### カラー
-- メインテキスト：#1e3a5f
-- アクセント赤：#b03023
-- ゴールド：#9a7a3a（#b8985aは使わない）
-- カード背景：#ffffff または #fafafa のみ
-- グレー系背景・グレー系テキスト（text-gray-*）禁止
+## デザイン原則(Claude LP Design Bible v2 準拠)
 
-### Shadow・Border
-- box-shadow禁止
-- 境界が必要な場合は border: 1px solid #e2e8f0 で代替
+目的は見た目を整えることではなく問い合わせ獲得。
+優先順位: 1.CV導線 2.可読性 3.情報階層 4.信頼感 5.デザイン性 6.装飾
+目標品質: 士業サイト/M&Aサイト/金融機関/上場企業サイトと並ぶクオリティ。AI生成テンプレ感・SaaS感は禁止。
+
+### カラー(実物モックアップから抽出。Design Bible標準色ではなく本プロジェクト固有)
+- 紺(見出し・ロゴ・本文強調): #102A4A
+- オレンジ(CTA・アンダーライン・アクセント): #FC5900
+- 赤(実績数字専用。地域密着15年/施工実績1,200件などの大きい数字のみ): #E92523
+- 黄ラベル背景(「地域密着」などのチップ背景のみ): #FCE283
+- 本文色: #1a1a1a〜#374151 程度
+- 補足文字でも #666〜#777 程度まで(薄いグレー本文禁止)
+- 背景クリーム: #F5F2EC
+
+### Shadow・Radius
+- box-shadow原則禁止(使う場合も極薄)
+- radius 12px程度まで、丸くしすぎない
 
 ### Typography
-- 見出し：font-weight 900（black）または 800（extrabold）
-- 本文：font-weight 400（regular）のみ
-- 中途半端なweight（500・600・700）は見出し以外に使わない
+- 本文16px未満禁止、11〜13px本文禁止
+- 優先順位: 文字サイズ > font-weight > line-height > 文字色 > 余白
 
-### 角丸
-- rounded-lg（8px）以下に抑える
-- rounded-2xl以上禁止
+### 禁止事項(Design Bible準拠)
+- チップUI(ラベル背景の黄色チップは実績帯のみ例外)・ピル型ラベル多用・バッジ大量配置
+- 影付きカード・ガラス風UI・過度なグラデーション・ぼかし円・グロー効果
+- 参考画像にないカード/アイコン/ロゴ/バッジの追加
+- インラインstyle(style={{}})の使用 → 必ずTailwindクラスで実装すること
+- 「今だけ」「急いでください」等、根拠のない煽り表現
 
-### その他
-- Tailwindのデフォルトutilityをそのまま使わない
-- 必ず上記カラー・ウェイトに上書きする
-- shadow-sm / shadow-md などのデフォルトshadowクラスも禁止
-
----
-
-## カラーパレット（全セクション共通）
-
-| 用途 | カラーコード |
-|---|---|
-| 紺（メイン） | #1e3a5f |
-| 赤（アクセント・CTA） | #b03023 |
-| ゴールド | #9a7a3a |
-| 背景白 | #ffffff |
-| 背景オフホワイト | #fafafa |
-| ゴールド背景（薄） | #fff8ee |
-| ゴールドボーダー | #d4af37 |
-
----
-
-## アイコン素材（GitHub raw URL）
-
-ベースURL: `https://raw.githubusercontent.com/Kin-tamao-88/hojin-assets01/main/`
-
-### Painセクション（紺 #1e3a5f）
-- 維持費だけ掛かる：`icon-pain-cost.png`
-- 赤字続き：`icon-pain-decline.png`
-- 身動きが取れない：`icon-pain-restricted.png`
-- 解散・清算が面倒：`icon-pain-procedure.png`
-
-### 比較表・解散する場合（グレー #64748b）
-- 清算費用が発生：`icon-compare-cost.png`
-- 滞納税金の整理：`icon-compare-tax.png`
-- 会社価値が消滅：`icon-compare-value-loss.png`
-
-### 比較表・法人売却の場合（ゴールド #b8985a）
-- 会社価値を無料診断：`icon-compare-diagnosis.png`
-- 現金化できる可能性：`icon-compare-cash.png`
-- 売却益が得られる可能性：`icon-compare-profit.png`
-
-### セルフチェックセクション（ゴールド #b8985a）
-- 法人口座を持っている：`icon-check-bank.png`
-- 現在も法人が存続している：`icon-check-active.png`
-- 維持費が負担になっている：`icon-check-cost.png`
-- 休眠状態になっている：`icon-check-dormant.png`
-- 少しでも現金化したい：`icon-check-cash.png`
-
----
+## セクション構成(実装対象・上から順)
+1. Hero(+実績帯 4項目: 地域密着15年/施工実績1,200件以上/追加費用0円/アフターケア3年間) — 実装済み(要リライト)
+2. Pain(業者選びの不安5項目) — スタブのみ、要実装
+3. 選ばれる3つの理由(Strength) — スタブのみ、要実装(01地域密着で迅速対応/02現地調査から施工まで一貫対応/03明朗安心の適正価格)
+4. 施工事例(CaseStudy、Before/After・お客様の声・Case01〜03) — スタブのみ、要実装
+5. 適正価格へのこだわり — コンポーネント未作成、要新規作成
+6. 代表メッセージ — コンポーネント未作成、要新規作成
+7. FAQ — 実装済み(内容がJCAO用のため要リライト)
+8. CTA(FinalCta、LINE相談/電話) — 実装済み(内容がJCAO用のため要リライト)
+※対応エリアはクライアント確認待ちのため実装不要
 
 ## 技術スタック
 - React + TypeScript + Vite + Tailwind CSS v3
-- アイコンライブラリ：lucide-react
+- アイコンライブラリ: lucide-react
 
 ## デプロイ
-- GitHub：Kin-tamao-88/hojin-urikae（main）
-- Vercel：https://hojin-urikae.vercel.app
+- GitHub: Kin-tamao-88/hinata-gaiheki (main)
+- Vercelプロジェクト名: 要確認
 - mainへのpushで自動デプロイ
+
+## ファイル構成規約
+- コンポーネント: src/components/sections/
+- アセット: src/assets/icons/, src/assets/people/, src/assets/hero/ など
+- importパスは components から ../../assets/ プレフィックス

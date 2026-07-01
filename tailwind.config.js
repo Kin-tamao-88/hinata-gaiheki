@@ -3,38 +3,29 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      // オレンジ系パレット（メイン#e8550a / テキスト#1a1a1a / 背景#fff8f5 / アクセントrgba(232,85,10,0.08)）
+      // レストレーション(hinata-gaiheki) ブランドカラー(モックアップより抽出)
       colors: {
         navy: {
-          DEFAULT: "#e8550a",
-          dark: "#c4440a",
-          light: "#ff6b1a",
+          DEFAULT: "#102A4A",
+          dark: "#0B1E38",
+          light: "#1B3A61",
         },
-        gold: {
-          DEFAULT: "#e8550a",
-          hero: "#ff6b1a",
-          dark: "#c4440a",
+        brandorange: {
+          DEFAULT: "#FC5900",
+          dark: "#D64B00",
+          light: "#FF7A2E",
         },
-        cream: "#fff8f5",
+        accentred: {
+          DEFAULT: "#E92523",
+        },
+        chip: {
+          DEFAULT: "#FCE283",
+        },
         ink: {
           DEFAULT: "#1a1a1a",
-          light: "#1a1a1a",
-          muted: "#1a1a1a",
+          muted: "#666666",
         },
-        cta: {
-          DEFAULT: "#e8550a",
-          hover: "#c4440a",
-        },
-        slate: {
-          card: "#e8550a",
-          bg: "#fff8f5",
-        },
-        teal: {
-          DEFAULT: "#e8550a",
-        },
-        mint: "#fff8f5",
-        skyblue: "#fff8f5",
-        accent: "rgba(232,85,10,0.08)",
+        cream: "#F5F2EC",
       },
       fontFamily: {
         sans: [
@@ -49,7 +40,7 @@ export default {
       maxWidth: {
         content: "1120px",
       },
-      // CLAUDE.md: box-shadow 禁止 → 全て none（境界は border 1px #e2e8f0 で代替）
+      // Design Bible: box-shadow 原則禁止
       boxShadow: {
         card: "none",
         "card-hover": "none",
