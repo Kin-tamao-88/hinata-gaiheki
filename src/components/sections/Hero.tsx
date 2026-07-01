@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Mail, Phone, ChevronRight, Menu, X } from 'lucide-react'
-import heroPhoto from '../../assets/hero/hero-painter.png'
+import heroPhoto from '../../assets/hero/hero-worker.png'
 
 function LogoMark({ className }: { className?: string }) {
   return (
