@@ -18,5 +18,9 @@ export default defineConfig([
     languageOptions: {
       globals: globals.browser,
     },
+    rules: {
+      // 日本語コンテンツで使用する全角スペース(U+3000)をJSXテキスト内で許可する
+      'no-irregular-whitespace': ['error', { skipJSXText: true }],
+    },
   },
 ])

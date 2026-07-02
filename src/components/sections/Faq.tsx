@@ -1,189 +1,96 @@
-import { useState } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { useState } from 'react'
+import { ChevronDown, PaintRoller } from 'lucide-react'
+import bgPaintSubtle from '../../assets/background/bg-paint-subtle.png'
 
 const faqs = [
   {
-    q: '赤字や債務超過でも売却できますか？',
-    a: 'はい、可能です。赤字や債務超過の法人でも、事業価値や保有資産、取引先との関係性などを総合的に評価し、買い手を見つけることができます。まずはご相談ください。',
+    q: '無料の現地調査・お見積りとは、具体的に何をしてもらえますか？',
+    a: '専門スタッフが実際にお住まいの状態を確認し、必要な工事内容と費用を明確にしたお見積書をご提示します。調査・お見積りにかかる費用は一切いただきません。',
   },
   {
-    q: '休眠法人でも買い取ってもらえますか？',
-    a: '休眠法人でも売却実績があります。法人格・許認可・信用履歴などに価値が残っているケースが多く、再利用を望む買い手とマッチングできる場合があります。',
+    q: '訪問営業や飛び込みの勧誘はありますか？',
+    a: 'いいえ、しつこい訪問営業は一切行っておりません。お客様からのご相談・お問い合わせを起点に対応しております。',
   },
   {
-    q: '相談・査定は本当に無料ですか？',
-    a: 'はい、完全無料です。相談・査定・買い手探しまで、成約前に費用は一切いただきません。成功報酬型のため、売却が成立した場合のみ手数料が発生します。',
+    q: 'お見積り後に追加費用が発生することはありますか？',
+    a: '基本的にございません。お見積り書に記載のない追加費用を請求することはございませんので、安心してご依頼いただけます。',
   },
   {
-    q: '情報が漏れることはありませんか？',
-    a: '秘密保持契約（NDA）を締結した上で進めます。会社名・代表者名・財務情報など、すべての情報を厳重に管理します。従業員や取引先に知られずに進めることも可能です。',
+    q: '工事はどのくらいの期間がかかりますか？',
+    a: '建物の規模や工事内容によって異なりますが、一般的な戸建て住宅の外壁塗装で約2週間程度が目安です。詳しい工期は現地調査時にご案内いたします。',
   },
   {
-    q: '売却までどのくらいの期間がかかりますか？',
-    a: '法人の状況や条件によって異なりますが、最短数週間〜数ヶ月が目安です。スピード重視の場合はその旨をお伝えください。優先的に対応いたします。',
+    q: '他社で見積りを取っていますが、相談だけでも大丈夫ですか？',
+    a: 'もちろんです。他社のお見積り内容を拝見した上で、適正価格かどうかを客観的にアドバイスすることも可能です。お気軽にご相談ください。',
   },
   {
-    q: '従業員や取引先はどうなりますか？',
-    a: '売却後も雇用や取引関係を継続することを条件に交渉することが可能です。従業員・取引先の保護を優先した条件設定もサポートいたします。',
+    q: '施工後の保証やアフターフォローはありますか？',
+    a: 'はい、施工後も定期的な点検・アフターサポートを行っております。何か気になる点があれば、いつでもご連絡ください。',
   },
-];
+]
 
 export function Faq() {
-  const [openIdx, setOpenIdx] = useState<number | null>(null);
+  const [openIdx, setOpenIdx] = useState<number | null>(null)
 
   const toggle = (idx: number) => {
-    setOpenIdx(openIdx === idx ? null : idx);
-  };
+    setOpenIdx(openIdx === idx ? null : idx)
+  }
 
   return (
-    <section className="faq-section" style={{ background: '#ffffff', padding: '80px 0' }}>
-      <div style={{ maxWidth: 800, margin: '0 auto', padding: '0 24px' }}>
-
-        {/* ヘッダー */}
-        <div className="faq-header" style={{ textAlign: 'center', marginBottom: 48 }}>
-          <p style={{
-            color: '#e8550a',
-            fontWeight: 700,
-            fontSize: '0.85rem',
-            letterSpacing: '0.08em',
-            marginBottom: 12,
-          }}>
-            FAQ
-          </p>
-          <h2 style={{
-            fontWeight: 900,
-            fontSize: 'clamp(1.5rem, 4vw, 2.2rem)',
-            color: '#1a1a1a',
-            lineHeight: 1.4,
-            margin: 0,
-          }}>
-            よくある<span style={{ color: '#e8550a' }}>ご質問</span>
-          </h2>
+    <section className="relative overflow-hidden bg-white py-14 md:py-20">
+      <img
+        src={bgPaintSubtle}
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-40"
+      />
+      <div className="absolute inset-0 bg-white/50" />
+      <div className="relative mx-auto max-w-content px-6">
+        <div className="mb-2 flex items-center justify-center gap-2 text-center text-[13px] font-bold tracking-widest text-navy">
+          <PaintRoller className="h-4 w-4 text-brandorange" />
+          FAQ
         </div>
+        <h2 className="mb-10 text-center text-[28px] font-black text-navy md:text-[40px]">
+          よくある<span className="text-brandorange">ご質問</span>
+        </h2>
 
-        {/* アコーディオン */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+        <div className="border-t border-gray-200">
           {faqs.map((faq, idx) => {
-            const isOpen = openIdx === idx;
+            const isOpen = openIdx === idx
             return (
-              <div
-                key={idx}
-                style={{
-                  border: `1.5px solid ${isOpen ? '#e8550a' : '#f0e8e0'}`,
-                  borderRadius: 12,
-                  overflow: 'hidden',
-                  transition: 'border-color 0.2s',
-                }}
-              >
-                {/* 質問行 */}
+              <div key={faq.q} className="border-b border-gray-200">
                 <button
-                  className="faq-question-btn"
                   onClick={() => toggle(idx)}
-                  style={{
-                    width: '100%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 16,
-                    padding: '20px 24px',
-                    background: isOpen ? '#fff8f5' : '#ffffff',
-                    border: 'none',
-                    cursor: 'pointer',
-                    textAlign: 'left',
-                    transition: 'background 0.2s',
-                  }}
+                  className="flex w-full items-center gap-4 py-5 text-left"
                 >
-                  {/* Q バッジ */}
-                  <span className="faq-q-badge" style={{
-                    background: '#e8550a',
-                    color: '#fff',
-                    fontWeight: 900,
-                    fontSize: '0.8rem',
-                    borderRadius: 6,
-                    width: 28,
-                    height: 28,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    flexShrink: 0,
-                  }}>
+                  <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded bg-navy text-[14px] font-black text-white">
                     Q
                   </span>
-
-                  <span style={{
-                    flex: 1,
-                    fontWeight: 700,
-                    fontSize: '0.97rem',
-                    color: '#1a1a1a',
-                    lineHeight: 1.5,
-                  }}>
+                  <span className="flex-1 text-[15px] font-bold leading-relaxed text-navy md:text-[17px]">
                     {faq.q}
                   </span>
-
                   <ChevronDown
-                    size={20}
-                    color="#e8550a"
-                    strokeWidth={2}
-                    style={{
-                      flexShrink: 0,
-                      transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-                      transition: 'transform 0.25s',
-                    }}
+                    className={`h-5 w-5 flex-shrink-0 text-brandorange transition-transform ${
+                      isOpen ? 'rotate-180' : ''
+                    }`}
                   />
                 </button>
 
-                {/* 回答エリア */}
-                <div style={{
-                  maxHeight: isOpen ? 400 : 0,
-                  overflow: 'hidden',
-                  transition: 'max-height 0.3s ease',
-                }}>
-                  <div style={{
-                    display: 'flex',
-                    gap: 16,
-                    padding: '0 24px 20px',
-                    background: '#fff8f5',
-                  }}>
-                    {/* A バッジ */}
-                    <span style={{
-                      background: '#fff0ea',
-                      color: '#e8550a',
-                      fontWeight: 900,
-                      fontSize: '0.8rem',
-                      borderRadius: 6,
-                      width: 28,
-                      height: 28,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      flexShrink: 0,
-                      border: '1.5px solid #f5d5c0',
-                      marginTop: 2,
-                    }}>
+                {isOpen && (
+                  <div className="flex gap-4 bg-[#FFF8F5] px-4 py-5 md:px-6">
+                    <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded border border-brandorange text-[14px] font-black text-brandorange">
                       A
                     </span>
-                    <p style={{
-                      fontSize: '0.9rem',
-                      color: '#444',
-                      lineHeight: 1.8,
-                      margin: 0,
-                    }}>
+                    <p className="text-[14px] leading-[1.9] text-[#374151] md:text-[15px]">
                       {faq.a}
                     </p>
                   </div>
-                </div>
+                )}
               </div>
-            );
+            )
           })}
         </div>
       </div>
-      <style>{`
-        @media (max-width: 768px) {
-          .faq-section { padding: 60px 0 !important; }
-          .faq-header { margin-bottom: 28px !important; }
-          .faq-question-btn { padding: 16px 20px !important; }
-          .faq-q-badge { width: 34px !important; height: 34px !important; font-size: 0.9rem !important; border-radius: 7px !important; }
-        }
-      `}</style>
     </section>
-  );
+  )
 }

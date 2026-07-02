@@ -130,16 +130,16 @@ export default function Hero() {
       </header>
 
       {/* ===== HERO ===== */}
-      <section className="relative overflow-hidden bg-cream md:h-[600px]">
-        {/* 写真：SP＝全画面背景化／PC＝右側42%出血 */}
-        <div className="absolute inset-0 md:inset-auto md:right-0 md:top-0 md:w-[42%] md:h-full">
+      <section className="relative overflow-hidden bg-cream md:h-[580px]">
+        {/* 写真：SP＝全画面背景化／PC＝右側53%出血 */}
+        <div className="absolute inset-0 md:inset-auto md:right-0 md:top-0 md:w-[53%] md:h-full">
           <img
             src={heroPhoto}
             alt="外壁塗装の施工の様子"
-            className="w-full h-full object-cover object-[75%_center] md:object-center block"
+            className="w-full h-full object-cover object-[75%_center] md:object-[30%_35%] block"
           />
-          {/* SP：可読性確保の最小限グラデーション */}
-          <div className="absolute inset-0 bg-gradient-to-b from-cream/95 via-cream/55 to-cream/10 md:hidden" />
+          {/* SP：可読性確保のグラデーション */}
+          <div className="absolute inset-0 bg-gradient-to-b from-cream/95 via-cream/85 to-cream/75 md:hidden" />
           {/* PC：写真左端の縫い目を馴染ませる最小限フェード */}
           <div
             className="absolute inset-0 hidden md:block pointer-events-none"
@@ -148,7 +148,7 @@ export default function Hero() {
         </div>
 
         {/* テキストエリア */}
-        <div className="relative z-10 px-6 pt-8 pb-10 md:px-[80px] md:py-0 md:h-full md:flex md:items-center md:w-[62%]">
+        <div className="relative z-10 px-6 pt-8 pb-10 md:px-16 md:py-0 md:h-full md:flex md:items-center md:w-[58%]">
           <div>
             <div className="inline-block bg-navy px-4 py-2 mb-5 md:mb-6">
               <p className="text-white text-[12px] md:text-[13px] font-bold tracking-wide whitespace-nowrap">
@@ -156,14 +156,14 @@ export default function Hero() {
               </p>
             </div>
 
-            <h1 className="text-[32px] md:text-[46px] font-black leading-tight tracking-tight text-navy mb-1">
+            <h1 className="text-[32px] md:text-[52px] font-black leading-tight tracking-tight text-navy mb-1">
               山梨の住まいを、
             </h1>
             <div className="w-fit mb-5 md:mb-6">
-              <h1 className="text-[32px] md:text-[46px] font-black leading-tight tracking-tight text-brandorange">
+              <h1 className="text-[36px] md:text-[64px] font-black leading-tight tracking-tight text-brandorange">
                 守り続けて15年。
               </h1>
-              <div className="h-[4px] bg-brandorange w-full mt-1" />
+              <div className="h-[5px] md:h-[8px] bg-brandorange w-full mt-1" />
             </div>
 
             <p className="text-[15px] md:text-[17px] text-[#374151] leading-relaxed font-medium">
@@ -176,7 +176,7 @@ export default function Hero() {
       </section>
 
       {/* ===== 実績帯 ===== */}
-      <section className="bg-cream py-10 md:py-14">
+      <section className="bg-[#FAF9F5] py-10 md:py-16">
         <div className="max-w-content mx-auto px-6">
           <div className="flex items-center justify-center gap-3 mb-8 md:mb-10">
             <SparkleIcon className="h-4 w-4 text-chip -scale-x-100" />
@@ -188,18 +188,18 @@ export default function Hero() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-4 md:gap-x-0 md:divide-x md:divide-gray-300">
             {stats.map((s) => (
-              <div key={s.label} className="text-center px-2 md:px-6">
-                <span className="inline-block bg-chip text-navy text-[12px] md:text-[13px] font-bold px-3 py-1 mb-3">
+              <div key={s.label} className="text-center px-2 md:px-8">
+                <span className="inline-block bg-chip text-navy text-[12px] md:text-[13px] font-bold px-4 py-1.5 mb-3">
                   {s.label}
                 </span>
                 <p className="leading-none mb-2">
-                  <span className="text-[36px] md:text-[48px] font-black text-accentred tracking-tight">
+                  <span className="text-[42px] md:text-[62px] font-black text-accentred tracking-tight">
                     {s.value}
                   </span>
-                  <span className="text-[15px] md:text-[18px] font-bold text-navy ml-1">{s.unit}</span>
+                  <span className="text-[16px] md:text-[20px] font-bold text-navy ml-1">{s.unit}</span>
                 </p>
                 <div className="h-[3px] w-10 bg-brandorange mx-auto mb-2" />
-                <p className="text-[12px] md:text-[13px] text-ink-muted">{s.caption}</p>
+                <p className="text-[12px] md:text-[13px] font-medium text-navy">{s.caption}</p>
               </div>
             ))}
           </div>

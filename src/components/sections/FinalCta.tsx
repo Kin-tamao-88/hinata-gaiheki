@@ -1,250 +1,219 @@
-import { useState } from 'react';
-import { Mail, Phone, CheckCircle } from 'lucide-react';
+import {
+  Phone,
+  ChevronRight,
+  ClipboardList,
+  BadgeJapaneseYen,
+  UserCheck,
+  Smartphone,
+  Camera,
+  MessageCircle,
+} from 'lucide-react'
 
-const trustTexts = ['最短即日対応', '秘密厳守・NDA締結', '相談・査定無料'];
+const trustItems = [
+  {
+    icon: ClipboardList,
+    label: '現地調査・お見積り',
+    value: '完全無料',
+  },
+  {
+    icon: BadgeJapaneseYen,
+    label: 'お見積り後の',
+    value: '追加費用なし',
+  },
+  {
+    icon: UserCheck,
+    label: '代表の日向が',
+    value: '直接対応',
+  },
+]
 
 export function FinalCta() {
-  const [form, setForm] = useState({
-    company: '',
-    name: '',
-    phone: '',
-    email: '',
-    message: '',
-  });
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = () => {
-    // TODO: Supabase連携
-    setSubmitted(true);
-  };
-
   return (
-    <section id="contact" className="fct-section" style={{ background: '#fbf7f3', padding: '80px 0' }}>
-      <div style={{ maxWidth: 860, margin: '0 auto', padding: '0 8px' }}>
+    <>
+      <section id="contact" className="bg-[#F5F2EC] pb-0 pt-14 md:pt-20">
+        <div className="mx-auto max-w-content px-6">
+          <div className="mb-5 flex items-center justify-center gap-2">
+            <span className="text-[16px] font-bold text-brandorange">＼</span>
+            <span className="text-[14px] font-bold tracking-wide text-brandorange">
+              相談・お見積りは無料です
+            </span>
+            <span className="text-[16px] font-bold text-brandorange">／</span>
+          </div>
 
-        {/* ヘッダー */}
-        <div className="fct-header" style={{ textAlign: 'center', marginBottom: 48 }}>
-          <p style={{
-            color: '#e8550a',
-            fontWeight: 700,
-            fontSize: '0.85rem',
-            letterSpacing: '0.08em',
-            marginBottom: 12,
-          }}>
-            CONTACT
-          </p>
-          <h2 className="fct-heading" style={{
-            fontWeight: 900,
-            fontSize: 'clamp(1.6rem, 4vw, 2.4rem)',
-            color: '#1a1a1a',
-            lineHeight: 1.4,
-            margin: '0 0 16px',
-          }}>
-            まずは<span style={{ color: '#e8550a' }}>無料で相談</span>してみませんか？
-          </h2>
-          <p className="fct-subtext" style={{ color: '#555', fontSize: '0.95rem', lineHeight: 1.7, margin: 0 }}>
-            秘密厳守・相談無料で、あなたの状況に合わせた最適なご提案をいたします。
+          <h2 className="mb-2 text-center text-[28px] font-black leading-snug text-navy md:text-[40px]">
+            まずは、お住まいの状態を
             <br />
-            しつこい営業は一切いたしません。
+            <span className="text-brandorange">知ること</span>
+            から始めませんか？
+          </h2>
+
+          <div className="mx-auto mb-4 h-[3px] w-20 bg-brandorange" />
+
+          <p className="mb-10 text-center text-[15px] text-[#374151] md:text-[16px]">
+            しつこい営業は一切いたしませんので、安心してご相談ください。
           </p>
 
-          {/* PC: 横並び区切り線 */}
-          <div className="fct-trust-pc" style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            marginTop: 24,
-          }}>
-            {trustTexts.map((text, i) => (
-              <span key={i} style={{ display: 'flex', alignItems: 'center' }}>
-                {i > 0 && <span style={{ color: '#c4bdb5', margin: '0 14px', fontWeight: 400, fontSize: 14 }}>｜</span>}
-                <span style={{ fontSize: 15, fontWeight: 600, color: '#1a2744' }}>{text}</span>
-              </span>
-            ))}
-          </div>
-
-          {/* SP: テキスト縦リスト */}
-          <div className="fct-trust-sp" style={{ display: 'none', marginTop: 14 }}>
-            {trustTexts.map((text, i) => (
-              <p key={i} style={{
-                fontSize: 14,
-                fontWeight: 600,
-                color: '#1a2744',
-                lineHeight: 1.9,
-                margin: i < trustTexts.length - 1 ? '0 0 2px' : 0,
-                textAlign: 'center',
-              }}>{text}</p>
-            ))}
-          </div>
-        </div>
-
-        {/* フォームカード */}
-        {!submitted ? (
-          <div className="fct-form-card" style={{
-            background: '#ffffff',
-            borderRadius: 20,
-            padding: 'clamp(24px, 5vw, 48px)',
-            boxShadow: '0 4px 24px rgba(0,0,0,0.08)',
-            border: '1px solid #f0e8e0',
-          }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }} className="fct-row">
-                <div>
-                  <label style={labelStyle}>法人名 <span style={{ color: '#e8550a' }}>*</span></label>
-                  <input name="company" value={form.company} onChange={handleChange} placeholder="株式会社〇〇" style={inputStyle} />
-                </div>
-                <div>
-                  <label style={labelStyle}>お名前 <span style={{ color: '#e8550a' }}>*</span></label>
-                  <input name="name" value={form.name} onChange={handleChange} placeholder="山田 太郎" style={inputStyle} />
-                </div>
+          <div className="mb-10 grid grid-cols-1 gap-4 md:grid-cols-[1.15fr_1fr]">
+            <div className="rounded-lg border-2 border-green-500 bg-white p-6 md:p-8">
+              <div className="mx-auto mb-4 inline-block rounded bg-green-500 px-3 py-1 text-[12px] font-bold text-white">
+                かんたん！写真を送るだけ！
               </div>
-
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }} className="fct-row">
-                <div>
-                  <label style={labelStyle}>電話番号 <span style={{ color: '#e8550a' }}>*</span></label>
-                  <input name="phone" value={form.phone} onChange={handleChange} placeholder="090-0000-0000" style={inputStyle} type="tel" />
+              <div className="mb-2 flex items-center justify-center gap-3">
+                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-green-500 md:h-14 md:w-14">
+                  <span className="text-[13px] font-black text-white md:text-[14px]">
+                    LINE
+                  </span>
                 </div>
-                <div>
-                  <label style={labelStyle}>メールアドレス</label>
-                  <input name="email" value={form.email} onChange={handleChange} placeholder="example@mail.com" style={inputStyle} type="email" />
-                </div>
+                <span className="text-[26px] font-black text-green-600 md:text-[30px]">
+                  LINEで相談する
+                </span>
               </div>
-
-              <div>
-                <label style={labelStyle}>ご相談内容（任意）</label>
-                <textarea
-                  name="message"
-                  value={form.message}
-                  onChange={handleChange}
-                  placeholder="法人の状況・売却のご希望など、お気軽にご記入ください。"
-                  rows={4}
-                  style={{ ...inputStyle, resize: 'vertical', minHeight: 100 }}
-                />
-              </div>
-
-              <button
-                onClick={handleSubmit}
-                style={{
-                  width: '100%',
-                  background: '#e8550a',
-                  color: '#fff',
-                  fontWeight: 900,
-                  fontSize: 'clamp(1rem, 2.5vw, 1.2rem)',
-                  border: 'none',
-                  borderRadius: 10,
-                  padding: '18px 32px',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: 10,
-                  transition: 'background 0.18s',
-                }}
-                onMouseOver={(e) => ((e.currentTarget as HTMLButtonElement).style.background = '#c94208')}
-                onMouseOut={(e) => ((e.currentTarget as HTMLButtonElement).style.background = '#e8550a')}
-              >
-                <Mail size={20} strokeWidth={2} />
-                無料で査定を申し込む
-                <span style={{ fontSize: '1.3em', lineHeight: 1 }}>›</span>
-              </button>
-
-              <p style={{ textAlign: 'center', fontSize: '0.78rem', color: '#aaa', margin: 0 }}>
-                簡単60秒入力・しつこい営業は一切いたしません
+              <p className="mb-6 text-center text-[14px] text-[#374151]">
+                代表の日向が直接ご返信します！
               </p>
+              <button className="flex w-full items-center justify-center gap-2 rounded bg-green-500 px-6 py-4 text-[17px] font-bold text-white transition-colors hover:bg-green-600 md:text-[18px]">
+                友だち追加して相談する
+                <ChevronRight className="h-5 w-5" />
+              </button>
+              <div className="mt-5 hidden items-center justify-center gap-3 border-t border-green-100 pt-5 md:flex">
+                <div className="h-16 w-16 flex-shrink-0 border border-gray-300 bg-white" />
+                <span className="text-[12px] text-[#374151]">
+                  QRコードを読み取って友だち追加
+                </span>
+              </div>
+            </div>
+
+            <div className="rounded-lg border-2 border-gray-300 bg-white p-6">
+              <div className="mb-3 flex items-center justify-center gap-2">
+                <Phone className="h-4 w-4 text-brandorange" />
+                <span className="text-[14px] font-bold text-brandorange">
+                  お急ぎの方はお電話ください
+                </span>
+              </div>
+              <div className="mb-1 flex items-center justify-center gap-2">
+                <Phone className="h-5 w-5 text-brandorange" />
+                <span className="text-center text-[28px] font-black text-navy md:text-[32px]">
+                  090-1234-5678
+                </span>
+              </div>
+              <p className="mb-6 text-center text-[13px] text-[#374151]">
+                【受付時間】9:00〜17:30（日曜定休）
+              </p>
+              <a
+                href="tel:09012345678"
+                className="flex w-full items-center justify-center gap-2 rounded bg-brandorange px-6 py-4 text-[16px] font-bold text-white transition-colors hover:bg-brandorange-dark"
+              >
+                <Phone className="h-5 w-5" />
+                今すぐ電話する
+                <ChevronRight className="h-5 w-5" />
+              </a>
             </div>
           </div>
-        ) : (
-          <div style={{
-            background: '#ffffff',
-            borderRadius: 20,
-            padding: '60px 40px',
-            textAlign: 'center',
-            border: '1px solid #f0e8e0',
-          }}>
-            <CheckCircle size={56} color="#e8550a" strokeWidth={1.5} style={{ margin: '0 auto 20px' }} />
-            <h3 style={{ fontWeight: 900, fontSize: '1.5rem', color: '#1a1a1a', marginBottom: 12 }}>
-              お問い合わせありがとうございます
+
+          <div className="mb-10 border-t border-gray-300 pt-6">
+            <div className="mb-5 flex items-center gap-3">
+              <div className="h-px flex-1 bg-gray-300" />
+              <span className="text-[14px] text-[#374151]">
+                安心してご相談いただくために
+              </span>
+              <div className="h-px flex-1 bg-gray-300" />
+            </div>
+
+            <div className="mx-auto grid max-w-[600px] grid-cols-3 gap-4">
+              {trustItems.map((item) => (
+                <div
+                  key={item.label}
+                  className="flex flex-col items-center gap-2 text-center"
+                >
+                  <item.icon className="h-8 w-8 text-brandorange" />
+                  <span className="text-[13px] text-[#374151]">
+                    {item.label}
+                  </span>
+                  <span className="text-[16px] font-bold text-navy">
+                    {item.value}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="border-t border-gray-200 bg-white px-6 py-10">
+        <div className="mx-auto max-w-content md:grid md:grid-cols-[1fr_2fr] md:items-center md:gap-10">
+          <div>
+            <h3 className="mb-3 text-[18px] font-black text-green-600 md:text-[20px]">
+              LINEでのご相談はとっても簡単！
             </h3>
-            <p style={{ color: '#555', fontSize: '0.95rem', lineHeight: 1.8 }}>
-              内容を確認の上、担当者よりご連絡いたします。
+            <p className="mb-3 text-[14px] leading-relaxed text-[#374151] md:text-[15px]">
+              気になる箇所のお写真を送っていただければ、
+              代表の日向が内容を確認し、できる限り詳しく
+              ご案内いたします。
+            </p>
+            <p className="text-[14px] font-bold text-brandorange">
+              「これって塗り替えが必要？」「まだ大丈夫？」
               <br />
-              通常1営業日以内にご返信いたします。
+              そんなご相談も大歓迎です！
             </p>
           </div>
-        )}
 
-        {/* 電話番号 */}
-        <div style={{ textAlign: 'center', marginTop: 40 }}>
-          <p style={{ color: '#888', fontSize: '0.85rem', marginBottom: 8 }}>
-            お電話でのご相談はこちら（受付 9:00〜18:00）
-          </p>
-          <a
-            href="tel:03-XXXX-XXXX"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: 10,
-              color: '#e8550a',
-              fontWeight: 900,
-              fontSize: 'clamp(1.4rem, 4vw, 2rem)',
-              textDecoration: 'none',
-              letterSpacing: '0.02em',
-            }}
-          >
-            <Phone size={28} strokeWidth={2} />
-            03-XXXX-XXXX
-          </a>
+          <div className="mt-8 items-center gap-4 md:mt-0 md:flex">
+            <div className="flex flex-1 flex-col items-center text-center">
+              <div className="mb-2 flex h-8 w-8 items-center justify-center rounded-full bg-green-500 text-[14px] font-black text-white">
+                ①
+              </div>
+              <Smartphone className="mb-1 h-10 w-10 text-navy" />
+              <span className="text-[14px] font-bold text-navy">
+                友だち追加
+              </span>
+              <span className="text-[12px] text-[#374151]">
+                上のボタンから友だち追加
+              </span>
+            </div>
+
+            <ChevronRight className="mx-auto h-5 w-5 flex-shrink-0 text-gray-400 md:mx-0" />
+
+            <div className="flex flex-1 flex-col items-center text-center">
+              <div className="mb-2 flex h-8 w-8 items-center justify-center rounded-full bg-green-500 text-[14px] font-black text-white">
+                ②
+              </div>
+              <Camera className="mb-1 h-10 w-10 text-navy" />
+              <span className="text-[14px] font-bold text-navy">
+                写真を送る
+              </span>
+              <span className="text-[12px] text-[#374151]">
+                気になる箇所の写真を送信
+              </span>
+            </div>
+
+            <ChevronRight className="mx-auto h-5 w-5 flex-shrink-0 text-gray-400 md:mx-0" />
+
+            <div className="flex flex-1 flex-col items-center text-center">
+              <div className="mb-2 flex h-8 w-8 items-center justify-center rounded-full bg-green-500 text-[14px] font-black text-white">
+                ③
+              </div>
+              <MessageCircle className="mb-1 h-10 w-10 text-navy" />
+              <span className="text-[14px] font-bold text-navy">
+                ご案内・ご提案
+              </span>
+              <span className="text-[12px] text-[#374151]">
+                内容を確認後、詳しくご案内！
+              </span>
+            </div>
+
+            <div className="relative mx-auto mt-6 flex-shrink-0 md:mx-0 md:mt-0">
+              <div className="h-24 w-24 rounded-full bg-gray-200 md:h-32 md:w-32" />
+              <span className="absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap text-[13px] font-bold italic text-brandorange md:-right-4 md:left-auto md:top-0 md:translate-x-0">
+                私が直接ご返信します！
+              </span>
+            </div>
+          </div>
         </div>
-
       </div>
 
-      <style>{`
-        @media (max-width: 768px) {
-          .fct-row { grid-template-columns: 1fr !important; }
-          .fct-section { padding: 40px 0 !important; }
-          .fct-section > div { padding-left: 16px !important; padding-right: 16px !important; }
-
-          /* ヘッダー余白削減 */
-          .fct-header { margin-bottom: 32px !important; }
-          .fct-heading { margin-bottom: 6px !important; }
-
-          /* 説明文 */
-          .fct-subtext { font-size: 16px !important; line-height: 1.8 !important; }
-
-          /* SP: 横リスト非表示 → 縦リスト表示 */
-          .fct-trust-pc { display: none !important; }
-          .fct-trust-sp { display: block !important; }
-
-          /* フォームカード上部padding削減 */
-          .fct-form-card { padding: 16px 20px 28px !important; }
-        }
-      `}</style>
-    </section>
-  );
+      <p className="border-t border-gray-200 py-4 text-center text-[12px] text-[#374151]">
+        ※LINEは24時間受付中です。営業時間内に順次ご返信いたします。
+      </p>
+    </>
+  )
 }
-
-const labelStyle: React.CSSProperties = {
-  display: 'block',
-  fontWeight: 700,
-  fontSize: '0.85rem',
-  color: '#1a1a1a',
-  marginBottom: 6,
-};
-
-const inputStyle: React.CSSProperties = {
-  width: '100%',
-  border: '1.5px solid #e0d8d0',
-  borderRadius: 8,
-  padding: '12px 14px',
-  fontSize: '0.95rem',
-  color: '#1a1a1a',
-  background: '#fafafa',
-  outline: 'none',
-  boxSizing: 'border-box',
-  fontFamily: 'inherit',
-};
