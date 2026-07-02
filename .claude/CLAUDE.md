@@ -153,3 +153,24 @@ src/
 - ファイルの削除
 - `git add` / `git commit` / `git push`
 - 新規ファイル・コンポーネントの作成（指示にない場合）
+
+---
+
+## アセット構造
+
+```
+src/assets/
+  hero/
+    hero-worker.png        ← Hero写真
+  reason/
+    reason-01-vehicle.png  ← Strength 01（車両・地域密着）
+    reason-02-inspection.png ← Strength 02（現地調査・一貫対応）
+    reason-03-estimate.png ← Strength 03（お見積り・適正価格）
+  background/
+    bg-paint-subtle.png    ← Pain・FAQ・代表メッセージ共通背景テクスチャ
+  president/
+    president-hinata.png   ← 代表メッセージ人物写真（未追加）
+  case/
+    case-before-01.png     ← 施工事例 Before写真（未追加）
+    case-after-01.png      ← 施工事例 After写真（未追加）
+```
