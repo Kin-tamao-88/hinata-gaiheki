@@ -57,6 +57,115 @@
 
 ---
 
+## C-2 デザインシステム（LP全体の世界観基準）
+
+> 参照元: `C:\Users\Mr.FX\Downloads\実績モック.png`（C-2 単品モック）
+> 
+> これは実績帯だけの参考ではなく、**LP全セクションに適用する世界観・質感・装飾・情報強弱の基準**。
+> 「雰囲気を似せる」のではなく、以下の各要素を再現すること。
+
+---
+
+### 背景
+
+- 完全な白背景は禁止。全セクションに質感を持たせる
+- ネイビー帯のセクション: `bg-navy` + `brush-cream-texture`（`opacity-[0.08]`前後、`mix-blend-overlay`）でコンクリート感
+- クリーム帯のセクション: `bg-cream` + `brush-cream-texture`（`opacity-[0.06]`前後）で塗装テクスチャ
+- セクション境界にブラシストロークを挟む（`brush-navy` または `brush-orange-short` をフルワイドで配置）
+
+### 見出し
+
+- ウェイト: `font-black`（900）必須。`font-bold`（700）は本文・キャプションのみ
+- サイズ: セクション見出しは `text-[36px] md:text-[52px]` 以上。現状より1段階大きく
+- 色: ネイビー背景 → 白文字。クリーム背景 → ネイビー文字
+- キャッチコピーは2行に分け、1行目よりも2行目を大きくする（視線誘導）
+- 「力強さ」が優先。字間 `tracking-tight`、行間 `leading-tight`
+
+### 数字（実績・年数・価格）
+
+- 数値本体: `text-[64px] md:text-[96px] font-black text-brandorange`（オレンジが主役）
+- 単位: `text-[20px] md:text-[24px] font-bold text-white`（ネイビー背景時）または `text-navy`
+- 数値の下に黄色アンダーライン: `brush-orange-short`（`h-[4px]`、`opacity-80`）または `bg-chip h-[3px]`
+- 数値の上に小さいアイコン + カテゴリラベル（`text-[12px] font-semibold`）
+
+### アクセント装飾
+
+毎セクションに以下のいずれかを必ず入れる:
+
+| 種類 | 実装方法 | 用途 |
+|---|---|---|
+| 養生テープ帯 | `bg-chip` + `font-bold text-navy` の斜め or 水平帯 | セクションキャッチ・ラベル |
+| ブラシストローク | `.brush-navy` / `.brush-orange-short` / `.brush-orange-long` | 境界・数値背景・下線 |
+| ペイントスプラッター | `brush-cream-texture` + `mix-blend-multiply` | 背景テクスチャ全般 |
+| オレンジ下線 | `.brush-orange-long` `h-[8px]` | 見出しアクセントライン |
+
+養生テープ帯の実装例:
+```tsx
+<div className="inline-block bg-chip px-4 py-1.5 -rotate-1 font-bold text-navy text-[14px] tracking-wide">
+  選ばれ続ける理由は
+</div>
+```
+
+### カード・ボックス
+
+- 白い影付きカードは禁止（`shadow-*` 禁止）
+- 背景に質感を持たせる: `bg-white/90` + `border border-gray-300/60` + テクスチャオーバーレイ
+- ラフな枠感: `border-2 border-navy/20` + 内側に `brush-cream-texture` を `opacity-[0.12]`
+- コンクリート調カードの実装例:
+```tsx
+<div className="relative overflow-hidden bg-white border border-gray-300/70 p-6">
+  <div aria-hidden="true" className="absolute inset-0 brush-cream-texture opacity-[0.10] mix-blend-multiply pointer-events-none" />
+  <div className="relative z-10">{/* 内容 */}</div>
+</div>
+```
+
+### アイコン
+
+- 線画アイコン単体は弱い。必ず以下のいずれかと組み合わせる:
+  - ネイビー小帯（`bg-navy` 角丸なし `p-2`）の中に白アイコン
+  - オレンジ下線 + アイコン上部配置
+  - 養生テープ帯と並列配置
+- サイズ: `h-6 w-6 md:h-8 md:w-8`（現在より一回り大きく）
+- `strokeWidth={1.5}` 統一
+
+### 余白・密度
+
+- 現場ポスター密度: セクション縦余白 `py-12 md:py-20`（`py-16 md:py-24`以上は使わない）
+- 要素間余白 `gap-4 md:gap-6`（スカスカ禁止）
+- 情報量は多くするが読みやすく整理: グリッドで区切り、ラベル/数値/キャプションの3層構造を守る
+
+### カラー運用ルール
+
+```
+■ 基本3色
+  ネイビー  #102A4A  → 背景・見出し・ボーダー
+  オレンジ  #FC5900  → 数値・CTA・アクセントライン（主役）
+  ホワイト  #FFFFFF  → ネイビー背景上のテキスト
+
+■ サポート
+  クリーム  #F5F2EC  → 背景（白の代替）
+  黄        #FCE283  → 養生テープ帯・アクセントのみ
+  赤        #E92523  → 数字の強調（最大の数値1カ所のみ使用可）
+  
+■ 禁止
+  グレー背景（#f5f5f5 等）の単独使用
+  青系グラデーション
+  半透明ガラス（backdrop-blur）
+```
+
+### 使用可能な CSS ユーティリティ一覧
+
+| クラス | 内容 |
+|---|---|
+| `.brush-navy` | 全幅ネイビーブラシストローク |
+| `.brush-orange-long` | 全幅オレンジブラシ下線 |
+| `.brush-orange-short` | 短いオレンジブラシ（数値背景） |
+| `.brush-cream-texture` | クリーム塗装テクスチャ |
+
+全て `mix-blend-multiply` + `opacity-*` で強度調整すること。
+
+---
+
 ## 品質基準
 
 **目標**: 士業サイト / M&Aサイト / 大手企業LP と並ぶクオリティ

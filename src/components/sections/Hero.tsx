@@ -5,11 +5,11 @@ import {
   ChevronRight,
   Menu,
   X,
-  MapPin,
   Paintbrush,
   JapaneseYen,
-  Home,
   CheckCircle2,
+  Users,
+  ShieldCheck,
 } from 'lucide-react'
 import heroPhoto from '../../assets/hero/hero-worker-wide.png'
 
@@ -45,16 +45,6 @@ function LogoMark({ className }: { className?: string }) {
   )
 }
 
-function SparkleIcon({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className={className} xmlns="http://www.w3.org/2000/svg">
-      <path
-        d="M12 2L14 9L21 11L14 13L12 20L10 13L3 11L10 9L12 2Z"
-        fill="currentColor"
-      />
-    </svg>
-  )
-}
 
 function BrushUnderline() {
   return (
@@ -80,10 +70,10 @@ function BrushBadge({ children }: { children: React.ReactNode }) {
 }
 
 const stats = [
-  { label: '地域密着', value: '15', unit: '年', caption: '地域で積み重ねた実績', Icon: MapPin },
-  { label: '施工実績', value: '1,200', unit: '件以上', caption: '累計施工実績', Icon: Paintbrush },
-  { label: '追加費用', value: '0', unit: '円', caption: '明確なお見積り', Icon: JapaneseYen },
-  { label: 'アフターケア', value: '3', unit: '年間', caption: '施工後も安心サポート', Icon: Home },
+  { label: '地域密着', value: '15', unit: '年', caption: '地域で積み重ねた実績', Icon: Users },
+  { label: '累計施工実績', value: '1,200', unit: '件以上', caption: '確かな技術で施工', Icon: Paintbrush },
+  { label: 'お見積り・診断', value: '0', unit: '円', caption: '明確なお見積り', Icon: JapaneseYen },
+  { label: '施工後も安心', value: '3', unit: '年間', caption: 'アフターサポート', Icon: ShieldCheck },
 ]
 
 export default function Hero() {
@@ -236,73 +226,84 @@ export default function Hero() {
         </div>
       </section>
 
-      {/* ===== 実績帯 ===== */}
-      <section className="bg-[#FAF9F5] pt-5 pb-8 md:pt-8 md:pb-12">
-        <div className="max-w-content mx-auto px-6">
-          <div className="flex items-center justify-center gap-3 mb-4 md:mb-6">
-            <SparkleIcon className="h-4 w-4 text-chip -scale-x-100" />
-            <h2 className="text-[20px] md:text-[26px] font-black text-navy tracking-tight">
-              地域に選ばれる理由
-            </h2>
-            <SparkleIcon className="h-4 w-4 text-chip" />
-          </div>
+      {/* ===== 実績帯（C-2：フルワイドポスター構造） ===== */}
+      <section className="relative overflow-hidden bg-[#062b4f] tex-navy-wall">
+        {/* 層1: ペイントノイズ – 塗装壁のランダムな粒子感 */}
+        <div aria-hidden="true" className="absolute inset-0 tex-paint-noise opacity-[0.10] mix-blend-overlay pointer-events-none" />
+        {/* 層2: コンクリートダスト – 乾いた現場壁の素材感 */}
+        <div aria-hidden="true" className="absolute inset-0 tex-concrete-dust opacity-[0.06] mix-blend-overlay pointer-events-none" />
+        {/* 層3: 上端オレンジブラシライン */}
+        <div aria-hidden="true" className="absolute top-0 left-0 right-0 h-[8px] md:h-[10px] brush-orange-long opacity-65 mix-blend-screen pointer-events-none" />
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-y-6 gap-x-4 md:gap-x-0 md:divide-x md:divide-gray-300">
-            {stats.map(({ label, value, unit, caption, Icon }) => (
-              <div key={label} className="text-center px-2 md:px-6">
-                {/* アイコン＋ラベル */}
-                <div className="flex items-center justify-center gap-1.5 mb-2">
-                  <Icon
-                    className="h-[13px] w-[13px] md:h-[15px] md:w-[15px] text-navy flex-shrink-0"
-                    strokeWidth={1.5}
-                  />
-                  <span className="text-[12px] md:text-[13px] font-semibold text-navy">
-                    {label}
-                  </span>
-                </div>
+        <div className="relative z-10 px-4 md:pl-10 md:pr-6">
+          <div className="flex flex-col md:flex-row">
 
-                {/* ペイントマーク＋数字 */}
-                <div className="relative py-3 md:py-4">
-                  <div
-                    aria-hidden="true"
-                    className="absolute inset-0 brush-orange-short mix-blend-multiply opacity-[0.20] pointer-events-none"
-                  />
-                  <p className="relative z-10 leading-none">
-                    <span className="text-[48px] md:text-[72px] font-black text-accentred tracking-tight">
-                      {value}
-                    </span>
-                    <span className="text-[15px] md:text-[18px] font-bold text-navy ml-1">
-                      {unit}
-                    </span>
-                  </p>
-                </div>
-
-                {/* キャプション */}
-                <p className="text-[12px] md:text-[13px] font-medium text-ink-muted">{caption}</p>
+            {/* ===== 左: コピーブロック (32%) ===== */}
+            <div className="py-10 md:py-16 md:w-[32%] md:pr-6 flex-shrink-0 flex flex-col justify-center">
+              <div className="mb-4 md:mb-5">
+                {/* 養生テープラベル: masking-tape-yellow.png をベースに文字を重ねる */}
+                <span className="inline-block tex-masking-tape px-5 py-2 font-black text-[#062b4f] text-[13px] md:text-[14px] -rotate-1 tracking-wide">
+                  選ばれ続ける理由は
+                </span>
               </div>
-            ))}
-          </div>
+              {/* ink-grain-mask.png を background-clip:text でテキスト形状に適用
+                  文字の内側だけに素材のザラつきが現れ、外側は一切影響なし */}
+              <h2 className="heading-ink-texture text-[44px] md:text-[56px] font-black text-white leading-[1.0] tracking-tight">
+                確かな技術と
+                <br />
+                積み重ねた実績
+              </h2>
+            </div>
 
-          {/* 下部テキスト */}
-          <div className="mt-5 md:mt-7 flex items-center justify-center gap-2">
-            <Paintbrush className="h-4 w-4 text-ink-muted flex-shrink-0" strokeWidth={1.5} />
-            <p className="text-[14px] md:text-[15px] font-semibold text-navy">
-              現地調査・お見積りは<span className="text-brandorange">無料</span>です
-            </p>
+            {/* ===== 右: 実績ボード4枚 (68%) ===== */}
+            <div className="flex-1 flex flex-col justify-center pb-8 md:pb-0 md:py-10">
+              <div className="grid grid-cols-2 gap-[3px] md:flex md:flex-nowrap md:gap-[3px]">
+                {stats.map(({ label, value, unit, caption, Icon }) => (
+                  <div
+                    key={label}
+                    className="relative overflow-hidden bg-[#f7f3ea] tex-cream-board border border-white/20 h-[164px] md:h-[210px] md:flex-1 flex flex-col p-4"
+                  >
+                    {/* コンクリートダスト – 施工ボードの経年汚れ・素材感 */}
+                    <div aria-hidden="true" className="absolute inset-0 tex-concrete-dust opacity-[0.08] mix-blend-multiply pointer-events-none" />
+
+                    <div className="relative z-10 flex flex-col h-full">
+                      {/* ネイビー帯アイコン + カテゴリラベル */}
+                      <div className="flex items-center gap-2 mb-3 md:mb-4 flex-shrink-0">
+                        <div className="flex-shrink-0 bg-navy p-1.5">
+                          <Icon className="h-3.5 w-3.5 md:h-[18px] md:w-[18px] text-white" strokeWidth={1.5} />
+                        </div>
+                        <span className="text-[10px] md:text-[13px] font-bold text-navy leading-tight">{label}</span>
+                      </div>
+
+                      {/* 数値（主役）: value.length > 4 は「1,200」→66px、それ以外→80px
+                          num-ink-grain: ink-grain-mask.png を multiply で重ねてオレンジに塗装感
+                          tracking-[-0.04em]: 字間を詰めて圧縮ゴシックの重量感を出す */}
+                      <div className="flex flex-col md:flex-row md:items-end md:gap-1 mb-1 md:mb-2 flex-shrink-0">
+                        <span className={`num-ink-grain font-black text-[#e8550a] leading-none tracking-[-0.04em] ${value.length > 4 ? 'text-[44px] md:text-[66px]' : 'text-[44px] md:text-[80px]'}`}>
+                          {value}
+                        </span>
+                        <span className="text-[12px] md:text-[16px] font-bold text-navy leading-none md:mb-2">
+                          {unit}
+                        </span>
+                      </div>
+
+                      {/* 数字下ブラシストローク: paint-stroke-yellow.png で素材感のある黄ライン */}
+                      <div className="tex-paint-stroke-yellow h-[14px] md:h-[17px] w-3/4 mb-2 md:mb-3 flex-shrink-0" />
+
+                      {/* キャプション */}
+                      <p className="text-[10px] md:text-[13px] font-bold text-navy mt-auto">{caption}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
 
       {/* ===== Hero CTA ===== */}
       <div className="bg-[#FAF9F5] overflow-hidden">
-        {/* ネイビー刷毛跡（左右へ自然にかすれる） */}
-        <div className="relative h-[32px] md:h-[42px]">
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 brush-navy mix-blend-multiply pointer-events-none"
-          />
-        </div>
-
         {/* オレンジCTAボタン */}
         <a
           href="#contact"

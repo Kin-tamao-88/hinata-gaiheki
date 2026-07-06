@@ -43,6 +43,44 @@
     background-repeat: no-repeat;
     background-position: center;
   }
+  .bg-paint-subtle {
+    background-image: url('./assets/background/bg-paint-subtle.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  /* 実績帯テクスチャ素材 */
+  .tex-navy-wall {
+    background-image: url('./assets/textures/navy-paint-wall.png');
+    background-size: cover;
+    background-position: center;
+  }
+  .tex-paint-noise {
+    background-image: url('./assets/textures/paint-noise.png');
+    background-size: cover;
+    background-position: center;
+  }
+  .tex-concrete-dust {
+    background-image: url('./assets/textures/concrete-dust.png');
+    background-size: cover;
+    background-position: center;
+  }
+  .tex-cream-board {
+    background-image: url('./assets/textures/cream-board.png');
+    background-size: cover;
+    background-position: center;
+  }
+  .tex-paint-stroke-yellow {
+    background-image: url('./assets/textures/paint-stroke-yellow.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+  .tex-masking-tape {
+    background-image: url('./assets/textures/masking-tape-yellow.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
 
   /* Hero 見出し3行（PC専用・各行が独立／共通サイズ制御なし） */
   .hero-heading-lead {
@@ -106,6 +144,37 @@
   .hero-cta-pulse {
     animation: heroCtaPulse 1.8s ease-in-out infinite;
     will-change: transform;
+  }
+}
+
+@layer utilities {
+  /* 実績帯左見出し専用: ink-grain-mask.png をテキスト形状でクリップ
+     background-clip:text により文字の内側にのみ素材テクスチャが現れる
+     -webkit-text-fill-color:transparent で text-white を見かけ上透過させ、
+     その背後の background-image が文字形状を通して見える */
+  .heading-ink-texture {
+    background-image: url('./assets/textures/ink-grain-mask.png');
+    background-size: cover;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: white;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* 実績カード数値専用: ink-grain-mask.png を multiply で重ねてインク擦れ・塗装ムラを付与
+     ::after でオレンジの上にグレインを乗せるため、数値色は変わらず質感だけが変わる */
+  .num-ink-grain {
+    position: relative;
+  }
+  .num-ink-grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('./assets/textures/ink-grain-mask.png');
+    background-size: cover;
+    mix-blend-mode: multiply;
+    opacity: 0.14;
+    pointer-events: none;
   }
 }
 
