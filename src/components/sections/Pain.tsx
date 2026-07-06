@@ -1,5 +1,4 @@
 import { Home } from 'lucide-react'
-import bgPaintSubtle from '../../assets/background/bg-paint-subtle.png'
 
 const worries = [
   '相場が分からず、適正価格なのか判断できない',
@@ -12,13 +11,10 @@ const worries = [
 export function Pain() {
   return (
     <section id="pain" className="relative overflow-hidden bg-white py-10 md:py-14">
-      <img
-        src={bgPaintSubtle}
-        alt=""
+      <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-40"
+        className="brush-cream-texture mix-blend-multiply pointer-events-none absolute inset-0 opacity-[0.08]"
       />
-      <div className="absolute inset-0 bg-white/50" />
       <div className="relative mx-auto max-w-content px-6">
         <div className="flex justify-center">
           <Home className="h-8 w-8 text-navy" />

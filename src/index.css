@@ -18,6 +18,32 @@
     @apply mx-auto w-full max-w-content px-6;
   }
 
+  /* ブラシ背景ユーティリティ — mix-blend-multiply と組み合わせて白を消す */
+  .brush-navy {
+    background-image: url('./assets/brush/brush-navy.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .brush-orange-long {
+    background-image: url('./assets/brush/brush-orange-long.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .brush-orange-short {
+    background-image: url('./assets/brush/brush-orange-short.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .brush-cream-texture {
+    background-image: url('./assets/background/brush-cream.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
   /* Hero 見出し3行（PC専用・各行が独立／共通サイズ制御なし） */
   .hero-heading-lead {
     width: 90%;
