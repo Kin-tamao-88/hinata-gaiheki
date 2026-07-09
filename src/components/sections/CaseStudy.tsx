@@ -1,187 +1,194 @@
-import { ChevronRight, MessageCircle, CheckCircle2 } from 'lucide-react'
+import { MessageCircle } from 'lucide-react'
 
-type Case = {
-  number: string
-  property: string
-  tagsFull: string
-  otherPrice: string
-  ourPrice: string
-  costDown: string
-  reasons: string[]
-  voice: string
-  voiceName: string
-}
-
-const cases: Case[] = [
+const cases = [
   {
     number: '01',
     property: '甲府市 S様邸',
-    tagsFull: '第18年・戸建て・外壁塗装・屋根塗装',
-    otherPrice: '148万円',
-    ourPrice: '118万円',
-    costDown: '30万円のコストダウンを実現！',
-    reasons: [
-      '自社施工で中間マージンを削減',
-      '必要のない工事はご提案しません',
-      '明細付き見積で安心・納得',
-    ],
+    work: '外壁塗装',
     voice:
-      '他社では屋根のカバー工法をすすめられましたが、レストレーションさんは塗装で十分だと丁寧に説明してくれました。結果、費用も抑えられて仕上がりも大満足です。',
-    voiceName: '（甲府市 S様）',
+      '現地調査の時から細かく説明していただき、こちらの質問にも丁寧に答えてくださいました。工事中も毎日状況を教えていただけたので、とても安心してお任せできました。仕上がりも想像以上にきれいで大満足です。',
+    voiceName: '甲府市 S様',
   },
   {
     number: '02',
     property: '昭和町 K様邸',
-    tagsFull: '第12年・戸建て・外壁塗装',
-    otherPrice: '123万円',
-    ourPrice: '96万円',
-    costDown: '27万円のコストダウンを実現！',
-    reasons: [
-      '外注に頼らないためコストを圧縮',
-      '耐久性を考えた最適な塗料をご提案',
-      '追加費用なしの明朗会計',
-    ],
+    work: '外壁塗装',
     voice:
-      '見積もりの内訳がとても分かりやすく、追加費用の心配がないのが決め手になりました。職人さんの対応も丁寧で、安心してお任せできました。',
-    voiceName: '（昭和町 K様）',
-  },
-  {
-    number: '03',
-    property: '南アルプス市 T様邸',
-    tagsFull: '第20年・戸建て・外壁塗装・付帯部塗装',
-    otherPrice: '135万円',
-    ourPrice: '105万円',
-    costDown: '30万円のコストダウンを実現！',
-    reasons: [
-      '自社職人による高品質施工',
-      '現地調査を丁寧に行い無駄な工事をカット',
-      '地域密着だからこその適正価格',
-    ],
-    voice:
-      '他社よりも安くて不安もありましたが、職人さんの仕事がとても丁寧で、想像以上の仕上がりでした。ご近所にも自信を持っておすすめできます。',
-    voiceName: '（南アルプス市 T様）',
+      '見積もりの内容がとても分かりやすく、追加費用も一切なく安心できました。工事後も気になる点がないか声を掛けてくださり、最後まで誠実な対応だったのが印象に残っています。',
+    voiceName: '昭和町 K様',
   },
 ]
 
-function getTags(tagsFull: string): string[] {
-  const parts = tagsFull.split('・')
-  if (parts.length <= 3) return parts
-  return [parts[0], parts[1], parts.slice(2).join('・')]
-}
-
 export function CaseStudy() {
   return (
-    <section id="case-study" className="bg-white py-14 md:py-20">
-      <div className="mx-auto max-w-content px-6">
-        <div className="mb-2 text-center text-[12px] tracking-[0.3em] text-[#374151]">
-          WORKS
-        </div>
-        <h2 className="mb-2 text-center text-[36px] font-black tracking-[0.2em] text-navy md:text-[52px]">
-          施 工 事 例
-        </h2>
-        <div className="mx-auto mb-5 h-[3px] w-12 bg-brandorange" />
-        <p className="mb-12 text-center text-[15px] leading-relaxed text-[#374151] md:text-[16px]">
-          レストレーションが手がけた施工事例の一部をご紹介します。
-          <br />
-          適正価格と確かな技術で、お客様の住まいを美しく生まれわらせます。
-        </p>
+    <section id="case-study" className="relative overflow-hidden bg-cream py-12 md:py-20">
+      {/* 背景テクスチャ */}
+      <div
+        aria-hidden="true"
+        className="brush-cream-texture pointer-events-none absolute inset-0 mix-blend-multiply opacity-[0.06]"
+      />
 
-        {cases.map((c, index) => (
-          <div
-            key={c.number}
-            className={`flex flex-col gap-6 md:flex-row md:items-start md:gap-6 ${
-              index > 0 ? 'mt-8 border-t border-gray-200 pt-8' : ''
-            }`}
-          >
-            <div className="relative flex-shrink-0">
-              <div className="w-[90px] bg-navy px-2 py-3 text-center text-white">
-                <div className="text-[11px]">Case</div>
-                <div className="text-[28px] font-black">{c.number}</div>
-              </div>
-              <div className="absolute -bottom-2 left-0 h-0 w-0 border-r-[8px] border-t-[8px] border-r-transparent border-t-navy" />
-            </div>
-
-            <div className="flex-1">
-              <div className="text-[18px] font-black text-navy md:text-[20px]">
-                {c.property}
-              </div>
-              <div className="mt-2 flex flex-wrap gap-2">
-                {getTags(c.tagsFull).map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded bg-gray-100 px-2 py-0.5 text-[12px] text-[#374151]"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              <div className="mt-3 flex flex-wrap items-center gap-3">
-                <div>
-                  <div className="text-[13px] text-[#374151]">他社見積り</div>
-                  <div className="text-[24px] font-bold text-[#374151] line-through decoration-2">
-                    {c.otherPrice}
-                  </div>
-                </div>
-                <ChevronRight className="h-6 w-6 text-gray-400" />
-                <div>
-                  <span className="inline-block rounded bg-brandorange px-2 py-0.5 text-[12px] font-bold text-white">
-                    レストレーション見積り
-                  </span>
-                  <div className="text-[38px] font-black text-brandorange md:text-[44px]">
-                    {c.ourPrice}
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-1 inline-block border border-brandorange bg-orange-50 px-3 py-1 text-[14px] font-bold text-brandorange">
-                {c.costDown}
-              </div>
-
-              <div className="mt-3 mb-1 text-[12px] text-[#374151]">
-                コストを抑えられた理由
-              </div>
-              <div className="flex flex-wrap gap-4">
-                {c.reasons.map((reason) => (
-                  <div key={reason} className="flex items-center gap-1">
-                    <CheckCircle2 className="h-4 w-4 text-brandorange" />
-                    <span className="text-[13px] text-[#374151]">{reason}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="relative flex w-full flex-shrink-0 md:w-[420px]">
-              <div className="relative aspect-[4/3] w-1/2 bg-gray-200">
-                <span className="absolute top-2 left-2 bg-[#374151] px-2 py-0.5 text-[11px] font-bold text-white">
-                  Before
-                </span>
-              </div>
-              <div className="relative aspect-[4/3] w-1/2 bg-gray-200">
-                <span className="absolute top-2 left-2 bg-brandorange px-2 py-0.5 text-[11px] font-bold text-white">
-                  After
-                </span>
-              </div>
-              <ChevronRight className="absolute top-1/2 left-1/2 h-6 w-6 -translate-x-1/2 -translate-y-1/2 text-brandorange" />
-            </div>
-
-            <div className="w-full flex-shrink-0 md:w-[220px]">
-              <div className="flex items-center gap-1">
-                <MessageCircle className="h-4 w-4 text-navy" />
-                <span className="text-[13px] font-bold text-navy">お客様の声</span>
-              </div>
-              <p className="mt-2 text-[13px] leading-relaxed text-[#374151]">
-                {c.voice}
-              </p>
-              <p className="mt-3 text-right text-[12px] text-[#374151]">
-                {c.voiceName}
-              </p>
-            </div>
+      <div className="relative mx-auto max-w-content px-4 md:px-6">
+        {/* セクション見出し */}
+        <div className="mb-10 text-center md:mb-14">
+          <p className="mb-2 text-[11px] font-bold tracking-[0.3em] text-navy/50 md:text-[12px]">
+            WORKS
+          </p>
+          <div className="relative inline-block">
+            <h2 className="text-[30px] font-black leading-tight tracking-tight text-navy md:text-[52px]">
+              山梨のお客様施工事例
+            </h2>
+            <div
+              aria-hidden="true"
+              className="brush-orange-long pointer-events-none absolute -bottom-2 left-0 h-[8px] w-full opacity-75"
+            />
           </div>
-        ))}
+          <p className="mt-6 text-[14px] leading-relaxed text-ink-muted md:text-[15px]">
+            レストレーションが手がけた外壁塗装の一部をご紹介します。
+            <br className="hidden md:block" />
+            丁寧な施工と誠実な対応で、多くのお客様にご満足いただいています。
+          </p>
+        </div>
 
-        <p className="mt-8 text-center text-[12px] text-[#374151]">
-          ※上記は一例です。建物の状態や使用する塗料によって価格は変動します。まずは無料の現地調査・お見積りをご利用ください。
+        {/* 施工事例一覧 */}
+        <div>
+          {cases.map((c, index) => (
+            <div key={c.number}>
+              {/* 養生テープセパレーター（2件目以降） */}
+              {index > 0 && (
+                <div
+                  aria-hidden="true"
+                  className="tex-masking-tape my-8 h-[22px] w-full -rotate-[0.2deg] opacity-60 md:my-12"
+                />
+              )}
+
+              {/* ケースカード */}
+              <div className="relative overflow-hidden border border-gray-300/50 bg-white/92">
+                {/* 紙質テクスチャ */}
+                <div
+                  aria-hidden="true"
+                  className="brush-cream-texture pointer-events-none absolute inset-0 mix-blend-multiply opacity-[0.09]"
+                />
+
+                <div className="relative">
+                  {/* 上部: 情報パネル + Before/After写真 */}
+                  <div className="flex flex-col md:flex-row">
+
+                    {/* 情報パネル
+                        SP: flex横並び（数字左・物件名右）
+                        PC: flex縦積み（左サイドバー） */}
+                    <div className="flex items-end gap-3 border-b border-gray-200/60 p-5 md:w-[200px] md:flex-shrink-0 md:flex-col md:items-start md:gap-0 md:border-b-0 md:border-r md:border-gray-200/60 md:py-7 md:pl-7 md:pr-5">
+                      {/* CASE番号 */}
+                      <div className="md:mb-4">
+                        <span className="block text-[10px] font-black tracking-[0.25em] text-brandorange">
+                          CASE
+                        </span>
+                        <span className="block text-[54px] font-black leading-none tracking-tight text-navy md:text-[72px]">
+                          {c.number}
+                        </span>
+                      </div>
+
+                      {/* 物件情報 */}
+                      <div>
+                        <p className="text-[15px] font-black leading-snug text-navy md:text-[16px]">
+                          {c.property}
+                        </p>
+                        <div className="mt-2">
+                          <span className="bg-navy px-2.5 py-1 text-[10px] font-bold text-white">
+                            {c.work}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* 施工内容 PCのみ左パネル下部に表示 */}
+                      <div className="hidden md:mt-auto md:block md:pt-5">
+                        <div className="relative mb-1.5 inline-block">
+                          <span className="text-[11px] font-bold text-ink-muted">施工内容</span>
+                          <div
+                            aria-hidden="true"
+                            className="tex-paint-stroke-yellow pointer-events-none absolute -bottom-0.5 left-0 h-[3px] w-full opacity-70"
+                          />
+                        </div>
+                        <p className="text-[13px] font-medium text-navy">{c.work}</p>
+                      </div>
+                    </div>
+
+                    {/* Before/After写真エリア */}
+                    <div className="relative flex flex-1">
+                      {/* Before */}
+                      <div className="relative w-1/2 overflow-hidden">
+                        <div className="aspect-[4/3] w-full bg-gray-300" />
+                        <span className="absolute top-3 left-3 bg-navy px-2.5 py-1 text-[11px] font-bold text-white">
+                          Before
+                        </span>
+                      </div>
+
+                      {/* 矢印（写真中央） */}
+                      <div className="absolute top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2">
+                        <div className="flex h-9 w-9 items-center justify-center rounded-full bg-brandorange md:h-11 md:w-11">
+                          <svg
+                            className="h-4 w-4 text-white md:h-5 md:w-5"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          >
+                            <polyline points="9 18 15 12 9 6" />
+                          </svg>
+                        </div>
+                      </div>
+
+                      {/* After */}
+                      <div className="relative w-1/2 overflow-hidden">
+                        <div className="aspect-[4/3] w-full bg-gray-300" />
+                        <span className="absolute top-3 left-3 bg-brandorange px-2.5 py-1 text-[11px] font-bold text-white">
+                          After
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 施工内容 SPのみ（写真直下） */}
+                  <div className="flex items-center gap-3 border-t border-gray-200/60 px-5 py-3 md:hidden">
+                    <div className="relative inline-block">
+                      <span className="text-[11px] font-bold text-ink-muted">施工内容</span>
+                      <div
+                        aria-hidden="true"
+                        className="tex-paint-stroke-yellow pointer-events-none absolute -bottom-0.5 left-0 h-[3px] w-full opacity-70"
+                      />
+                    </div>
+                    <span className="text-[13px] font-medium text-navy">{c.work}</span>
+                  </div>
+
+                  {/* お客様の声 */}
+                  <div className="flex items-start gap-4 border-t border-gray-200/60 px-5 py-5 md:px-7 md:py-6">
+                    {/* ネイビー円アイコン */}
+                    <div className="flex h-12 w-12 flex-shrink-0 flex-col items-center justify-center rounded-full bg-navy">
+                      <span className="text-[7px] font-bold leading-tight text-white">お客様</span>
+                      <MessageCircle className="mt-0.5 h-4 w-4 text-white" strokeWidth={1.5} />
+                      <span className="text-[7px] font-bold leading-tight text-white">の声</span>
+                    </div>
+                    {/* レビューテキスト */}
+                    <div className="flex-1">
+                      <p className="text-[14px] leading-relaxed text-ink md:text-[15px]">
+                        {c.voice}
+                      </p>
+                      <p className="mt-2 text-right text-[12px] text-ink-muted">
+                        （{c.voiceName}）
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* 注記 */}
+        <p className="mt-8 text-center text-[12px] text-ink-muted">
+          ※建物の状態や使用する塗料によって仕上がりは異なります。まずは無料の現地調査・お見積りをご利用ください。
         </p>
       </div>
     </section>
