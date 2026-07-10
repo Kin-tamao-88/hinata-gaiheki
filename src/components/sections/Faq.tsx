@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ChevronDown, PaintRoller } from 'lucide-react'
+import { ChevronDown, ChevronRight, HelpCircle, MessageCircle } from 'lucide-react'
 
 const faqs = [
   {
@@ -36,57 +36,167 @@ export function Faq() {
   }
 
   return (
-    <section className="relative overflow-hidden bg-white py-14 md:py-20">
-      <div
-        aria-hidden="true"
-        className="brush-cream-texture mix-blend-multiply pointer-events-none absolute inset-0 opacity-[0.08]"
-      />
-      <div className="relative mx-auto max-w-content px-6">
-        <div className="mb-2 flex items-center justify-center gap-2 text-center text-[13px] font-bold tracking-widest text-navy">
-          <PaintRoller className="h-4 w-4 text-brandorange" />
-          FAQ
-        </div>
-        <h2 className="mb-10 text-center text-[28px] font-black text-navy md:text-[40px]">
-          よくある<span className="text-brandorange">ご質問</span>
-        </h2>
+    <>
+      {/* ===== FAQ セクション ===== */}
+      <section id="faq" className="relative overflow-hidden bg-[#f7f4ed] pb-20 pt-10 md:py-32">
+        {/* bg-paint-subtle: 塗装ペーパー質感 */}
+        <div
+          aria-hidden="true"
+          className="bg-paint-subtle pointer-events-none absolute inset-0 mix-blend-multiply opacity-[0.18]"
+        />
+        {/* C-2 クリームテクスチャ 15〜20% */}
+        <div
+          aria-hidden="true"
+          className="tex-cream-board pointer-events-none absolute inset-0 mix-blend-multiply opacity-[0.10]"
+        />
+        <div
+          aria-hidden="true"
+          className="tex-paint-noise pointer-events-none absolute inset-0 mix-blend-multiply opacity-[0.05]"
+        />
 
-        <div className="border-t border-gray-200">
-          {faqs.map((faq, idx) => {
-            const isOpen = openIdx === idx
-            return (
-              <div key={faq.q} className="border-b border-gray-200">
-                <button
-                  onClick={() => toggle(idx)}
-                  className="flex w-full items-center gap-4 py-5 text-left"
-                >
-                  <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded bg-navy text-[14px] font-black text-white">
-                    Q
-                  </span>
-                  <span className="flex-1 text-[15px] font-bold leading-relaxed text-navy md:text-[17px]">
-                    {faq.q}
-                  </span>
-                  <ChevronDown
-                    className={`h-5 w-5 flex-shrink-0 text-brandorange transition-transform ${
-                      isOpen ? 'rotate-180' : ''
-                    }`}
-                  />
-                </button>
+        <div className="relative mx-auto max-w-content px-4 md:px-6">
 
-                {isOpen && (
-                  <div className="flex gap-4 bg-[#FFF8F5] px-4 py-5 md:px-6">
-                    <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded border border-brandorange text-[14px] font-black text-brandorange">
-                      A
-                    </span>
-                    <p className="text-[14px] leading-[1.9] text-[#374151] md:text-[15px]">
-                      {faq.a}
-                    </p>
-                  </div>
-                )}
+          {/* ---- 見出しブロック ---- */}
+          <div className="mb-12 text-center md:mb-16">
+            {/* アイコン + FAQ ラベル */}
+            <div className="mb-3 flex items-center justify-center gap-2">
+              <HelpCircle className="h-5 w-5 text-[#ef6b13]" strokeWidth={2} />
+              <span className="text-[12px] font-bold tracking-[0.22em] text-navy/60">FAQ</span>
+            </div>
+
+            {/* メイン見出し + brush-yellow アンダーライン */}
+            <div className="relative inline-block">
+              <h2 className="relative z-10 text-[42px] font-black leading-tight tracking-tight text-navy md:text-[56px]">
+                よくある<span className="text-[#ef6b13]">ご質問</span>
+              </h2>
+              {/* brush-yellow: top-full で文字の真下に配置（文字に被らない） */}
+              <div
+                aria-hidden="true"
+                className="tex-paint-stroke-yellow pointer-events-none absolute left-1/2 top-full z-0 h-[20px] w-[260px] -translate-x-1/2 -translate-y-[2px]"
+              />
+            </div>
+
+            {/* 説明文 */}
+            <p className="mx-auto mt-8 max-w-[620px] text-[15px] leading-[1.9] text-slate-700 md:text-[16px]">
+              よくいただくご質問をまとめました。
+              <br className="hidden md:block" />
+              その他のご不明点は、お気軽にお問い合わせください。
+            </p>
+          </div>
+
+          {/* ---- FAQ カード ---- */}
+          {/* max-w-1100px / 中央配置 */}
+          <div className="relative mx-auto max-w-[1100px]">
+            {/* マスキングテープ: カード左上から少し飛び出す */}
+            <div
+              aria-hidden="true"
+              className="tex-masking-tape pointer-events-none absolute -left-2 -top-4 z-10 h-[26px] w-[88px] -rotate-[12deg] opacity-[0.72]"
+            />
+
+            {/* カード本体 */}
+            <div className="relative overflow-hidden rounded-[20px] border border-black/[0.05] bg-[#fbfaf7]">
+              {/* cream-board 紙質テクスチャ: 印刷物を台紙に貼った温度感 */}
+              <div
+                aria-hidden="true"
+                className="tex-cream-board pointer-events-none absolute inset-0 mix-blend-multiply opacity-[0.20]"
+              />
+
+              <div className="relative">
+                {faqs.map((faq, idx) => {
+                  const isOpen = openIdx === idx
+                  const isLast = idx === faqs.length - 1
+                  return (
+                    <div
+                      key={faq.q}
+                      className={isLast ? '' : 'border-b border-black/[0.12]'}
+                    >
+                      {/* 質問行 */}
+                      <button
+                        onClick={() => toggle(idx)}
+                        className="flex min-h-14 w-full items-start gap-4 px-5 py-[28px] text-left md:items-center md:px-[34px]"
+                      >
+                        {/* Q アイコン: SP 40px / PC 44px / 角丸12px / #072b61 */}
+                        <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-[12px] bg-[#072b61] text-[14px] font-bold text-white md:h-11 md:w-11 md:text-[15px]">
+                          Q
+                        </span>
+                        {/* 質問テキスト: font-black / PC 23-25px / SP 18-20px */}
+                        <span className="flex-1 text-[19px] font-black leading-[1.6] text-navy md:text-[24px]">
+                          {faq.q}
+                        </span>
+                        {/* 矢印: 右端 / #ef6b13 / 開閉で180度回転 / transition 0.25s */}
+                        <ChevronDown
+                          className={`mt-1 h-6 w-6 flex-shrink-0 text-[#ef6b13] transition-transform duration-[250ms] md:mt-0 ${
+                            isOpen ? 'rotate-180' : ''
+                          }`}
+                          strokeWidth={2.5}
+                        />
+                      </button>
+
+                      {/* 回答: padding-top 22px / PC 18px / SP 16px / #404040 / line-height 2.0 */}
+                      {isOpen && (
+                        <div className="px-5 pb-[28px] md:px-[34px]">
+                          <div className="pl-[56px] md:pl-[60px]">
+                            <p className="pt-[22px] text-[16px] leading-[2.0] text-[#404040] md:text-[18px]">
+                              {faq.a}
+                            </p>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  )
+                })}
               </div>
-            )
-          })}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== CTA 帯 (FAQ直後) ===== */}
+      <div className="relative overflow-hidden bg-navy py-16 md:py-20">
+        {/* navy-paint-wall テクスチャ: C-2感 強め */}
+        <div
+          aria-hidden="true"
+          className="tex-navy-wall pointer-events-none absolute inset-0 mix-blend-overlay opacity-[0.68]"
+        />
+        {/* concrete-dust: 微細インク粒感 */}
+        <div
+          aria-hidden="true"
+          className="tex-concrete-dust pointer-events-none absolute inset-0 mix-blend-overlay opacity-[0.06]"
+        />
+        {/* paint-noise 10〜15% */}
+        <div
+          aria-hidden="true"
+          className="tex-paint-noise pointer-events-none absolute inset-0 mix-blend-multiply opacity-[0.12]"
+        />
+        {/* 上端ブラシ: ページ端まで自然に伸ばす */}
+        <div
+          aria-hidden="true"
+          className="brush-navy pointer-events-none absolute inset-x-0 top-0 h-[40px] mix-blend-overlay opacity-[0.38]"
+        />
+        {/* 下端ブラシ */}
+        <div
+          aria-hidden="true"
+          className="brush-navy pointer-events-none absolute inset-x-0 bottom-0 h-[40px] mix-blend-overlay opacity-[0.38]"
+        />
+
+        {/* コンテンツ */}
+        <div className="relative px-4 text-center">
+          {/* 1行目: 小さめ */}
+          <p className="mb-2 text-[14px] font-bold tracking-wide text-white/70 md:text-[15px]">
+            ご相談・お見積りは無料です！
+          </p>
+          {/* 2行目: 大きめ・白 */}
+          <p className="mb-10 text-[28px] font-black text-white md:text-[40px]">
+            お気軽にご相談ください
+          </p>
+          {/* CTAボタン: 高さ72px / 角丸14px / #ef6b13 / 横幅SP100% / PC auto */}
+          <button className="mx-auto flex h-[72px] w-full items-center justify-center gap-3 rounded-[14px] bg-[#ef6b13] px-10 text-[16px] font-bold text-white transition-colors hover:bg-[#d45e0e] md:w-auto md:text-[17px]">
+            <MessageCircle className="h-5 w-5 flex-shrink-0" strokeWidth={2} />
+            無料でお見積りを依頼する
+            <ChevronRight className="h-5 w-5 flex-shrink-0" strokeWidth={2.5} />
+          </button>
         </div>
       </div>
-    </section>
+    </>
   )
 }
