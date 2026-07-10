@@ -38,7 +38,7 @@ export function Faq() {
   return (
     <>
       {/* ===== FAQ セクション ===== */}
-      <section id="faq" className="relative overflow-hidden bg-[#f7f4ed] pb-10 pt-6 md:py-20">
+      <section id="faq" className="relative overflow-hidden bg-[#f7f4ed] pb-10 pt-6 md:pt-10 md:pb-20">
         {/* bg-paint-subtle: 塗装ペーパー質感 */}
         <div
           aria-hidden="true"
@@ -120,7 +120,7 @@ export function Faq() {
                           Q
                         </span>
                         {/* 質問テキスト: font-black / PC 23-25px / SP 18-20px */}
-                        <span className="flex-1 text-[19px] font-black leading-[1.6] text-navy md:text-[24px]">
+                        <span className="flex-1 text-[14px] font-black leading-[1.45] text-navy md:text-[20px] md:leading-[1.6]">
                           {faq.q}
                         </span>
                         {/* 矢印: 右端 / #ef6b13 / 開閉で180度回転 / transition 0.25s */}
@@ -152,7 +152,7 @@ export function Faq() {
       </section>
 
       {/* ===== CTA 帯 (FAQ直後) ===== */}
-      <div className="relative overflow-hidden bg-navy py-16 md:py-20">
+      <div className="relative overflow-hidden bg-navy py-10 md:py-14">
         {/* navy-paint-wall テクスチャ: C-2感 強め */}
         <div
           aria-hidden="true"
@@ -186,11 +186,11 @@ export function Faq() {
             ご相談・お見積りは無料です！
           </p>
           {/* 2行目: 大きめ・白 */}
-          <p className="mb-10 text-[28px] font-black text-white md:text-[40px]">
+          <p className="mb-6 text-[22px] font-black text-white md:mb-7 md:text-[32px]">
             お気軽にご相談ください
           </p>
           {/* CTAボタン: 高さ72px / 角丸14px / #ef6b13 / 横幅SP100% / PC auto */}
-          <button className="mx-auto flex h-[72px] w-full items-center justify-center gap-3 rounded-[14px] bg-[#ef6b13] px-10 text-[16px] font-bold text-white transition-colors hover:bg-[#d45e0e] md:w-auto md:text-[17px]">
+          <button className="mx-auto flex h-[64px] w-full items-center justify-center gap-3 rounded-[14px] bg-[#ef6b13] px-10 text-[14px] font-bold text-white transition-colors hover:bg-[#d45e0e] md:h-[64px] md:w-auto md:text-[15px]">
             <MessageCircle className="h-5 w-5 flex-shrink-0" strokeWidth={2} />
             無料でお見積りを依頼する
             <ChevronRight className="h-5 w-5 flex-shrink-0" strokeWidth={2.5} />

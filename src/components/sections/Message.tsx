@@ -2,7 +2,7 @@ import profileImg from '../../assets/message/hinata-profile-cropped.jpg'
 
 export function Message() {
   return (
-    <section id="message" className="relative overflow-hidden bg-[#f7f3ea] py-14 md:py-20">
+    <section id="message" className="relative overflow-hidden bg-[#f7f3ea] py-14 md:pt-20 md:pb-10">
       {/* セクション背景テクスチャ: C-2感 15〜20% */}
       <div
         aria-hidden="true"
@@ -115,48 +115,62 @@ export function Message() {
               className="tex-masking-tape pointer-events-none absolute -top-2 left-5 h-[22px] w-[88px] -rotate-[6deg] opacity-[0.68]"
             />
 
-            {/* カードコンテンツ: SP=1カラム / PC=5fr 2fr グリッド */}
-            <div className="relative px-6 pb-8 pt-9 md:grid md:grid-cols-[5fr_2fr] md:px-12 md:pb-10 md:pt-10">
+            {/* カードコンテンツ */}
+            <div className="relative px-6 pb-8 pt-9 md:px-12 md:pb-12 md:pt-10">
 
-              {/* ---- レター本文 ---- */}
-              <div className="md:pr-10">
-
-                {/* 「代表メッセージ」見出し + 黄色ライン */}
-                <div className="mb-6 inline-block">
-                  <div className="relative inline-block">
-                    <h3 className="text-[24px] font-bold text-navy md:text-[29px]">
-                      代表メッセージ
-                    </h3>
-                    <div
-                      aria-hidden="true"
-                      className="absolute -bottom-1 left-0 h-[4px] w-full bg-chip opacity-[0.85]"
-                    />
-                  </div>
+              {/* 「代表メッセージ」見出し + 黄色ライン */}
+              <div className="mb-6 inline-block">
+                <div className="relative inline-block">
+                  <h3 className="text-[24px] font-bold text-navy md:text-[29px]">
+                    代表メッセージ
+                  </h3>
+                  <div
+                    aria-hidden="true"
+                    className="absolute -bottom-1 left-0 h-[4px] w-full bg-chip opacity-[0.85]"
+                  />
                 </div>
+              </div>
 
-                {/* レター本文: 手書き風 */}
-                <div className="space-y-4 font-handwritten text-[17px] leading-[1.85] text-ink md:text-[18px] md:leading-[1.8]">
-                  <p>
-                    塗装工事は、見えなくなる部分も多く、ご不安なこともあるかと思います。
-                  </p>
-                  <p>
-                    だからこそ、私たちは
-                    <span className="text-brandorange">「正直な説明」</span>
-                    と
-                    <span className="text-brandorange">「誠実な施工」</span>
-                    を常に心がけています。
-                  </p>
-                  <p>どんな小さなご相談でも、安心してお声がけください。</p>
-                  <p>皆様の大切な住まいを、責任を持ってお守りいたします。</p>
-                </div>
+              {/* レター本文: 手書き風 / PCは用紙幅で収める */}
+              <div className="space-y-4 font-handwritten text-[17px] leading-[1.85] tracking-tight text-ink md:max-w-[880px] md:tracking-normal md:text-[18px] md:leading-[1.8]">
+                <p>はじめまして。</p>
+                <p>レストレーション代表の日向です。</p>
+                <p>
+                  山梨で15年以上、住宅メンテナンスに
+                  <br className="md:hidden" />
+                  携わり、多くのお住まいのお悩みと
+                  <br className="md:hidden" />
+                  向き合ってきました。
+                </p>
+                <p>よくいただくのが、「工事は高額になりそう…」「まだ大丈夫かな…」というご相談です。</p>
+                <p>小さな傷みも、放置すると大きな修繕につながり、結果として費用も大きくなることがあります。</p>
+                <p>
+                  一方で、早めにご相談いただければ、
+                  <br className="md:hidden" />
+                  最低限の補修だけで済むケースも
+                  <br className="md:hidden" />
+                  少なくありません。
+                </p>
+                <p>
+                  現地調査・お見積りから施工まで、
+                  <br className="md:hidden" />
+                  私が責任を持って対応いたします。
+                </p>
+                <p>
+                  どんな小さなことでも、お気軽に
+                  <br className="md:hidden" />
+                  ご相談ください。
+                </p>
+              </div>
 
-                {/* SP のみ: 署名を本文直下に配置 */}
-                <div className="mt-8 md:hidden">
-                  <p className="font-handwritten text-[14px] leading-none text-navy">
+              {/* 署名: 右下に添える（SP・PC共通） */}
+              <div className="mt-4 flex justify-end md:mt-5">
+                <div>
+                  <p className="font-handwritten text-[13px] leading-none text-navy/70 md:text-[15px]">
                     レストレーション 代表
                   </p>
-                  <div className="relative mt-3 inline-block">
-                    <p className="font-handwritten text-[35px] leading-tight text-navy">
+                  <div className="relative mt-2 inline-block md:mt-3">
+                    <p className="font-handwritten text-[34px] leading-tight text-navy md:text-[46px]">
                       日向 哲也
                     </p>
                     <div
@@ -164,22 +178,6 @@ export function Message() {
                       className="absolute -bottom-1 left-0 h-[4px] w-full bg-chip opacity-[0.85]"
                     />
                   </div>
-                </div>
-              </div>
-
-              {/* ---- PC のみ: 右列 署名 ---- */}
-              <div className="relative hidden border-l border-navy/[0.08] pl-8 md:flex md:flex-col md:items-start md:justify-center">
-                <p className="font-handwritten text-[17px] leading-none text-navy">
-                  レストレーション 代表
-                </p>
-                <div className="relative mt-4 inline-block">
-                  <p className="font-handwritten text-[46px] leading-tight text-navy">
-                    日向 哲也
-                  </p>
-                  <div
-                    aria-hidden="true"
-                    className="absolute -bottom-1 left-0 h-[4px] w-full bg-chip opacity-[0.85]"
-                  />
                 </div>
               </div>
             </div>

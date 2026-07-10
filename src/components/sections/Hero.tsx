@@ -288,13 +288,13 @@ export default function Hero() {
                     >
                       <div aria-hidden="true" className="absolute inset-0 tex-concrete-dust opacity-[0.08] mix-blend-multiply pointer-events-none" />
 
-                      <div className="relative z-10 flex flex-col h-full items-center md:items-start">
+                      <div className="relative z-10 flex flex-col h-full items-center">
                         {/* アイコン + カテゴリラベル */}
                         <div className="flex items-center gap-2 mb-4 md:mb-2.5 flex-shrink-0">
                           <div className="flex-shrink-0 bg-navy p-1.5">
                             <Icon className="h-3 w-3 md:h-[14px] md:w-[14px] text-white" strokeWidth={1.5} />
                           </div>
-                          <span className="text-[14px] font-bold text-navy leading-tight">{label}</span>
+                          <span className="text-[14px] md:text-[15px] font-bold text-navy leading-tight">{label}</span>
                         </div>
 
                         {/* 数値ブロック：ベースライン横並び */}
@@ -302,7 +302,7 @@ export default function Hero() {
                           <span className={`num-ink-grain font-black text-[#e8550a] leading-none tracking-[-0.04em] ${valueClass || 'text-[34px] md:text-[46px]'}`}>
                             {value}
                           </span>
-                          <span className="text-[13px] md:text-[15px] font-bold text-navy leading-none">
+                          <span className="text-[13px] md:text-[17px] font-bold text-navy leading-none">
                             {unit}
                           </span>
                         </div>
@@ -311,7 +311,7 @@ export default function Hero() {
                         <div className="tex-paint-stroke-yellow h-[12px] md:h-[2px] w-3/4 md:w-[64px] mb-1.5 md:mb-2 flex-shrink-0" />
 
                         {/* キャプション */}
-                        <p className="text-[14px] font-bold text-navy mt-auto">{caption}</p>
+                        <p className="text-[14px] md:text-[15px] font-bold text-navy mt-auto">{caption}</p>
                       </div>
                     </div>
                   ))}

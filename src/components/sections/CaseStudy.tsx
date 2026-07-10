@@ -20,7 +20,6 @@ const cases: Array<{
   afterTransform: string
   voiceLines: VoiceLine[]
   voiceName: string
-  gender: 'female' | 'male'
   avatar: string
 }> = [
   {
@@ -52,7 +51,6 @@ const cases: Array<{
       ],
     ],
     voiceName: '甲府市 S様',
-    gender: 'female',
     avatar: customerFemale,
   },
   {
@@ -78,14 +76,13 @@ const cases: Array<{
       ],
     ],
     voiceName: '昭和町 K様',
-    gender: 'male',
     avatar: customerMale,
   },
 ]
 
 export function CaseStudy() {
   return (
-    <section id="case-study" className="relative overflow-hidden bg-cream py-12 md:py-20">
+    <section id="case-study" className="relative overflow-hidden bg-cream py-8 md:py-20">
       {/* セクション背景テクスチャ: C-2感 15〜20%に抑える */}
       <div
         aria-hidden="true"
@@ -316,10 +313,6 @@ export function CaseStudy() {
           ))}
         </div>
 
-        {/* 注記 */}
-        <p className="mt-10 text-center text-[12px] text-ink-muted md:mt-12">
-          ※建物の状態や使用する塗料によって仕上がりは異なります。まずは無料の現地調査・お見積りをご利用ください。
-        </p>
       </div>
     </section>
   )
