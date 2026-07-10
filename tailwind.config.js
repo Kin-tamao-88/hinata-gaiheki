@@ -36,6 +36,12 @@ export default {
           "Meiryo",
           "sans-serif",
         ],
+        handwritten: [
+          '"Yuji Syuku"',
+          '"Hiragino Mincho ProN"',
+          '"Yu Mincho"',
+          "serif",
+        ],
       },
       maxWidth: {
         content: "1120px",

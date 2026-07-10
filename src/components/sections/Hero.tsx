@@ -46,23 +46,20 @@ function LogoMark({ className }: { className?: string }) {
 }
 
 
-function BrushUnderline() {
-  return (
-    <div
-      aria-hidden="true"
-      className="brush-orange-long mix-blend-multiply w-full h-[8px] md:h-[10px] mt-1 pointer-events-none"
-    />
-  )
-}
-
 function BrushBadge({ children }: { children: React.ReactNode }) {
   return (
-    <div className="relative inline-block mb-3 md:mb-4 bg-navy">
+    <div className="relative inline-flex items-center bg-[#062b4f] overflow-hidden mb-3 md:mb-4 md:h-[34px] md:self-start">
+      {/* ペイントノイズ：ベタ塗り感を消す */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 brush-navy mix-blend-multiply pointer-events-none"
+        className="absolute inset-0 tex-paint-noise opacity-[0.08] mix-blend-overlay pointer-events-none"
       />
-      <span className="relative z-10 block text-white text-[13px] md:text-[15px] font-bold tracking-wide whitespace-nowrap px-6 py-[9px]">
+      {/* ブラシアクセント：右40%のみ（左60%はネイビー単色） */}
+      <div
+        aria-hidden="true"
+        className="absolute right-0 top-0 h-full w-[40%] brush-navy opacity-[0.55] mix-blend-overlay pointer-events-none"
+      />
+      <span className="relative z-10 text-white text-[12px] md:text-[18px] font-bold tracking-normal whitespace-nowrap px-3 py-[5px] md:px-[8px] md:py-0">
         {children}
       </span>
     </div>
@@ -70,10 +67,10 @@ function BrushBadge({ children }: { children: React.ReactNode }) {
 }
 
 const stats = [
-  { label: '地域密着', value: '15', unit: '年', caption: '地域で積み重ねた実績', Icon: Users },
-  { label: '累計施工実績', value: '1,200', unit: '件以上', caption: '確かな技術で施工', Icon: Paintbrush },
-  { label: 'お見積り・診断', value: '0', unit: '円', caption: '明確なお見積り', Icon: JapaneseYen },
-  { label: '施工後も安心', value: '3', unit: '年間', caption: 'アフターサポート', Icon: ShieldCheck },
+  { label: '地域密着', value: '15', unit: '年', caption: '地域で積み重ねた実績', Icon: Users, valueClass: '' },
+  { label: '累計施工実績', value: '600', unit: '件以上', caption: '確かな技術で施工', Icon: Paintbrush, valueClass: '' },
+  { label: 'お見積り・診断', value: '無料', unit: '', caption: '明確なお見積り', Icon: JapaneseYen, valueClass: 'text-[26px] md:text-[34px]' },
+  { label: '施工後も安心', value: '3', unit: '年間', caption: 'アフターサポート', Icon: ShieldCheck, valueClass: '' },
 ]
 
 export default function Hero() {
@@ -83,12 +80,13 @@ export default function Hero() {
     <>
       {/* ===== HEADER ===== */}
       <header className="bg-white border-b border-gray-200">
-        <div className="flex items-center justify-between px-6 py-3 md:px-10 md:py-4">
+        <div className="max-w-[1240px] mx-auto flex items-center justify-between px-5 py-3 md:pl-[56px] md:pr-8 md:py-0 md:h-[72px]">
+
           {/* ロゴ */}
-          <div className="flex items-center gap-2 md:gap-3">
-            <LogoMark className="h-8 w-8 md:h-10 md:w-10 text-navy" />
+          <div className="flex items-center gap-1.5 md:gap-[14px]">
+            <LogoMark className="h-7 w-7 md:h-[42px] md:w-[42px] text-navy" />
             <div className="leading-tight">
-              <p className="text-[17px] md:text-[22px] font-extrabold text-navy tracking-tight">
+              <p className="text-[17px] md:text-[28px] font-extrabold text-navy tracking-tight">
                 レストレーション
               </p>
               <p className="hidden md:block text-[12px] text-ink-muted">住宅総合メンテナンス</p>
@@ -96,24 +94,26 @@ export default function Hero() {
           </div>
 
           {/* PC：電話 + CTA */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center md:gap-[24px]">
             <div className="text-right">
               <p className="text-[13px] text-ink-muted mb-1">お電話でのお問い合わせはこちら</p>
               <a
-                href="tel:0901234567"
+                href="tel:09027669657"
                 className="flex items-center justify-end gap-2 text-[22px] font-extrabold text-navy leading-none"
               >
                 <Phone className="h-5 w-5 flex-shrink-0" strokeWidth={2} />
-                090-1234-5678
+                090-2766-9657
               </a>
               <p className="text-[12px] text-ink-muted mt-1">受付時間 9:00〜17:30（日曜定休）</p>
             </div>
             <a
               href="#contact"
-              className="flex items-center gap-2 bg-brandorange text-white font-bold text-[15px] px-6 py-4 rounded hover:bg-brandorange-dark transition-colors"
+              className="flex items-center justify-center gap-2 bg-green-500 text-white font-bold text-[15px] md:w-[240px] md:h-[52px] rounded hover:bg-green-600 transition-colors"
             >
-              <Mail className="h-4 w-4 flex-shrink-0" strokeWidth={2} />
-              無料お見積りはこちら
+              <span className="flex-shrink-0 flex items-center justify-center w-5 h-5 bg-white rounded-sm">
+                <span className="text-[7px] font-black text-green-600 leading-none">LINE</span>
+              </span>
+              LINEで相談する
               <ChevronRight className="h-4 w-4 flex-shrink-0" strokeWidth={2.5} />
             </a>
           </div>
@@ -121,7 +121,7 @@ export default function Hero() {
           {/* SP：電話ボタン + ハンバーガー */}
           <div className="flex items-center gap-2 md:hidden">
             <a
-              href="tel:0901234567"
+              href="tel:09027669657"
               className="flex items-center justify-center h-10 w-10 rounded border border-navy text-navy flex-shrink-0"
               aria-label="電話をかける"
             >
@@ -154,39 +154,41 @@ export default function Hero() {
       </header>
 
       {/* ===== HERO ===== */}
-      <section className="relative overflow-hidden bg-cream md:h-[580px]">
-        {/* 背景画像：Hero全体に absolute で敷く */}
+      <section className="relative overflow-hidden bg-cream md:h-[500px]">
+
+        {/* SP：背景写真（PC では非表示） */}
         <img
           src={heroPhoto}
           alt="外壁塗装の施工の様子"
-          className="absolute inset-0 w-full h-full object-cover object-[center_28%] md:object-[center_30%] block"
+          className="absolute inset-0 w-full h-full object-cover object-[40%_28%] scale-[1.10] origin-[40%_28%] md:hidden"
         />
-        {/* SP：テキスト可読性グラデーション（上→下） */}
-        <div className="absolute inset-0 bg-gradient-to-b from-cream/95 via-cream/88 to-cream/70 md:hidden" />
-        {/* PC：左クリーム（不透明）→右透明への自然なフェード */}
-        <div className="absolute inset-0 hidden md:block pointer-events-none bg-gradient-to-r from-cream from-[0%] via-cream/95 via-[40%] to-transparent to-[62%]" />
-        {/* 塗装テクスチャ（brush-cream, 控えめ） */}
+        {/* SP：テキスト可読性グラデーション */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(245,242,236,0.94)_0%,rgba(245,242,236,0.82)_45%,rgba(245,242,236,0.35)_70%,transparent_100%)] md:hidden" />
+        {/* テクスチャ（SP・PC 共通） */}
         <div
           aria-hidden="true"
           className="brush-cream-texture mix-blend-multiply pointer-events-none absolute inset-0 opacity-[0.07]"
         />
 
-        {/* テキストエリア */}
-        <div className="relative z-10 px-6 pt-6 pb-4 md:pl-36 md:py-0 md:h-full md:flex md:items-center">
-          <div className="md:max-w-[560px]">
+        {/* レイアウトコンテナ */}
+        <div className="relative z-10 md:h-full md:mx-auto md:max-w-[1240px] md:pl-[56px] md:flex md:items-stretch md:gap-[24px]">
+
+          {/* テキスト列 */}
+          <div className="relative px-6 pt-6 pb-4 md:px-0 md:pt-0 md:pb-0 md:w-[36%] md:flex-shrink-0 md:flex md:flex-col md:justify-center">
+            {/* 背景テクスチャ（PC のみ） */}
+            <div aria-hidden="true" className="absolute inset-0 tex-cream-board opacity-[0.06] mix-blend-multiply pointer-events-none hidden md:block" />
+            <div aria-hidden="true" className="absolute inset-0 tex-paint-noise opacity-[0.04] mix-blend-overlay pointer-events-none hidden md:block" />
             <BrushBadge>山梨県密着｜外壁塗装・住宅メンテナンス</BrushBadge>
 
-            <h1 className="text-[32px] md:text-[52px] font-black leading-tight tracking-tight text-navy mb-0">
+            <h1 className="text-[32px] md:text-[48px] font-black leading-tight tracking-tight text-navy mb-0">
               山梨の住まいを、
             </h1>
-            <div className="w-fit mb-3 md:mb-4">
-              <h1 className="text-[36px] md:text-[64px] font-black leading-tight tracking-tight text-brandorange">
-                守り続けて15年。
-              </h1>
-              <BrushUnderline />
-            </div>
+            <h1 className="text-[36px] md:text-[52px] font-black leading-tight tracking-tight text-brandorange mb-1">
+              守り続けて15年。
+            </h1>
+            <div className="h-[6px] w-[80%] bg-brandorange mb-3 md:mb-4" />
 
-            <p className="text-[15px] md:text-[17px] text-[#374151] leading-loose font-semibold">
+            <p className="text-[15px] md:text-[16px] text-[#374151] leading-loose font-semibold">
               外壁塗装から住宅メンテナンスまで、
               <br />
               確かな技術で対応いたします。
@@ -223,97 +225,106 @@ export default function Hero() {
               </div>
             </div>
           </div>
+
+          {/* PC：写真列（SP では非表示） */}
+          <div className="hidden md:block md:flex-1 md:min-w-0 overflow-hidden relative">
+            <img
+              src={heroPhoto}
+              alt="外壁塗装の施工の様子"
+              className="w-full h-full object-cover object-[90%_30%] scale-[1.13] origin-[90%_30%]"
+            />
+            {/* 左端フェード：テキスト列との境界をクリームへ溶かす */}
+            <div
+              aria-hidden="true"
+              className="absolute left-0 top-0 h-full w-[100px] bg-gradient-to-l from-transparent to-cream pointer-events-none"
+            />
+            {/* 右端フェード：腕・手・ローラ���に掛からないよう最小幅 */}
+            <div
+              aria-hidden="true"
+              className="absolute right-0 top-0 h-full w-[24px] bg-gradient-to-r from-transparent to-cream pointer-events-none"
+            />
+          </div>
+
         </div>
       </section>
 
-      {/* ===== 実績帯（C-2：フルワイドポスター構造） ===== */}
+      {/* ===== 実績帯 + CTA（C-2：フルワイドポスター構造） ===== */}
       <section className="relative overflow-hidden bg-[#062b4f] tex-navy-wall">
-        {/* 層1: ペイントノイズ – 塗装壁のランダムな粒子感 */}
-        <div aria-hidden="true" className="absolute inset-0 tex-paint-noise opacity-[0.10] mix-blend-overlay pointer-events-none" />
-        {/* 層2: コンクリートダスト – 乾いた現場壁の素材感 */}
-        <div aria-hidden="true" className="absolute inset-0 tex-concrete-dust opacity-[0.06] mix-blend-overlay pointer-events-none" />
+        {/* 層0: navy-wall テクスチャを薄めるネイビー単色オーバーレイ */}
+        <div aria-hidden="true" className="absolute inset-0 bg-[#062b4f] opacity-[0.50] pointer-events-none" />
+        {/* 層1: ペイントノイズ */}
+        <div aria-hidden="true" className="absolute inset-0 tex-paint-noise opacity-[0.06] mix-blend-overlay pointer-events-none" />
+        {/* 層2: コンクリートダスト */}
+        <div aria-hidden="true" className="absolute inset-0 tex-concrete-dust opacity-[0.04] mix-blend-overlay pointer-events-none" />
         {/* 層3: 上端オレンジブラシライン */}
         <div aria-hidden="true" className="absolute top-0 left-0 right-0 h-[8px] md:h-[10px] brush-orange-long opacity-65 mix-blend-screen pointer-events-none" />
 
-        <div className="relative z-10 px-4 md:pl-10 md:pr-6">
-          <div className="flex flex-col md:flex-row">
+        <div className="relative z-10">
+          <div className="max-w-[1240px] mx-auto px-4 md:px-0 md:py-[24px]">
 
-            {/* ===== 左: コピーブロック (32%) ===== */}
-            <div className="py-10 md:py-16 md:w-[32%] md:pr-6 flex-shrink-0 flex flex-col justify-center">
-              <div className="mb-4 md:mb-5">
-                {/* 養生テープラベル: masking-tape-yellow.png をベースに文字を重ねる */}
-                <span className="inline-block tex-masking-tape px-5 py-2 font-black text-[#062b4f] text-[13px] md:text-[14px] -rotate-1 tracking-wide">
-                  選ばれ続ける理由は
-                </span>
+            <div className="flex flex-col md:flex-row md:items-center">
+
+              {/* ===== 左: コピーブロック ===== */}
+              <div className="py-6 md:py-0 md:w-[300px] md:pr-8 flex-shrink-0 flex flex-col justify-center items-center md:items-start">
+                <div className="mb-1 md:mb-4 overflow-visible">
+                  <span className="inline-flex items-center tex-masking-tape px-[18px] py-[17px] font-black text-[#062b4f] text-[13px] md:text-[18px] -rotate-1 tracking-wide">
+                    選ばれ続ける理由は
+                  </span>
+                </div>
+                <h2 className="heading-ink-texture w-full mb-2 md:mb-0 text-[24px] md:text-[34px] font-black text-white leading-[1.24] md:leading-[1.0] tracking-[-0.02em] md:tracking-[-0.03em] text-center md:text-left">
+                  確かな技術と
+                  <br className="hidden md:block" />
+                  積み重ねた実績
+                </h2>
               </div>
-              {/* ink-grain-mask.png を background-clip:text でテキスト形状に適用
-                  文字の内側だけに素材のザラつきが現れ、外側は一切影響なし */}
-              <h2 className="heading-ink-texture text-[44px] md:text-[56px] font-black text-white leading-[1.0] tracking-tight">
-                確かな技術と
-                <br />
-                積み重ねた実績
-              </h2>
-            </div>
 
-            {/* ===== 右: 実績ボード4枚 (68%) ===== */}
-            <div className="flex-1 flex flex-col justify-center pb-8 md:pb-0 md:py-10">
-              <div className="grid grid-cols-2 gap-[3px] md:flex md:flex-nowrap md:gap-[3px]">
-                {stats.map(({ label, value, unit, caption, Icon }) => (
-                  <div
-                    key={label}
-                    className="relative overflow-hidden bg-[#f7f3ea] tex-cream-board border border-white/20 h-[164px] md:h-[210px] md:flex-1 flex flex-col p-4"
-                  >
-                    {/* コンクリートダスト – 施工ボードの経年汚れ・素材感 */}
-                    <div aria-hidden="true" className="absolute inset-0 tex-concrete-dust opacity-[0.08] mix-blend-multiply pointer-events-none" />
+              {/* ===== 右: 実績ボード4枚 ===== */}
+              <div className="flex-1 flex flex-col justify-center pb-4 md:pb-0">
+                <div className="grid grid-cols-2 gap-[3px] md:flex md:flex-nowrap md:gap-[3px]">
+                  {stats.map(({ label, value, unit, caption, Icon, valueClass }) => (
+                    <div
+                      key={label}
+                      className="relative overflow-hidden bg-[#f7f3ea] tex-cream-board border border-white/20 h-[144px] md:h-[132px] md:flex-1 flex flex-col p-3 md:p-[12px]"
+                    >
+                      <div aria-hidden="true" className="absolute inset-0 tex-concrete-dust opacity-[0.08] mix-blend-multiply pointer-events-none" />
 
-                    <div className="relative z-10 flex flex-col h-full">
-                      {/* ネイビー帯アイコン + カテゴリラベル */}
-                      <div className="flex items-center gap-2 mb-3 md:mb-4 flex-shrink-0">
-                        <div className="flex-shrink-0 bg-navy p-1.5">
-                          <Icon className="h-3.5 w-3.5 md:h-[18px] md:w-[18px] text-white" strokeWidth={1.5} />
+                      <div className="relative z-10 flex flex-col h-full items-center md:items-start">
+                        {/* アイコン + カテゴリラベル */}
+                        <div className="flex items-center gap-2 mb-4 md:mb-2.5 flex-shrink-0">
+                          <div className="flex-shrink-0 bg-navy p-1.5">
+                            <Icon className="h-3 w-3 md:h-[14px] md:w-[14px] text-white" strokeWidth={1.5} />
+                          </div>
+                          <span className="text-[14px] font-bold text-navy leading-tight">{label}</span>
                         </div>
-                        <span className="text-[10px] md:text-[13px] font-bold text-navy leading-tight">{label}</span>
+
+                        {/* 数値ブロック：ベースライン横並び */}
+                        <div className="flex flex-row items-baseline gap-1 mb-0.5 md:mb-1 flex-shrink-0">
+                          <span className={`num-ink-grain font-black text-[#e8550a] leading-none tracking-[-0.04em] ${valueClass || 'text-[34px] md:text-[46px]'}`}>
+                            {value}
+                          </span>
+                          <span className="text-[13px] md:text-[15px] font-bold text-navy leading-none">
+                            {unit}
+                          </span>
+                        </div>
+
+                        {/* 数字下ブラシストローク */}
+                        <div className="tex-paint-stroke-yellow h-[12px] md:h-[2px] w-3/4 md:w-[64px] mb-1.5 md:mb-2 flex-shrink-0" />
+
+                        {/* キャプション */}
+                        <p className="text-[14px] font-bold text-navy mt-auto">{caption}</p>
                       </div>
-
-                      {/* 数値（主役）: value.length > 4 は「1,200」→66px、それ以外→80px
-                          num-ink-grain: ink-grain-mask.png を multiply で重ねてオレンジに塗装感
-                          tracking-[-0.04em]: 字間を詰めて圧縮ゴシックの重量感を出す */}
-                      <div className="flex flex-col md:flex-row md:items-end md:gap-1 mb-1 md:mb-2 flex-shrink-0">
-                        <span className={`num-ink-grain font-black text-[#e8550a] leading-none tracking-[-0.04em] ${value.length > 4 ? 'text-[44px] md:text-[66px]' : 'text-[44px] md:text-[80px]'}`}>
-                          {value}
-                        </span>
-                        <span className="text-[12px] md:text-[16px] font-bold text-navy leading-none md:mb-2">
-                          {unit}
-                        </span>
-                      </div>
-
-                      {/* 数字下ブラシストローク: paint-stroke-yellow.png で素材感のある黄ライン */}
-                      <div className="tex-paint-stroke-yellow h-[14px] md:h-[17px] w-3/4 mb-2 md:mb-3 flex-shrink-0" />
-
-                      {/* キャプション */}
-                      <p className="text-[10px] md:text-[13px] font-bold text-navy mt-auto">{caption}</p>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
+
             </div>
+
 
           </div>
         </div>
       </section>
 
-      {/* ===== Hero CTA ===== */}
-      <div className="bg-[#FAF9F5] overflow-hidden">
-        {/* オレンジCTAボタン */}
-        <a
-          href="#contact"
-          className="flex w-full items-center justify-center gap-3 bg-brandorange py-5 md:py-6 text-white font-bold text-[16px] md:text-[18px] transition-opacity hover:opacity-90"
-        >
-          <Mail className="h-5 w-5 flex-shrink-0" strokeWidth={2} />
-          無料お見積り・お問い合わせはこちら
-          <ChevronRight className="h-5 w-5 flex-shrink-0" strokeWidth={2.5} />
-        </a>
-      </div>
     </>
   )
 }
