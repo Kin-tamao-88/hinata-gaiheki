@@ -38,7 +38,7 @@ export function Faq() {
   return (
     <>
       {/* ===== FAQ セクション ===== */}
-      <section id="faq" className="relative overflow-hidden bg-[#f7f4ed] pb-10 pt-6 md:py-32">
+      <section id="faq" className="relative overflow-hidden bg-[#f7f4ed] pb-10 pt-6 md:py-20">
         {/* bg-paint-subtle: 塗装ペーパー質感 */}
         <div
           aria-hidden="true"
