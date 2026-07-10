@@ -69,10 +69,15 @@ export function FinalCta() {
                       LINEは24時間受付中です!!
                     </span>
                   </div>
-                  <button className="mt-auto flex w-full items-center justify-center gap-2 rounded bg-green-500 px-3 py-3 text-[14px] font-bold text-white transition-colors hover:bg-green-600 md:text-[15px]">
+                  <a
+                    href="https://line.me/ti/p/YEthVfb_JD"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-auto flex w-full items-center justify-center gap-2 rounded bg-green-500 px-3 py-3 text-[14px] font-bold text-white transition-colors hover:bg-green-600 md:text-[15px]"
+                  >
                     友だち追加して相談する
                     <ChevronRight className="h-4 w-4" />
-                  </button>
+                  </a>
                 </div>
 
                 {/* 右: QR（PCのみ） */}

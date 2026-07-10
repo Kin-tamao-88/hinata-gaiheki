@@ -107,7 +107,9 @@ export default function Hero() {
               <p className="text-[12px] text-ink-muted mt-1">受付時間 9:00〜17:30（日曜定休）</p>
             </div>
             <a
-              href="#contact"
+              href="https://line.me/ti/p/YEthVfb_JD"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 bg-green-500 text-white font-bold text-[15px] md:w-[240px] md:h-[52px] rounded hover:bg-green-600 transition-colors"
             >
               <span className="flex-shrink-0 flex items-center justify-center w-5 h-5 bg-white rounded-sm">
