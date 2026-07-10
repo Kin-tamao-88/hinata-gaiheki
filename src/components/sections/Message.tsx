@@ -31,10 +31,7 @@ export function Message() {
               <span className="block text-[18px] font-bold text-navy md:text-[23px]">
                 レストレーションの想い
               </span>
-              <div
-                aria-hidden="true"
-                className="brush-orange-long pointer-events-none absolute -bottom-1 left-0 h-[5px] w-[88%] opacity-[0.55]"
-              />
+              <div className="absolute -bottom-1 left-0 h-[4px] w-[88%] bg-brandorange" />
             </div>
 
             {/* メイン見出し: C-2ハイライト + PC 2行固定 / SP 3行固定 */}
@@ -57,7 +54,7 @@ export function Message() {
                 </span>
                 で
                 {/* SP: block で「守りたい。」を3行目へ / PC: inline で同行に続ける */}
-                <span className="block md:inline">守りたい。</span>
+                守りたい。
               </span>
             </h2>
 

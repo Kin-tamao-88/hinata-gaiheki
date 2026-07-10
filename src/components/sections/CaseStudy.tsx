@@ -106,7 +106,7 @@ export function CaseStudy() {
               <span className="mb-1 block text-[13px] font-bold tracking-widest text-navy/60 md:text-[14px]">
                 山梨のお客様
               </span>
-              <span className="block text-[44px] font-black md:text-[72px]">
+              <span className="block text-[31px] font-black md:text-[50px]">
                 施工事例
               </span>
             </h2>
