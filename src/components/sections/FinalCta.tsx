@@ -166,39 +166,55 @@ export function FinalCta() {
       <div className="bg-[#F5F2EC] pb-12 pt-8">
         <div className="mx-auto max-w-content px-6">
 
-          {/* ⑤ LINEカード: メイン・フル幅 */}
-          <div className="relative mb-5 overflow-hidden rounded-lg border border-green-400 bg-white p-6 md:p-8">
-            <div className="mx-auto mb-4 inline-block rounded bg-green-500 px-3 py-1 text-[12px] font-bold text-white">
-              かんたん！写真を送るだけ！
+          {/* ⑤ LINEカード: メイン・コンパクト横並び */}
+          <div className="relative mb-5 overflow-hidden rounded-lg border border-green-400 bg-white p-5 md:p-6">
+
+            {/* バッジ */}
+            <div className="mb-4 flex justify-center">
+              <span className="rounded bg-green-500 px-3 py-1 text-[12px] font-bold text-white">
+                かんたん！写真を送るだけ！
+              </span>
             </div>
-            <div className="mb-2 flex items-center justify-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-green-500 md:h-14 md:w-14">
-                <span className="text-[13px] font-black text-white md:text-[14px]">
-                  LINE
+
+            {/* 左: LINE情報＋ボタン ／ 右: QR */}
+            <div className="flex items-center gap-3 md:gap-6">
+
+              {/* 左 */}
+              <div className="flex-1">
+                <div className="mb-2 flex items-center gap-2 md:gap-3">
+                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-green-500 md:h-12 md:w-12">
+                    <span className="text-[12px] font-black text-white md:text-[13px]">
+                      LINE
+                    </span>
+                  </div>
+                  <span className="text-[19px] font-black text-green-600 md:text-[26px]">
+                    LINEで相談する
+                  </span>
+                </div>
+                <p className="mb-4 text-[13px] text-[#374151] md:text-[14px]">
+                  代表の日向が直接ご返信します！
+                </p>
+                <button className="flex w-full items-center justify-center gap-2 rounded bg-green-500 px-5 py-3 text-[15px] font-bold text-white transition-colors hover:bg-green-600 md:w-auto md:px-8 md:text-[16px]">
+                  友だち追加して相談する
+                  <ChevronRight className="h-4 w-4 md:h-5 md:w-5" />
+                </button>
+              </div>
+
+              {/* 右: QR */}
+              <div className="flex flex-shrink-0 flex-col items-center gap-1.5">
+                <img
+                  src={lineQr}
+                  alt="LINE QRコード"
+                  className="h-[64px] w-[64px] object-contain md:h-[100px] md:w-[100px]"
+                />
+                <span className="text-center text-[10px] leading-snug text-[#374151] md:text-[11px]">
+                  QRコードを読み取って
+                  <br />
+                  友だち追加
                 </span>
               </div>
-              <span className="text-[26px] font-black text-green-600 md:text-[30px]">
-                LINEで相談する
-              </span>
             </div>
-            <p className="mb-6 text-center text-[14px] text-[#374151]">
-              代表の日向が直接ご返信します！
-            </p>
-            <button className="flex w-full items-center justify-center gap-2 rounded bg-green-500 px-6 py-4 text-[17px] font-bold text-white transition-colors hover:bg-green-600 md:text-[18px]">
-              友だち追加して相談する
-              <ChevronRight className="h-5 w-5" />
-            </button>
-            {/* QR: SP=縦 / PC=横 */}
-            <div className="mt-5 flex flex-col items-center gap-4 border-t border-green-100 pt-5 md:flex-row md:justify-center">
-              <img
-                src={lineQr}
-                alt="LINE QRコード"
-                className="h-[92px] w-[92px] flex-shrink-0 object-contain md:h-[100px] md:w-[100px]"
-              />
-              <span className="text-[12px] text-[#374151]">
-                QRコードを読み取って友だち追加
-              </span>
-            </div>
+
             <div
               aria-hidden="true"
               className="tex-cream-board pointer-events-none absolute inset-0 mix-blend-multiply opacity-[0.10]"
