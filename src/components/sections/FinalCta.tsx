@@ -1,4 +1,5 @@
 import lineQr from '../../assets/contact/hinata-qr.jpg'
+import profileImg from '../../assets/message/hinata-profile-cropped.jpg'
 import {
   Phone,
   ChevronRight,
@@ -177,55 +178,65 @@ export function FinalCta() {
             </p>
           </div>
 
-          {/* ④ STEP縦余白: chevronをblock化で行高を除去、photo mt-6→mt-3 */}
-          <div className="mt-8 items-center gap-4 md:mt-0 md:flex">
+          {/* STEP: SP・PC ともに横並び */}
+          <div className="mt-8 flex items-start gap-1 md:mt-0 md:items-center md:gap-4">
+            {/* ① */}
             <div className="flex flex-1 flex-col items-center text-center">
               <div className="mb-2 flex h-8 w-8 items-center justify-center rounded-full bg-green-500 text-[14px] font-black text-white">
                 ①
               </div>
-              <Smartphone className="mb-1 h-10 w-10 text-navy" />
-              <span className="text-[14px] font-bold text-navy">
+              <Smartphone className="mb-1 h-9 w-9 text-navy md:h-10 md:w-10" />
+              <span className="text-[13px] font-bold text-navy md:text-[14px]">
                 友だち追加
               </span>
-              <span className="text-[12px] text-[#374151]">
+              <span className="text-[11px] text-[#374151] md:text-[12px]">
                 上のボタンから友だち追加
               </span>
             </div>
 
-            <ChevronRight className="mx-auto block h-5 w-5 flex-shrink-0 text-gray-400 md:mx-0" />
+            <ChevronRight className="mt-8 block h-4 w-4 flex-shrink-0 text-gray-400 md:mt-0 md:h-5 md:w-5" />
 
+            {/* ② */}
             <div className="flex flex-1 flex-col items-center text-center">
               <div className="mb-2 flex h-8 w-8 items-center justify-center rounded-full bg-green-500 text-[14px] font-black text-white">
                 ②
               </div>
-              <Camera className="mb-1 h-10 w-10 text-navy" />
-              <span className="text-[14px] font-bold text-navy">
+              <Camera className="mb-1 h-9 w-9 text-navy md:h-10 md:w-10" />
+              <span className="text-[13px] font-bold text-navy md:text-[14px]">
                 写真を送る
               </span>
-              <span className="text-[12px] text-[#374151]">
+              <span className="text-[11px] text-[#374151] md:text-[12px]">
                 気になる箇所の写真を送信
               </span>
             </div>
 
-            <ChevronRight className="mx-auto block h-5 w-5 flex-shrink-0 text-gray-400 md:mx-0" />
+            <ChevronRight className="mt-8 block h-4 w-4 flex-shrink-0 text-gray-400 md:mt-0 md:h-5 md:w-5" />
 
+            {/* ③: アイコン右横に代表写真（顔） */}
             <div className="flex flex-1 flex-col items-center text-center">
               <div className="mb-2 flex h-8 w-8 items-center justify-center rounded-full bg-green-500 text-[14px] font-black text-white">
                 ③
               </div>
-              <MessageCircle className="mb-1 h-10 w-10 text-navy" />
-              <span className="text-[14px] font-bold text-navy">
+              <div className="mb-1 flex items-center gap-1 md:gap-2">
+                <MessageCircle className="h-8 w-8 flex-shrink-0 text-navy md:h-10 md:w-10" />
+                <div className="relative flex flex-col items-center">
+                  <div className="h-9 w-9 overflow-hidden rounded-full md:h-12 md:w-12">
+                    <img
+                      src={profileImg}
+                      alt="代表 日向貴志"
+                      className="h-full w-full object-cover object-[center_12%]"
+                    />
+                  </div>
+                  <span className="mt-0.5 block text-[10px] font-bold italic text-brandorange md:text-[11px]">
+                    私が返信！
+                  </span>
+                </div>
+              </div>
+              <span className="text-[13px] font-bold text-navy md:text-[14px]">
                 ご案内・ご提案
               </span>
-              <span className="text-[12px] text-[#374151]">
+              <span className="text-[11px] text-[#374151] md:text-[12px]">
                 内容を確認後、詳しくご案内！
-              </span>
-            </div>
-
-            <div className="relative mx-auto mt-3 flex-shrink-0 md:mx-0 md:mt-0">
-              <div className="h-24 w-24 rounded-full bg-gray-200 md:h-32 md:w-32" />
-              <span className="absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap text-[13px] font-bold italic text-brandorange md:-right-4 md:left-auto md:top-0 md:translate-x-0">
-                私が直接ご返信します！
               </span>
             </div>
           </div>
