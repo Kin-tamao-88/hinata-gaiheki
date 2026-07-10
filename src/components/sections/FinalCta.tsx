@@ -217,20 +217,22 @@ export function FinalCta() {
               <div className="mb-2 flex h-8 w-8 items-center justify-center rounded-full bg-green-500 text-[14px] font-black text-white">
                 ③
               </div>
-              <div className="mb-1 flex items-center gap-1 md:gap-2">
-                <MessageCircle className="h-8 w-8 flex-shrink-0 text-navy md:h-10 md:w-10" />
-                <div className="relative flex flex-col items-center">
-                  <div className="h-9 w-9 overflow-hidden rounded-full md:h-12 md:w-12">
-                    <img
-                      src={profileImg}
-                      alt="代表 日向貴志"
-                      className="h-full w-full object-cover object-[center_12%]"
-                    />
-                  </div>
-                  <span className="mt-0.5 block text-[10px] font-bold italic text-brandorange md:text-[11px]">
-                    私が返信！
-                  </span>
+              {/* 吹き出し右上に写真を重ねる（約18%重なり） */}
+              <div className="relative h-[70px] w-[70px] md:h-[82px] md:w-[82px]">
+                <MessageCircle className="absolute bottom-0 left-0 h-8 w-8 text-navy md:h-10 md:w-10" />
+                <div className="absolute right-0 top-0 h-[44px] w-[44px] overflow-hidden rounded-full border-[3px] border-white md:h-[48px] md:w-[48px]">
+                  <img
+                    src={profileImg}
+                    alt="代表 日向貴志"
+                    className="h-full w-full object-cover object-[center_12%]"
+                  />
                 </div>
+              </div>
+              {/* 「私が返信！」: 写真の右下に寄り添う */}
+              <div className="mb-1 flex w-[70px] justify-end md:w-[82px]">
+                <span className="text-[10px] font-bold italic text-brandorange md:text-[11px]">
+                  私が返信！
+                </span>
               </div>
               <span className="text-[13px] font-bold text-navy md:text-[14px]">
                 ご案内・ご提案
