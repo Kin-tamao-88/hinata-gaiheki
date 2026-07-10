@@ -1,5 +1,4 @@
 import lineQr from '../../assets/contact/hinata-qr.jpg'
-import profileImg from '../../assets/message/hinata-profile-cropped.jpg'
 import {
   Phone,
   ChevronRight,
@@ -212,33 +211,20 @@ export function FinalCta() {
 
             <ChevronRight className="mt-8 block h-4 w-4 flex-shrink-0 text-gray-400 md:mt-0 md:h-5 md:w-5" />
 
-            {/* ③: アイコン右横に代表写真（顔） */}
+            {/* ③ */}
             <div className="flex flex-1 flex-col items-center text-center">
               <div className="mb-2 flex h-8 w-8 items-center justify-center rounded-full bg-green-500 text-[14px] font-black text-white">
                 ③
               </div>
-              {/* 吹き出し右上に写真を重ねる（約18%重なり） */}
-              <div className="relative h-[70px] w-[70px] md:h-[82px] md:w-[82px]">
-                <MessageCircle className="absolute bottom-0 left-0 h-8 w-8 text-navy md:h-10 md:w-10" />
-                <div className="absolute right-0 top-0 h-[44px] w-[44px] overflow-hidden rounded-full border-[3px] border-white md:h-[48px] md:w-[48px]">
-                  <img
-                    src={profileImg}
-                    alt="代表 日向貴志"
-                    className="h-full w-full object-cover object-[center_12%]"
-                  />
-                </div>
-              </div>
-              {/* 「私が返信！」: 写真の右下に寄り添う */}
-              <div className="mb-1 flex w-[70px] justify-end md:w-[82px]">
-                <span className="text-[10px] font-bold italic text-brandorange md:text-[11px]">
-                  私が返信！
-                </span>
-              </div>
+              <MessageCircle className="mb-1 h-9 w-9 text-navy md:h-10 md:w-10" />
               <span className="text-[13px] font-bold text-navy md:text-[14px]">
                 ご案内・ご提案
               </span>
               <span className="text-[11px] text-[#374151] md:text-[12px]">
                 内容を確認後、詳しくご案内！
+              </span>
+              <span className="mt-1 text-[10px] font-bold italic text-brandorange md:text-[11px]">
+                代表が直接返信します！
               </span>
             </div>
           </div>
