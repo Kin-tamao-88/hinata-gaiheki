@@ -1,3 +1,4 @@
+import lineQr from '../../assets/contact/hinata-qr.jpg'
 import {
   Phone,
   ChevronRight,
@@ -49,12 +50,15 @@ export function FinalCta() {
 
           <div className="mx-auto mb-4 h-[3px] w-20 bg-brandorange" />
 
-          <p className="mb-10 text-center text-[15px] text-[#374151] md:text-[16px]">
+          {/* ① 見出し下余白: mb-10 → mb-5（約20px削減） */}
+          <p className="mb-5 text-center text-[15px] text-[#374151] md:text-[16px]">
             しつこい営業は一切いたしませんので、安心してご相談ください。
           </p>
 
           <div className="mb-10 grid grid-cols-1 gap-4 md:grid-cols-[1.15fr_1fr]">
-            <div className="rounded-lg border-2 border-green-500 bg-white p-6 md:p-8">
+
+            {/* ② LINEカード: border柔らか + cream-board質感 */}
+            <div className="relative overflow-hidden rounded-lg border border-green-400 bg-white p-6 md:p-8">
               <div className="mx-auto mb-4 inline-block rounded bg-green-500 px-3 py-1 text-[12px] font-bold text-white">
                 かんたん！写真を送るだけ！
               </div>
@@ -75,15 +79,26 @@ export function FinalCta() {
                 友だち追加して相談する
                 <ChevronRight className="h-5 w-5" />
               </button>
-              <div className="mt-5 hidden items-center justify-center gap-3 border-t border-green-100 pt-5 md:flex">
-                <div className="h-16 w-16 flex-shrink-0 border border-gray-300 bg-white" />
+              {/* QR: SP・PC両方で表示 / SP=縦並び / PC=横並び */}
+              <div className="mt-5 flex flex-col items-center gap-4 border-t border-green-100 pt-5 md:flex-row md:justify-center">
+                <img
+                  src={lineQr}
+                  alt="LINE QRコード"
+                  className="h-[92px] w-[92px] flex-shrink-0 object-contain md:h-[100px] md:w-[100px]"
+                />
                 <span className="text-[12px] text-[#374151]">
                   QRコードを読み取って友だち追加
                 </span>
               </div>
+              {/* C-2テイスト: 紙に印刷したカード程度 */}
+              <div
+                aria-hidden="true"
+                className="tex-cream-board pointer-events-none absolute inset-0 mix-blend-multiply opacity-[0.10]"
+              />
             </div>
 
-            <div className="rounded-lg border-2 border-gray-300 bg-white p-6">
+            {/* ② 電話カード: border柔らか + cream-board質感 */}
+            <div className="relative overflow-hidden rounded-lg border border-gray-200 bg-white p-6">
               <div className="mb-3 flex items-center justify-center gap-2">
                 <Phone className="h-4 w-4 text-brandorange" />
                 <span className="text-[14px] font-bold text-brandorange">
@@ -107,16 +122,21 @@ export function FinalCta() {
                 今すぐ電話する
                 <ChevronRight className="h-5 w-5" />
               </a>
+              <div
+                aria-hidden="true"
+                className="tex-cream-board pointer-events-none absolute inset-0 mix-blend-multiply opacity-[0.08]"
+              />
             </div>
           </div>
 
+          {/* ③ 安心要素: icon拡大・ラベル大きく・余白詰め・横線薄く */}
           <div className="mb-10 border-t border-gray-300 pt-6">
-            <div className="mb-5 flex items-center gap-3">
-              <div className="h-px flex-1 bg-gray-300" />
-              <span className="text-[14px] text-[#374151]">
+            <div className="mb-3 flex items-center gap-3">
+              <div className="h-px flex-1 bg-gray-200" />
+              <span className="text-[15px] text-[#374151]">
                 安心してご相談いただくために
               </span>
-              <div className="h-px flex-1 bg-gray-300" />
+              <div className="h-px flex-1 bg-gray-200" />
             </div>
 
             <div className="mx-auto grid max-w-[600px] grid-cols-3 gap-4">
@@ -125,8 +145,8 @@ export function FinalCta() {
                   key={item.label}
                   className="flex flex-col items-center gap-2 text-center"
                 >
-                  <item.icon className="h-8 w-8 text-brandorange" />
-                  <span className="text-[13px] text-[#374151]">
+                  <item.icon className="h-9 w-9 text-brandorange" />
+                  <span className="text-[14px] text-[#374151]">
                     {item.label}
                   </span>
                   <span className="text-[16px] font-bold text-navy">
@@ -157,6 +177,7 @@ export function FinalCta() {
             </p>
           </div>
 
+          {/* ④ STEP縦余白: chevronをblock化で行高を除去、photo mt-6→mt-3 */}
           <div className="mt-8 items-center gap-4 md:mt-0 md:flex">
             <div className="flex flex-1 flex-col items-center text-center">
               <div className="mb-2 flex h-8 w-8 items-center justify-center rounded-full bg-green-500 text-[14px] font-black text-white">
@@ -171,7 +192,7 @@ export function FinalCta() {
               </span>
             </div>
 
-            <ChevronRight className="mx-auto h-5 w-5 flex-shrink-0 text-gray-400 md:mx-0" />
+            <ChevronRight className="mx-auto block h-5 w-5 flex-shrink-0 text-gray-400 md:mx-0" />
 
             <div className="flex flex-1 flex-col items-center text-center">
               <div className="mb-2 flex h-8 w-8 items-center justify-center rounded-full bg-green-500 text-[14px] font-black text-white">
@@ -186,7 +207,7 @@ export function FinalCta() {
               </span>
             </div>
 
-            <ChevronRight className="mx-auto h-5 w-5 flex-shrink-0 text-gray-400 md:mx-0" />
+            <ChevronRight className="mx-auto block h-5 w-5 flex-shrink-0 text-gray-400 md:mx-0" />
 
             <div className="flex flex-1 flex-col items-center text-center">
               <div className="mb-2 flex h-8 w-8 items-center justify-center rounded-full bg-green-500 text-[14px] font-black text-white">
@@ -201,7 +222,7 @@ export function FinalCta() {
               </span>
             </div>
 
-            <div className="relative mx-auto mt-6 flex-shrink-0 md:mx-0 md:mt-0">
+            <div className="relative mx-auto mt-3 flex-shrink-0 md:mx-0 md:mt-0">
               <div className="h-24 w-24 rounded-full bg-gray-200 md:h-32 md:w-32" />
               <span className="absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap text-[13px] font-bold italic text-brandorange md:-right-4 md:left-auto md:top-0 md:translate-x-0">
                 私が直接ご返信します！
