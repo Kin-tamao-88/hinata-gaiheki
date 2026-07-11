@@ -79,14 +79,14 @@ export function Contact() {
               <div aria-hidden="true" className="tex-navy-wall pointer-events-none absolute inset-0 mix-blend-overlay opacity-[0.68]" />
               <div aria-hidden="true" className="tex-paint-noise pointer-events-none absolute inset-0 mix-blend-multiply opacity-[0.12]" />
               <div className="relative">
-                <div className="mb-2 flex items-center gap-2">
+                <div className="mb-2 flex items-center justify-center gap-2">
                   <MessageCircle className="h-4 w-4 text-brandorange" strokeWidth={2} />
                   <span className="text-[12px] font-bold tracking-[0.22em] text-white/60">CONTACT</span>
                 </div>
-                <h2 className="text-[36px] font-black leading-tight tracking-tight text-white md:text-[48px]">
+                <h2 className="text-center text-[36px] font-black leading-tight tracking-tight text-white md:text-[48px]">
                   無料お見積り・<br className="md:hidden" />お問い合わせ
                 </h2>
-                <div aria-hidden="true" className="brush-orange-long mt-2 h-[8px] w-[240px]" />
+                <div className="mx-auto mt-3 h-[6px] w-[80%] bg-brandorange" />
               </div>
             </div>
 
@@ -114,7 +114,7 @@ export function Contact() {
             <div className="mt-3">
               <a
                 href="tel:09027669657"
-                className="flex w-full items-center justify-center gap-2 rounded-[6px] border-2 border-navy px-4 py-3 text-[15px] font-bold text-navy transition-colors hover:bg-navy hover:text-white"
+                className="flex w-full items-center justify-center gap-2 rounded-[6px] bg-navy px-4 py-3 text-[15px] font-bold text-white transition-colors hover:bg-navy-dark"
               >
                 <Phone className="h-5 w-5 flex-shrink-0" strokeWidth={2} />
                 090-2766-9657
