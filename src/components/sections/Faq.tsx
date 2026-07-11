@@ -152,7 +152,7 @@ export function Faq() {
       </section>
 
       {/* ===== CTA 帯 (FAQ直後) ===== */}
-      <div className="relative overflow-hidden bg-navy py-10 md:py-14">
+      <div className="relative overflow-hidden bg-navy py-10 md:hidden">
         {/* navy-paint-wall テクスチャ: C-2感 強め */}
         <div
           aria-hidden="true"

@@ -70,7 +70,7 @@ export function Contact() {
         className="tex-cream-board pointer-events-none absolute inset-0 mix-blend-multiply opacity-[0.06]"
       />
 
-      <div className="relative mx-auto max-w-content px-5 pb-20 pt-16 md:px-6 md:pb-24 md:pt-24">
+      <div className="relative mx-auto max-w-content px-5 pb-20 pt-16 md:max-w-[720px] md:px-6 md:pb-24 md:pt-24">
         <div className="flex flex-col gap-10">
 
           {/* ─── 上段：見出し・説明・LINE・電話 ─── */}
@@ -85,7 +85,7 @@ export function Contact() {
             </div>
 
             <h2 className="mt-2 text-[36px] font-black leading-tight tracking-tight text-navy md:text-[48px]">
-              無料お見積り・<br />お問い合わせ
+              無料お見積り・<br className="md:hidden" />お問い合わせ
             </h2>
 
             <div
