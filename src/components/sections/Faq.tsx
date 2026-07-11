@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ChevronDown, ChevronRight, HelpCircle, MessageCircle } from 'lucide-react'
+import { ChevronDown, HelpCircle } from 'lucide-react'
 
 const faqs = [
   {
@@ -151,55 +151,6 @@ export function Faq() {
         </div>
       </section>
 
-      {/* ===== CTA 帯 (FAQ直後) ===== */}
-      <div className="relative overflow-hidden bg-navy py-10 md:hidden">
-        {/* navy-paint-wall テクスチャ: C-2感 強め */}
-        <div
-          aria-hidden="true"
-          className="tex-navy-wall pointer-events-none absolute inset-0 mix-blend-overlay opacity-[0.68]"
-        />
-        {/* concrete-dust: 微細インク粒感 */}
-        <div
-          aria-hidden="true"
-          className="tex-concrete-dust pointer-events-none absolute inset-0 mix-blend-overlay opacity-[0.06]"
-        />
-        {/* paint-noise 10〜15% */}
-        <div
-          aria-hidden="true"
-          className="tex-paint-noise pointer-events-none absolute inset-0 mix-blend-multiply opacity-[0.12]"
-        />
-        {/* 上端ブラシ: ページ端まで自然に伸ばす */}
-        <div
-          aria-hidden="true"
-          className="brush-navy pointer-events-none absolute inset-x-0 top-0 h-[40px] mix-blend-overlay opacity-[0.38]"
-        />
-        {/* 下端ブラシ */}
-        <div
-          aria-hidden="true"
-          className="brush-navy pointer-events-none absolute inset-x-0 bottom-0 h-[40px] mix-blend-overlay opacity-[0.38]"
-        />
-
-        {/* コンテンツ */}
-        <div className="relative px-4 text-center">
-          {/* 1行目: 小さめ */}
-          <p className="mb-2 text-[14px] font-bold tracking-wide text-white/70 md:text-[15px]">
-            ご相談・お見積りは無料です！
-          </p>
-          {/* 2行目: 大きめ・白 */}
-          <p className="mb-6 text-[22px] font-black text-white md:mb-7 md:text-[32px]">
-            お気軽にご相談ください
-          </p>
-          {/* CTAボタン: 高さ72px / 角丸14px / #ef6b13 / 横幅SP100% / PC auto */}
-          <a
-            href="#contact"
-            className="mx-auto flex h-[64px] w-full items-center justify-center gap-3 rounded-[14px] bg-[#ef6b13] px-10 text-[14px] font-bold text-white transition-colors hover:bg-[#d45e0e] md:h-[64px] md:w-auto md:text-[15px]"
-          >
-            <MessageCircle className="h-5 w-5 flex-shrink-0" strokeWidth={2} />
-            無料でお見積りを依頼する
-            <ChevronRight className="h-5 w-5 flex-shrink-0" strokeWidth={2.5} />
-          </a>
-        </div>
-      </div>
     </>
   )
 }

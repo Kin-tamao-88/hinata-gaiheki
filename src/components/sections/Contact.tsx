@@ -84,7 +84,8 @@ export function Contact() {
                   <span className="text-[12px] font-bold tracking-[0.22em] text-white/60">CONTACT</span>
                 </div>
                 <h2 className="text-center text-[36px] font-black leading-tight tracking-tight text-white md:text-[48px]">
-                  無料お見積り・<br className="md:hidden" />お問い合わせ
+                  <span className="md:hidden">無料お見積り<br />お問い合わせ</span>
+                  <span className="hidden md:inline">無料お見積り・お問い合わせ</span>
                 </h2>
                 <div className="mx-auto mt-3 h-[6px] w-[80%] bg-brandorange" />
               </div>
