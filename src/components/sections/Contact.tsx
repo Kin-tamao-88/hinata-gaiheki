@@ -5,16 +5,9 @@ import { z } from 'zod'
 import { ChevronRight, CheckCircle2, MessageCircle, Phone } from 'lucide-react'
 import emailjs from '@emailjs/browser'
 
-const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID as string
-const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string
-const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string
-
-// デバッグ: 環境変数が取得できているか確認（本番確認後に削除）
-console.log('[EmailJS] env:', {
-  serviceId: serviceId ?? 'MISSING',
-  templateId: templateId ?? 'MISSING',
-  publicKey: publicKey ?? 'MISSING',
-})
+const serviceId = (import.meta.env.VITE_EMAILJS_SERVICE_ID as string)?.trim()
+const templateId = (import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string)?.trim()
+const publicKey = (import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string)?.trim()
 
 const contactSchema = z.object({
   name: z.string().min(1, 'お名前を入力してください'),
@@ -64,7 +57,7 @@ export function Contact() {
     }
 
     try {
-      emailjs.init({ publicKey })
+      emailjs.init(publicKey)
       await emailjs.send(
         serviceId,
         templateId,
@@ -74,8 +67,7 @@ export function Contact() {
           reply_email: data.email?.trim() || '',
           inquiry_type: data.type,
           message: data.message,
-        },
-        { publicKey }
+        }
       )
       setSubmitState('success')
       window.dataLayer?.push({ event: 'generate_lead', lead_type: 'contact_form' })
