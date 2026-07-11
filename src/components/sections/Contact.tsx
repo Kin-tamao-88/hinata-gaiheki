@@ -71,10 +71,10 @@ export function Contact() {
       />
 
       <div className="relative mx-auto max-w-content px-5 pb-20 pt-16 md:px-6 md:pb-24 md:pt-24">
-        <div className="flex flex-col gap-10 md:flex-row md:items-start md:gap-12">
+        <div className="flex flex-col gap-10">
 
-          {/* ─── 左カラム 34% ─── */}
-          <div className="md:w-1/2 md:flex-shrink-0">
+          {/* ─── 上段：見出し・説明・LINE・電話 ─── */}
+          <div>
             <div className="mb-3 flex items-center gap-2">
               <MessageCircle className="h-4 w-4 text-brandorange" strokeWidth={2} />
               <span className="text-[12px] font-bold tracking-[0.22em] text-navy/60">CONTACT</span>
@@ -128,8 +128,8 @@ export function Contact() {
             </div>
           </div>
 
-          {/* ─── 右カラム 66% フォーム ─── */}
-          <div className="flex-1">
+          {/* ─── 下段：フォーム ─── */}
+          <div>
             {submitState === 'success' ? (
               <div
                 role="status"
