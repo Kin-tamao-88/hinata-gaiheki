@@ -58,13 +58,14 @@ export function Contact() {
     }
 
     try {
+      const trimmedEmail = data.email?.trim()
       await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
         {
           from_name: data.name,
           phone: data.phone,
-          reply_email: data.email || '未入力',
+          ...(trimmedEmail ? { reply_email: trimmedEmail } : {}),
           inquiry_type: data.type,
           message: data.message,
         },
