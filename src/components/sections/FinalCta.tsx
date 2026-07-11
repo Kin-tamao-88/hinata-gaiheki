@@ -9,7 +9,7 @@ const steps = [
 
 export function FinalCta() {
   return (
-    <section id="contact" className="relative overflow-hidden bg-[#F5F2EC]">
+    <section className="relative overflow-hidden bg-[#F5F2EC]">
       <div
         aria-hidden="true"
         className="tex-cream-board pointer-events-none absolute inset-0 mix-blend-multiply opacity-[0.08]"

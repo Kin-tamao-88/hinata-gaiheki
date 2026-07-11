@@ -190,11 +190,14 @@ export function Faq() {
             お気軽にご相談ください
           </p>
           {/* CTAボタン: 高さ72px / 角丸14px / #ef6b13 / 横幅SP100% / PC auto */}
-          <button className="mx-auto flex h-[64px] w-full items-center justify-center gap-3 rounded-[14px] bg-[#ef6b13] px-10 text-[14px] font-bold text-white transition-colors hover:bg-[#d45e0e] md:h-[64px] md:w-auto md:text-[15px]">
+          <a
+            href="#contact"
+            className="mx-auto flex h-[64px] w-full items-center justify-center gap-3 rounded-[14px] bg-[#ef6b13] px-10 text-[14px] font-bold text-white transition-colors hover:bg-[#d45e0e] md:h-[64px] md:w-auto md:text-[15px]"
+          >
             <MessageCircle className="h-5 w-5 flex-shrink-0" strokeWidth={2} />
             無料でお見積りを依頼する
             <ChevronRight className="h-5 w-5 flex-shrink-0" strokeWidth={2.5} />
-          </button>
+          </a>
         </div>
       </div>
     </>

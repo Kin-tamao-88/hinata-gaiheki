@@ -6,6 +6,7 @@ import { CaseStudy } from "./components/sections/CaseStudy"
 import { Price } from "./components/sections/Price"
 import { Message } from "./components/sections/Message"
 import { Faq } from "./components/sections/Faq"
+import { Contact } from "./components/sections/Contact"
 import { FinalCta } from "./components/sections/FinalCta"
 import { MobileFixedCta } from "./components/ui/MobileFixedCta"
 
@@ -20,6 +21,7 @@ function App() {
         <Price />
         <Message />
         <Faq />
+        <Contact />
         <FinalCta />
         <MobileFixedCta />
       </main>
