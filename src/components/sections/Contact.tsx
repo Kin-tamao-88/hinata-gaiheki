@@ -4,6 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { ChevronRight, CheckCircle2, MessageCircle, Phone } from 'lucide-react'
 import emailjs from '@emailjs/browser'
+import { trackConversion } from '../../utils/trackConversion'
 
 const serviceId = (import.meta.env.VITE_EMAILJS_SERVICE_ID as string)?.trim()
 const templateId = (import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string)?.trim()
@@ -122,6 +123,7 @@ export function Contact() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex w-full items-center justify-center gap-2 rounded-[6px] bg-[#06C755] px-4 py-3 text-[15px] font-bold text-white transition-colors hover:bg-[#05a647]"
+                onClick={() => trackConversion('line_click', 'contact')}
               >
                 <MessageCircle className="h-5 w-5 flex-shrink-0" strokeWidth={2} />
                 LINEで相談する（24時間受付）
@@ -134,6 +136,7 @@ export function Contact() {
               <a
                 href="tel:09027669657"
                 className="flex w-full items-center justify-center gap-2 rounded-[6px] bg-brandorange px-4 py-3 text-[15px] font-bold text-white transition-colors hover:bg-brandorange-dark"
+                onClick={() => trackConversion('phone_click', 'contact')}
               >
                 <Phone className="h-5 w-5 flex-shrink-0" strokeWidth={2} />
                 090-2766-9657

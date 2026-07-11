@@ -12,6 +12,7 @@ import {
   ShieldCheck,
 } from 'lucide-react'
 import heroPhoto from '../../assets/hero/hero-worker-wide.png'
+import { trackConversion } from '../../utils/trackConversion'
 
 function LogoMark({ className }: { className?: string }) {
   return (
@@ -100,6 +101,7 @@ export default function Hero() {
               <a
                 href="tel:09027669657"
                 className="flex items-center justify-end gap-2 text-[22px] font-extrabold text-navy leading-none"
+                onClick={() => trackConversion('phone_click', 'header')}
               >
                 <Phone className="h-5 w-5 flex-shrink-0" strokeWidth={2} />
                 090-2766-9657
@@ -111,6 +113,7 @@ export default function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 bg-green-500 text-white font-bold text-[15px] md:w-[240px] md:h-[52px] rounded hover:bg-green-600 transition-colors"
+              onClick={() => trackConversion('line_click', 'header')}
             >
               <span className="flex-shrink-0 flex items-center justify-center w-5 h-5 bg-white rounded-sm">
                 <span className="text-[7px] font-black text-green-600 leading-none">LINE</span>
@@ -126,6 +129,7 @@ export default function Hero() {
               href="tel:09027669657"
               className="flex items-center justify-center h-10 w-10 rounded border border-navy text-navy flex-shrink-0"
               aria-label="電話をかける"
+              onClick={() => trackConversion('phone_click', 'header')}
             >
               <Phone className="h-5 w-5" strokeWidth={2} />
             </a>

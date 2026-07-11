@@ -1,4 +1,5 @@
 import { Phone, ChevronRight } from 'lucide-react'
+import { trackConversion } from '../../utils/trackConversion'
 
 export function FinalCta() {
   return (
@@ -29,6 +30,7 @@ export function FinalCta() {
                 <a
                   href="tel:09027669657"
                   className="flex w-full items-center justify-center gap-2 rounded bg-brandorange px-6 py-3 text-[15px] font-bold text-white transition-colors hover:bg-brandorange-dark"
+                  onClick={() => trackConversion('phone_click', 'final_cta')}
                 >
                   <Phone className="h-5 w-5 flex-shrink-0" />
                   <span className="text-center">
