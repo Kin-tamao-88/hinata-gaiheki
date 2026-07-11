@@ -75,23 +75,20 @@ export function Contact() {
 
           {/* ─── 上段：見出し・説明・LINE・電話 ─── */}
           <div>
-            <div className="mb-3 flex items-center gap-2">
-              <MessageCircle className="h-4 w-4 text-brandorange" strokeWidth={2} />
-              <span className="text-[12px] font-bold tracking-[0.22em] text-navy/60">CONTACT</span>
+            <div className="relative -mx-5 overflow-hidden bg-navy px-5 py-8 md:-mx-6 md:px-6 md:py-10">
+              <div aria-hidden="true" className="tex-navy-wall pointer-events-none absolute inset-0 mix-blend-overlay opacity-[0.68]" />
+              <div aria-hidden="true" className="tex-paint-noise pointer-events-none absolute inset-0 mix-blend-multiply opacity-[0.12]" />
+              <div className="relative">
+                <div className="mb-2 flex items-center gap-2">
+                  <MessageCircle className="h-4 w-4 text-brandorange" strokeWidth={2} />
+                  <span className="text-[12px] font-bold tracking-[0.22em] text-white/60">CONTACT</span>
+                </div>
+                <h2 className="text-[36px] font-black leading-tight tracking-tight text-white md:text-[48px]">
+                  無料お見積り・<br className="md:hidden" />お問い合わせ
+                </h2>
+                <div aria-hidden="true" className="brush-orange-long mt-2 h-[8px] w-[240px]" />
+              </div>
             </div>
-
-            <div className="mb-3 inline-block -rotate-1 bg-chip px-4 py-1.5 text-[13px] font-bold tracking-wide text-navy">
-              無料・追加費用なし
-            </div>
-
-            <h2 className="mt-2 text-[36px] font-black leading-tight tracking-tight text-navy md:text-[48px]">
-              無料お見積り・<br className="md:hidden" />お問い合わせ
-            </h2>
-
-            <div
-              aria-hidden="true"
-              className="brush-orange-long mt-2 h-[8px] w-[240px]"
-            />
 
             <p className="mt-6 text-[16px] leading-[1.9] text-ink">
               外壁塗装や住宅メンテナンスについて、
