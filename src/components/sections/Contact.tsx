@@ -74,7 +74,7 @@ export function Contact() {
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:gap-12">
 
           {/* ─── 左カラム 34% ─── */}
-          <div className="md:w-[34%] md:flex-shrink-0">
+          <div className="md:w-1/2 md:flex-shrink-0">
             <div className="mb-3 flex items-center gap-2">
               <MessageCircle className="h-4 w-4 text-brandorange" strokeWidth={2} />
               <span className="text-[12px] font-bold tracking-[0.22em] text-navy/60">CONTACT</span>

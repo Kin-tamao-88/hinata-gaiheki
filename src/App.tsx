@@ -7,7 +7,6 @@ import { Price } from "./components/sections/Price"
 import { Message } from "./components/sections/Message"
 import { Faq } from "./components/sections/Faq"
 import { Contact } from "./components/sections/Contact"
-import { FinalCta } from "./components/sections/FinalCta"
 import { MobileFixedCta } from "./components/ui/MobileFixedCta"
 
 function App() {
@@ -22,7 +21,6 @@ function App() {
         <Message />
         <Faq />
         <Contact />
-        <FinalCta />
         <MobileFixedCta />
       </main>
       <Footer />
