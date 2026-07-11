@@ -3,6 +3,12 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { ChevronRight, CheckCircle2, MessageCircle, Phone } from 'lucide-react'
+import emailjs from '@emailjs/browser'
+
+// EmailJS 設定（EmailJSダッシュボードで取得した値に置き換えてください）
+const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID'
+const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID'
+const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY'
 
 const contactSchema = z.object({
   name: z.string().min(1, 'お名前を入力してください'),
@@ -44,27 +50,31 @@ export function Contact() {
 
   const onSubmit = async (data: FormValues) => {
     setSubmitState('submitting')
-    const controller = new AbortController()
-    const timeoutId = setTimeout(() => controller.abort(), 30000)
+
+    // honeypot: ボット判定 → サイレントに無視
+    if (data.honeypot) {
+      setSubmitState('success')
+      return
+    }
+
     try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-        signal: controller.signal,
-      })
-      clearTimeout(timeoutId)
-      if (!res.ok) {
-        const errBody = await res.json().catch(() => ({}))
-        console.error('API error:', res.status, errBody)
-        throw new Error(`HTTP ${res.status}`)
-      }
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name: data.name,
+          phone: data.phone,
+          reply_email: data.email || '未入力',
+          inquiry_type: data.type,
+          message: data.message,
+        },
+        { publicKey: EMAILJS_PUBLIC_KEY }
+      )
       setSubmitState('success')
       window.dataLayer = window.dataLayer || []
-      window.dataLayer.push({ event: 'form_submit', form_name: 'contact' })
+      window.dataLayer.push({ event: 'generate_lead', lead_type: 'contact_form' })
     } catch (err) {
-      clearTimeout(timeoutId)
-      console.error('Submit error:', err)
+      console.error('EmailJS error:', err)
       setSubmitState('error')
     }
   }
