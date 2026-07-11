@@ -44,17 +44,27 @@ export function Contact() {
 
   const onSubmit = async (data: FormValues) => {
     setSubmitState('submitting')
+    const controller = new AbortController()
+    const timeoutId = setTimeout(() => controller.abort(), 30000)
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
+        signal: controller.signal,
       })
-      if (!res.ok) throw new Error()
+      clearTimeout(timeoutId)
+      if (!res.ok) {
+        const errBody = await res.json().catch(() => ({}))
+        console.error('API error:', res.status, errBody)
+        throw new Error(`HTTP ${res.status}`)
+      }
       setSubmitState('success')
       window.dataLayer = window.dataLayer || []
       window.dataLayer.push({ event: 'form_submit', form_name: 'contact' })
-    } catch {
+    } catch (err) {
+      clearTimeout(timeoutId)
+      console.error('Submit error:', err)
       setSubmitState('error')
     }
   }
