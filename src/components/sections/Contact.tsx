@@ -70,7 +70,7 @@ export function Contact() {
         className="tex-cream-board pointer-events-none absolute inset-0 mix-blend-multiply opacity-[0.06]"
       />
 
-      <div className="relative mx-auto max-w-content px-5 pb-20 pt-16 md:max-w-[720px] md:px-6 md:pb-24 md:pt-24">
+      <div className="relative mx-auto max-w-content px-5 pb-20 pt-8 md:max-w-[720px] md:px-6 md:pb-24 md:pt-12">
         <div className="flex flex-col gap-10">
 
           {/* ─── 上段：見出し・説明・LINE・電話 ─── */}
@@ -91,9 +91,9 @@ export function Contact() {
             </div>
 
             <p className="mt-6 text-[16px] leading-[1.9] text-ink">
-              外壁塗装や住宅メンテナンスについて、
-              気になることがございましたらお気軽にご相談ください。
-              内容を確認後、担当者より折り返しご連絡いたします。
+              外壁塗装や住宅メンテナンスについて、<br />
+              気になることがございましたらお気軽にご相談ください。<br />
+              1営業日以内に担当者より折り返しご連絡いたします。
             </p>
 
             {/* LINE */}
@@ -114,7 +114,7 @@ export function Contact() {
             <div className="mt-3">
               <a
                 href="tel:09027669657"
-                className="flex w-full items-center justify-center gap-2 rounded-[6px] bg-navy px-4 py-3 text-[15px] font-bold text-white transition-colors hover:bg-navy-dark"
+                className="flex w-full items-center justify-center gap-2 rounded-[6px] bg-brandorange px-4 py-3 text-[15px] font-bold text-white transition-colors hover:bg-brandorange-dark"
               >
                 <Phone className="h-5 w-5 flex-shrink-0" strokeWidth={2} />
                 090-2766-9657
