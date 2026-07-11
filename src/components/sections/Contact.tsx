@@ -9,6 +9,13 @@ const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID as string
 const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string
 const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string
 
+// デバッグ: 環境変数が取得できているか確認（本番確認後に削除）
+console.log('[EmailJS] env:', {
+  serviceId: serviceId ?? 'MISSING',
+  templateId: templateId ?? 'MISSING',
+  publicKey: publicKey ?? 'MISSING',
+})
+
 const contactSchema = z.object({
   name: z.string().min(1, 'お名前を入力してください'),
   phone: z.string().min(1, '電話番号を入力してください'),
@@ -57,6 +64,7 @@ export function Contact() {
     }
 
     try {
+      emailjs.init({ publicKey })
       await emailjs.send(
         serviceId,
         templateId,
