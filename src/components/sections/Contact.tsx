@@ -5,10 +5,9 @@ import { z } from 'zod'
 import { ChevronRight, CheckCircle2, MessageCircle, Phone } from 'lucide-react'
 import emailjs from '@emailjs/browser'
 
-// EmailJS 設定（EmailJSダッシュボードで取得した値に置き換えてください）
-const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID'
-const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID'
-const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY'
+const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID as string
+const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string
+const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string
 
 const contactSchema = z.object({
   name: z.string().min(1, 'お名前を入力してください'),
@@ -58,22 +57,20 @@ export function Contact() {
     }
 
     try {
-      const trimmedEmail = data.email?.trim()
       await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
+        serviceId,
+        templateId,
         {
           from_name: data.name,
           phone: data.phone,
-          ...(trimmedEmail ? { reply_email: trimmedEmail } : {}),
+          reply_email: data.email?.trim() || '',
           inquiry_type: data.type,
           message: data.message,
         },
-        { publicKey: EMAILJS_PUBLIC_KEY }
+        { publicKey }
       )
       setSubmitState('success')
-      window.dataLayer = window.dataLayer || []
-      window.dataLayer.push({ event: 'generate_lead', lead_type: 'contact_form' })
+      window.dataLayer?.push({ event: 'generate_lead', lead_type: 'contact_form' })
     } catch (err) {
       console.error('EmailJS error:', err)
       setSubmitState('error')
