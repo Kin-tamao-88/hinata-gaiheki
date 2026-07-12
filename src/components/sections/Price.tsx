@@ -1,5 +1,5 @@
-import pricingPc from '../../assets/sections/pricing-pc.webp'
-import pricingSp from '../../assets/sections/pricing-sp.webp'
+import pricingPc from '../../assets/sections/pricing-pc2.webp'
+import pricingSp from '../../assets/sections/pricing-sp3.webp'
 
 export function Price() {
   return (

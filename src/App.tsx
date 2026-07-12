@@ -1,7 +1,6 @@
 import { Footer } from "./components/Footer"
 import Hero from "./components/sections/Hero"
 import { Pain } from "./components/sections/Pain"
-import { EducationIntro } from "./components/sections/EducationIntro"
 import { EducationContent } from "./components/sections/EducationContent"
 import { Strength } from "./components/sections/Strength"
 import { CaseStudy } from "./components/sections/CaseStudy"
@@ -16,7 +15,7 @@ function App() {
     <div className="flex min-h-screen flex-col pb-14 md:pb-0">
       <main className="flex-1">
         <Hero />
-        <EducationIntro />
+        <div aria-hidden="true" className="h-[20px] bg-cream md:hidden" />
         <EducationContent />
         <Pain />
         <Strength />

@@ -70,7 +70,7 @@ function BrushBadge({ children }: { children: React.ReactNode }) {
 const stats = [
   { label: '地域密着', value: '15', unit: '年', caption: '地域で積み重ねた実績', Icon: Users, valueClass: '' },
   { label: '累計施工実績', value: '600', unit: '件以上', caption: '確かな技術で施工', Icon: Paintbrush, valueClass: '' },
-  { label: 'お見積り・診断', value: '無料', unit: '', caption: '明確なお見積り', Icon: JapaneseYen, valueClass: 'text-[26px] md:text-[34px]' },
+  { label: 'お見積り・診断', value: '無料', unit: '', caption: '明確なお見積り', Icon: JapaneseYen, valueClass: 'text-[17px] md:text-[34px]' },
   { label: '施工後も安心', value: '3', unit: '年間', caption: 'アフターサポート', Icon: ShieldCheck, valueClass: '' },
 ]
 
@@ -256,12 +256,12 @@ export default function Hero() {
 
       {/* ===== 実績帯 + CTA（C-2：フルワイドポスター構造） ===== */}
       <section className="relative overflow-hidden bg-[#062b4f] tex-navy-wall">
-        {/* 層0: navy-wall テクスチャを薄めるネイビー単色オーバーレイ */}
-        <div aria-hidden="true" className="absolute inset-0 bg-[#062b4f] opacity-[0.50] pointer-events-none" />
-        {/* 層1: ペイントノイズ */}
-        <div aria-hidden="true" className="absolute inset-0 tex-paint-noise opacity-[0.06] mix-blend-overlay pointer-events-none" />
-        {/* 層2: コンクリートダスト */}
-        <div aria-hidden="true" className="absolute inset-0 tex-concrete-dust opacity-[0.04] mix-blend-overlay pointer-events-none" />
+        {/* 層0: navy-wall テクスチャを薄めるネイビー単色オーバーレイ（0.50→0.60 で壁テクスチャ20%減） */}
+        <div aria-hidden="true" className="absolute inset-0 bg-[#062b4f] opacity-[0.60] pointer-events-none" />
+        {/* 層1: ペイントノイズ（0.06→0.05） */}
+        <div aria-hidden="true" className="absolute inset-0 tex-paint-noise opacity-[0.05] mix-blend-overlay pointer-events-none" />
+        {/* 層2: コンクリートダスト（0.04→0.03） */}
+        <div aria-hidden="true" className="absolute inset-0 tex-concrete-dust opacity-[0.03] mix-blend-overlay pointer-events-none" />
         {/* 層3: 上端オレンジブラシライン */}
         <div aria-hidden="true" className="absolute top-0 left-0 right-0 h-[8px] md:h-[10px] brush-orange-long opacity-65 mix-blend-screen pointer-events-none" />
 
@@ -271,13 +271,13 @@ export default function Hero() {
             <div className="flex flex-col md:flex-row md:items-center">
 
               {/* ===== 左: コピーブロック ===== */}
-              <div className="py-6 md:py-0 md:w-[300px] md:pr-8 flex-shrink-0 flex flex-col justify-center items-center md:items-start">
-                <div className="mb-1 md:mb-4 overflow-visible">
-                  <span className="inline-flex items-center tex-masking-tape px-[18px] py-[17px] font-black text-[#062b4f] text-[13px] md:text-[18px] -rotate-1 tracking-wide">
+              <div className="py-[10px] md:py-0 md:w-[300px] md:pr-8 flex-shrink-0 flex flex-col justify-center items-center md:items-start">
+                <div className="mb-[2px] md:mb-4 overflow-visible">
+                  <span className="inline-flex items-center tex-masking-tape px-[14px] py-[8px] font-black text-[#062b4f] text-[12px] md:text-[18px] -rotate-1 tracking-wide">
                     選ばれ続ける理由は
                   </span>
                 </div>
-                <h2 className="heading-ink-texture w-full mb-2 md:mb-0 text-[24px] md:text-[34px] font-black text-white leading-[1.24] md:leading-[1.0] tracking-[-0.02em] md:tracking-[-0.03em] text-center md:text-left">
+                <h2 className="heading-ink-texture w-full mb-1 md:mb-0 text-[20px] md:text-[34px] font-black text-white leading-[1.24] md:leading-[1.0] tracking-[-0.02em] md:tracking-[-0.03em] text-center md:text-left">
                   確かな技術と
                   <br className="hidden md:block" />
                   積み重ねた実績
@@ -285,27 +285,28 @@ export default function Hero() {
               </div>
 
               {/* ===== 右: 実績ボード4枚 ===== */}
-              <div className="flex-1 flex flex-col justify-center pb-4 md:pb-0">
-                <div className="grid grid-cols-2 gap-[3px] md:flex md:flex-nowrap md:gap-[3px]">
+              <div className="flex-1 flex flex-col justify-center pb-[40px] md:pb-0">
+                <div className="grid grid-cols-2 gap-[2px] md:flex md:flex-nowrap md:gap-[3px]">
                   {stats.map(({ label, value, unit, caption, Icon, valueClass }) => (
                     <div
                       key={label}
-                      className="relative overflow-hidden bg-[#f7f3ea] tex-cream-board border border-white/20 h-[144px] md:h-[132px] md:flex-1 flex flex-col p-3 md:p-[12px]"
+                      className="relative overflow-hidden bg-[#f7f3ea] border border-white/20 h-[72px] md:h-[132px] md:flex-1 flex flex-col p-1 md:p-[12px]"
                     >
-                      <div aria-hidden="true" className="absolute inset-0 tex-concrete-dust opacity-[0.08] mix-blend-multiply pointer-events-none" />
+                      <div aria-hidden="true" className="absolute inset-0 tex-cream-board opacity-[0.80] mix-blend-multiply pointer-events-none" />
+                      <div aria-hidden="true" className="absolute inset-0 tex-concrete-dust opacity-[0.06] mix-blend-multiply pointer-events-none" />
 
                       <div className="relative z-10 flex flex-col h-full items-center">
                         {/* アイコン + カテゴリラベル */}
-                        <div className="flex items-center gap-2 mb-4 md:mb-2.5 flex-shrink-0">
-                          <div className="flex-shrink-0 bg-navy p-1.5">
+                        <div className="flex items-center gap-2 mb-[4px] md:mb-2.5 flex-shrink-0">
+                          <div className="flex-shrink-0 bg-navy p-1 md:p-1.5">
                             <Icon className="h-3 w-3 md:h-[14px] md:w-[14px] text-white" strokeWidth={1.5} />
                           </div>
-                          <span className="text-[14px] md:text-[15px] font-bold text-navy leading-tight">{label}</span>
+                          <span className="text-[11px] md:text-[15px] font-bold text-navy leading-tight">{label}</span>
                         </div>
 
                         {/* 数値ブロック：ベースライン横並び */}
-                        <div className="flex flex-row items-baseline gap-1 mb-0.5 md:mb-1 flex-shrink-0">
-                          <span className={`num-ink-grain font-black text-[#e8550a] leading-none tracking-[-0.04em] ${valueClass || 'text-[34px] md:text-[46px]'}`}>
+                        <div className="flex flex-row items-baseline gap-1 mb-0 md:mb-1 flex-shrink-0">
+                          <span className={`num-ink-grain font-black text-[#e8550a] leading-none tracking-[-0.04em] ${valueClass || 'text-[22px] md:text-[46px]'}`}>
                             {value}
                           </span>
                           <span className="text-[13px] md:text-[17px] font-bold text-navy leading-none">
@@ -314,10 +315,10 @@ export default function Hero() {
                         </div>
 
                         {/* 数字下ブラシストローク */}
-                        <div className="tex-paint-stroke-yellow h-[12px] md:h-[2px] w-3/4 md:w-[64px] mb-1.5 md:mb-2 flex-shrink-0" />
+                        <div className="tex-paint-stroke-yellow h-[3px] md:h-[2px] w-3/4 md:w-[64px] mb-0 md:mb-2 flex-shrink-0" />
 
                         {/* キャプション */}
-                        <p className="text-[14px] md:text-[15px] font-bold text-navy mt-auto">{caption}</p>
+                        <p className="text-[11px] md:text-[15px] font-bold text-navy mt-auto leading-tight">{caption}</p>
                       </div>
                     </div>
                   ))}

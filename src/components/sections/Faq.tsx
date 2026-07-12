@@ -66,7 +66,7 @@ export function Faq() {
 
             {/* メイン見出し + brush-yellow アンダーライン */}
             <div className="relative inline-block">
-              <h2 className="relative z-10 text-[42px] font-black leading-tight tracking-tight text-navy md:text-[56px]">
+              <h2 className="relative z-10 text-[31px] font-black leading-tight tracking-tight text-navy md:text-[50px]">
                 よくある<span className="text-[#ef6b13]">ご質問</span>
               </h2>
               {/* brush-yellow: top-full で文字の真下に配置（文字に被らない） */}

@@ -102,7 +102,7 @@ export function Contact() {
                   <MessageCircle className="h-4 w-4 text-brandorange" strokeWidth={2} />
                   <span className="text-[12px] font-bold tracking-[0.22em] text-white/60">CONTACT</span>
                 </div>
-                <h2 className="text-center text-[36px] font-black leading-tight tracking-tight text-white md:text-[48px]">
+                <h2 className="text-center text-[31px] font-black leading-tight tracking-tight text-white md:text-[50px]">
                   <span className="md:hidden">無料お見積り<br />お問い合わせ</span>
                   <span className="hidden md:inline">無料お見積り・お問い合わせ</span>
                 </h2>
