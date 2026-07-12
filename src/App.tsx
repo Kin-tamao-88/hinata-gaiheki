@@ -1,6 +1,8 @@
 import { Footer } from "./components/Footer"
 import Hero from "./components/sections/Hero"
 import { Pain } from "./components/sections/Pain"
+import { EducationIntro } from "./components/sections/EducationIntro"
+import { EducationContent } from "./components/sections/EducationContent"
 import { Strength } from "./components/sections/Strength"
 import { CaseStudy } from "./components/sections/CaseStudy"
 import { Price } from "./components/sections/Price"
@@ -14,6 +16,8 @@ function App() {
     <div className="flex min-h-screen flex-col pb-14 md:pb-0">
       <main className="flex-1">
         <Hero />
+        <EducationIntro />
+        <EducationContent />
         <Pain />
         <Strength />
         <CaseStudy />
