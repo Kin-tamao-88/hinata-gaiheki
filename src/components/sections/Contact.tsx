@@ -134,12 +134,12 @@ export function Contact() {
             {/* 電話 */}
             <div className="mt-3">
               <a
-                href="tel:09027669657"
+                href="tel:05018824910"
                 className="flex w-full items-center justify-center gap-2 rounded-[6px] bg-brandorange px-4 py-3 text-[15px] font-bold text-white transition-colors hover:bg-brandorange-dark"
                 onClick={() => trackConversion('phone_click', 'contact')}
               >
                 <Phone className="h-5 w-5 flex-shrink-0" strokeWidth={2} />
-                090-2766-9657
+                050-1882-4910
               </a>
               <p className="mt-1.5 text-center text-[13px] text-ink-muted">
                 受付時間 9:00〜17:30（日曜定休）

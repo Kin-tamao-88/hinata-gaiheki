@@ -4,58 +4,9 @@ import logoImage from '../../assets/logo/lr-logo.webp'
 import brushBlackSubcaption from '../../assets/brush/brush-black-subcaption2.webp'
 import brushNavySpeechbubble from '../../assets/brush/brush-navy-speechbubble3.webp'
 import brushYellowUnderline from '../../assets/brush/brush-yellow-underline2.webp'
+import heroStatsPc from '../../assets/hero/hero-stats-pc.webp'
+import heroStatsSp from '../../assets/hero/hero-stats-sp.webp'
 import { trackConversion } from '../../utils/trackConversion'
-
-// ─── 月桂樹 SVG ────────────────────────────────────────────
-function LaurelLeft() {
-  return (
-    <svg
-      width="28"
-      height="48"
-      viewBox="0 0 28 48"
-      fill="none"
-      aria-hidden="true"
-      className="hidden flex-shrink-0 md:block"
-    >
-      <path
-        d="M22 3C20 7 16 12 11 17C9 19 7 24 9 29C11 33 15 36 17 41C18 43 19 46 22 46"
-        stroke="#B8882E"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-      <ellipse cx="18" cy="9"  rx="5" ry="3" transform="rotate(-35 18 9)"  fill="#C9A227" />
-      <ellipse cx="13" cy="16" rx="5" ry="3" transform="rotate(-22 13 16)" fill="#C9A227" />
-      <ellipse cx="9"  cy="23" rx="5" ry="3" transform="rotate(-8 9 23)"   fill="#C9A227" />
-      <ellipse cx="9"  cy="31" rx="5" ry="3" transform="rotate(8 9 31)"    fill="#C9A227" />
-      <ellipse cx="13" cy="38" rx="5" ry="3" transform="rotate(20 13 38)"  fill="#C9A227" />
-    </svg>
-  )
-}
-
-function LaurelRight() {
-  return (
-    <svg
-      width="28"
-      height="48"
-      viewBox="0 0 28 48"
-      fill="none"
-      aria-hidden="true"
-      className="hidden flex-shrink-0 md:block"
-    >
-      <path
-        d="M6 3C8 7 12 12 17 17C19 19 21 24 19 29C17 33 13 36 11 41C10 43 9 46 6 46"
-        stroke="#B8882E"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-      <ellipse cx="10" cy="9"  rx="5" ry="3" transform="rotate(35 10 9)"   fill="#C9A227" />
-      <ellipse cx="15" cy="16" rx="5" ry="3" transform="rotate(22 15 16)"  fill="#C9A227" />
-      <ellipse cx="19" cy="23" rx="5" ry="3" transform="rotate(8 19 23)"   fill="#C9A227" />
-      <ellipse cx="19" cy="31" rx="5" ry="3" transform="rotate(-8 19 31)"  fill="#C9A227" />
-      <ellipse cx="15" cy="38" rx="5" ry="3" transform="rotate(-20 15 38)" fill="#C9A227" />
-    </svg>
-  )
-}
 
 // ─── Features Bar アイテム ──────────────────────────────────
 function FeatureItem({
@@ -68,23 +19,23 @@ function FeatureItem({
   value: string
 }) {
   return (
-    <div className="flex flex-col items-center gap-1 px-2 py-3 md:flex-row md:items-center md:gap-4 md:px-8 md:py-5">
-      <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border-2 border-white/60">
+    <div className="flex items-center justify-center gap-2 px-2 py-4 md:gap-4 md:px-10 md:py-6">
+      <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border-2 border-white md:h-12 md:w-12">
         {icon === 'yen' && (
-          <span className="text-[13px] font-black leading-none text-white">¥0</span>
+          <span className="text-[15px] font-black leading-none text-white md:text-[16px]">¥0</span>
         )}
         {icon === 'clock' && (
-          <Clock className="h-5 w-5 text-white" strokeWidth={1.5} />
+          <Clock className="h-5 w-5 text-white md:h-6 md:w-6" strokeWidth={1.5} />
         )}
         {icon === 'chat' && (
-          <MessageSquare className="h-5 w-5 text-white" strokeWidth={1.5} />
+          <MessageSquare className="h-5 w-5 text-white md:h-6 md:w-6" strokeWidth={1.5} />
         )}
       </div>
-      <div className="text-center md:text-left">
-        <p className="mb-0.5 text-[11px] font-semibold leading-none text-white/75 md:text-[13px]">
+      <div>
+        <p className="mb-1 text-[10px] font-semibold leading-none text-white md:text-[13px]">
           {label}
         </p>
-        <p className="text-[18px] font-black leading-none text-brandorange md:text-[26px]">
+        <p className="text-[17px] font-black leading-none text-yellow-400 md:text-[26px]">
           {value}
         </p>
       </div>
@@ -293,36 +244,21 @@ export default function Hero() {
       {/* ===== STATS（月桂樹） ===== */}
       <section className="border-y border-gray-200/80 bg-cream py-6 md:py-10">
         <div className="mx-auto max-w-[960px] px-4">
-          <div className="grid grid-cols-3 divide-x divide-gray-300">
-            {[
-              { label: 'アフター保証', value: '5',   unit: '年間'  },
-              { label: '施工実績',     value: '350', unit: '件以上' },
-              { label: '追加費用',     value: '0',   unit: '円'    },
-            ].map(({ label, value, unit }) => (
-              <div key={label} className="flex flex-col items-center gap-1 px-2 md:px-6">
-                <span className="mb-1 text-[11px] font-bold text-navy md:text-[14px]">
-                  {label}
-                </span>
-                <div className="flex items-center gap-1 md:gap-2">
-                  <LaurelLeft />
-                  <div className="flex items-baseline gap-0.5 md:gap-1">
-                    <span className="font-black leading-none text-brandorange text-[28px] md:text-[46px]">
-                      {value}
-                    </span>
-                    <span className="font-bold leading-none text-navy text-[12px] md:text-[18px]">
-                      {unit}
-                    </span>
-                  </div>
-                  <LaurelRight />
-                </div>
-              </div>
-            ))}
-          </div>
+          <img
+            src={heroStatsPc}
+            alt="アフター保証5年間・施工実績350件以上・追加費用0円"
+            className="hidden w-full h-auto md:block"
+          />
+          <img
+            src={heroStatsSp}
+            alt="アフター保証5年間・施工実績350件以上・追加費用0円"
+            className="block w-full h-auto md:hidden"
+          />
         </div>
       </section>
 
       {/* ===== FEATURES BAR（紺） ===== */}
-      <section className="relative overflow-hidden bg-[#062b4f]">
+      <section className="relative overflow-hidden bg-navy">
         <div
           aria-hidden="true"
           className="tex-paint-noise pointer-events-none absolute inset-0 opacity-[0.05] mix-blend-overlay"
@@ -331,59 +267,57 @@ export default function Hero() {
           <div className="grid grid-cols-3 divide-x divide-white/20">
             <FeatureItem icon="yen"   label="現地調査・お見積り" value="無料"    />
             <FeatureItem icon="clock" label="最短"               value="当日対応" />
-            <FeatureItem icon="chat"  label="他社見積もり相談"   value="OK！"    />
+            <FeatureItem icon="chat"  label="他社見積もり"       value="相談OK"  />
           </div>
         </div>
       </section>
 
       {/* ===== LINE CTA バー（緑） ===== */}
-      <a
-        href="https://line.me/ti/p/YEthVfb_JD"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="block bg-[#06C755] transition-colors hover:bg-[#05b34c]"
-        onClick={() => trackConversion('line_click', 'hero_line_bar')}
-      >
-        <div className="mx-auto flex max-w-[1240px] items-center gap-3 px-5 py-4 md:gap-6 md:px-10 md:py-5">
+      <div className="px-4 py-5 md:px-6 md:py-6">
+        <a
+          href="https://line.me/ti/p/YEthVfb_JD"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mx-auto block max-w-[860px] rounded-[14px] bg-[#059A42] transition-colors hover:bg-[#048537]"
+          onClick={() => trackConversion('line_click', 'hero_line_bar')}
+        >
+          <div className="flex items-center justify-center gap-4 px-5 py-4 md:gap-6 md:px-8 md:py-5">
 
-          {/* LINE アイコン */}
-          <div className="flex h-[48px] w-[48px] flex-shrink-0 items-center justify-center rounded-[10px] bg-white md:h-[56px] md:w-[56px]">
-            <span className="text-[14px] font-black leading-none text-[#06C755] md:text-[16px]">
-              LINE
-            </span>
-          </div>
-
-          {/* テキスト */}
-          <div className="min-w-0 flex-1">
-            <p className="mb-0.5 text-[11px] font-bold text-white md:text-[13px]">
-              24時間受付中・相談だけでも大歓迎！
-            </p>
-            <div className="flex items-center gap-1">
-              <span className="text-[18px] font-black leading-tight text-white md:text-[26px]">
-                LINEで無料相談する
-              </span>
-              <ChevronRight
-                className="h-5 w-5 flex-shrink-0 text-white md:h-6 md:w-6"
-                strokeWidth={2.5}
-              />
+            {/* LINE アイコン：吹き出しの中にLINE文字 */}
+            <div className="relative flex h-[62px] w-[62px] flex-shrink-0 items-center justify-center rounded-[14px] bg-white pb-2 md:h-[70px] md:w-[70px] md:pb-3">
+              <MessageSquare className="absolute inset-0 h-full w-full p-[6px] text-[#059A42] md:p-[7px]" strokeWidth={1.5} />
+              <span className="relative text-[12px] font-black leading-none text-[#059A42] md:text-[14px]">LINE</span>
             </div>
-          </div>
 
-          {/* 簡単30秒バッジ */}
-          <div className="hidden flex-shrink-0 flex-col items-center gap-1.5 sm:flex">
-            <div className="flex h-[56px] w-[56px] flex-col items-center justify-center rounded-full border-2 border-white md:h-[64px] md:w-[64px]">
-              <span className="text-[9px] font-bold leading-none text-white">簡単</span>
-              <span className="text-[20px] font-black leading-none text-white md:text-[22px]">
-                30秒
-              </span>
+            {/* テキスト */}
+            <div className="min-w-0">
+              <p className="mb-1 text-[11px] font-bold text-white md:text-[13px]">
+                24時間受付中・相談だけでも大歓迎！
+              </p>
+              <div className="flex items-center gap-2">
+                <span className="text-[20px] font-black leading-tight text-white md:text-[28px]">
+                  LINEで無料相談する
+                </span>
+                <div className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-white/20 md:h-8 md:w-8">
+                  <ChevronRight className="h-4 w-4 text-white md:h-5 md:w-5" strokeWidth={3} />
+                </div>
+              </div>
             </div>
-            <p className="text-center text-[10px] font-bold leading-tight text-[#FCE283]">
-              写真を送るだけ<br />でもOK！
-            </p>
-          </div>
 
-        </div>
-      </a>
+            {/* 簡単30秒バッジ */}
+            <div className="hidden flex-shrink-0 items-center gap-3 sm:flex">
+              <div className="flex h-[62px] w-[62px] flex-col items-center justify-center rounded-full bg-white md:h-[70px] md:w-[70px]">
+                <span className="text-[10px] font-bold leading-none text-[#059A42]">簡単</span>
+                <span className="text-[24px] font-black leading-none text-[#059A42] md:text-[26px]">30秒</span>
+              </div>
+              <p className="text-[12px] font-bold leading-snug text-[#FCE283] md:text-[13px]">
+                写真を送るだけ<br />でもOK！
+              </p>
+            </div>
+
+          </div>
+        </a>
+      </div>
     </>
   )
 }
