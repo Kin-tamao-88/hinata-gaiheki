@@ -43,6 +43,11 @@
     background-repeat: no-repeat;
     background-position: center;
   }
+  .brush-cream-texture-tile {
+    background-image: url('./assets/background/brush-cream.png');
+    background-size: 600px auto;
+    background-repeat: repeat;
+  }
   .bg-paint-subtle {
     background-image: url('./assets/background/bg-paint-subtle.png');
     background-size: cover;
