@@ -20,36 +20,36 @@
 
   /* ブラシ背景ユーティリティ — mix-blend-multiply と組み合わせて白を消す */
   .brush-navy {
-    background-image: url('./assets/brush/brush-navy.png');
+    background-image: url('./assets/brush/brush-navy.webp');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
   }
   .brush-orange-long {
-    background-image: url('./assets/brush/brush-orange-long.png');
+    background-image: url('./assets/brush/brush-orange-long.webp');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
   }
   .brush-orange-short {
-    background-image: url('./assets/brush/brush-orange-short.png');
+    background-image: url('./assets/brush/brush-orange-short.webp');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
   }
   .brush-cream-texture {
-    background-image: url('./assets/background/brush-cream.png');
+    background-image: url('./assets/background/brush-cream.webp');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
   }
   .brush-cream-texture-tile {
-    background-image: url('./assets/background/brush-cream.png');
+    background-image: url('./assets/background/brush-cream.webp');
     background-size: 600px auto;
     background-repeat: repeat;
   }
   .bg-paint-subtle {
-    background-image: url('./assets/background/bg-paint-subtle.png');
+    background-image: url('./assets/background/bg-paint-subtle.webp');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -57,32 +57,32 @@
 
   /* 実績帯テクスチャ素材 */
   .tex-navy-wall {
-    background-image: url('./assets/textures/navy-paint-wall.png');
+    background-image: url('./assets/textures/navy-paint-wall.webp');
     background-size: cover;
     background-position: center;
   }
   .tex-paint-noise {
-    background-image: url('./assets/textures/paint-noise.png');
+    background-image: url('./assets/textures/paint-noise.webp');
     background-size: cover;
     background-position: center;
   }
   .tex-concrete-dust {
-    background-image: url('./assets/textures/concrete-dust.png');
+    background-image: url('./assets/textures/concrete-dust.webp');
     background-size: cover;
     background-position: center;
   }
   .tex-cream-board {
-    background-image: url('./assets/textures/cream-board.png');
+    background-image: url('./assets/textures/cream-board.webp');
     background-size: cover;
     background-position: center;
   }
   .tex-paint-stroke-yellow {
-    background-image: url('./assets/textures/paint-stroke-yellow.png');
+    background-image: url('./assets/textures/paint-stroke-yellow.webp');
     background-size: 100% 100%;
     background-repeat: no-repeat;
   }
   .tex-masking-tape {
-    background-image: url('./assets/textures/masking-tape-yellow.png');
+    background-image: url('./assets/textures/masking-tape-yellow.webp');
     background-size: 100% 100%;
     background-repeat: no-repeat;
   }
@@ -153,12 +153,12 @@
 }
 
 @layer utilities {
-  /* 実績帯左見出し専用: ink-grain-mask.png をテキスト形状でクリップ
+  /* 実績帯左見出し専用: ink-grain-mask.webp をテキスト形状でクリップ
      background-clip:text により文字の内側にのみ素材テクスチャが現れる
      -webkit-text-fill-color:transparent で text-white を見かけ上透過させ、
      その背後の background-image が文字形状を通して見える */
   .heading-ink-texture {
-    background-image: url('./assets/textures/ink-grain-mask.png');
+    background-image: url('./assets/textures/ink-grain-mask.webp');
     background-size: cover;
     -webkit-background-clip: text;
     background-clip: text;
@@ -166,7 +166,7 @@
     -webkit-text-fill-color: transparent;
   }
 
-  /* 実績カード数値専用: ink-grain-mask.png を multiply で重ねてインク擦れ・塗装ムラを付与
+  /* 実績カード数値専用: ink-grain-mask.webp を multiply で重ねてインク擦れ・塗装ムラを付与
      ::after でオレンジの上にグレインを乗せるため、数値色は変わらず質感だけが変わる */
   .num-ink-grain {
     position: relative;
@@ -175,7 +175,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background-image: url('./assets/textures/ink-grain-mask.png');
+    background-image: url('./assets/textures/ink-grain-mask.webp');
     background-size: cover;
     mix-blend-mode: multiply;
     opacity: 0.14;
