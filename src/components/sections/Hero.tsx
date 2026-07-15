@@ -1,4 +1,5 @@
-import { ChevronRight, CheckCircle2, Clock, MessageSquare, Phone } from 'lucide-react'
+import { useState } from 'react'
+import { ChevronRight, CheckCircle2, Clock, MessageSquare, Phone, Menu, X } from 'lucide-react'
 import heroWorkerBg from '../../assets/hero/hero-worker-background.webp'
 import heroWorkerBgSp from '../../assets/hero/hero-worker-background-sp.webp'
 import logoImage from '../../assets/logo/lr-logo.webp'
@@ -7,9 +8,6 @@ import brushNavySpeechbubble from '../../assets/brush/brush-navy-speechbubble3.w
 import brushYellowUnderline from '../../assets/brush/brush-yellow-underline2.webp'
 import heroOverlay from '../../assets/brush/hero-overlay-c2-blue.webp'
 import maskingTape from '../../assets/textures/masking-tape-yellow.webp'
-import badge5years from '../../assets/hero/badge-5years-warranty2.webp'
-import badge350cases from '../../assets/hero/badge-350cases2.webp'
-import badge0yen from '../../assets/hero/badge-0yen2.webp'
 import badge5yearsCrop from '../../assets/hero/badge-5years-warranty2-crop.webp'
 import badge350casesCrop from '../../assets/hero/badge-350cases2-crop.webp'
 import badge0yenCrop from '../../assets/hero/badge-0yen2-crop.webp'
@@ -27,22 +25,22 @@ function FeatureItem({
 }) {
   return (
     <div className="flex items-center justify-center gap-2 px-2 py-4 md:gap-4 md:px-10 md:py-6">
-      <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border-2 border-white md:h-12 md:w-12">
+      <div className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full border-2 border-white md:h-12 md:w-12">
         {icon === 'yen' && (
           <span className="text-[15px] font-black leading-none text-white md:text-[16px]">¥0</span>
         )}
         {icon === 'clock' && (
-          <Clock className="h-5 w-5 text-white md:h-6 md:w-6" strokeWidth={1.5} />
+          <Clock className="h-3.5 w-3.5 text-white md:h-6 md:w-6" strokeWidth={1.5} />
         )}
         {icon === 'chat' && (
-          <MessageSquare className="h-5 w-5 text-white md:h-6 md:w-6" strokeWidth={1.5} />
+          <MessageSquare className="h-3.5 w-3.5 text-white md:h-6 md:w-6" strokeWidth={1.5} />
         )}
       </div>
       <div>
-        <p className="mb-1 text-[10px] font-semibold leading-none text-white md:text-[13px]">
+        <p className="mb-1 whitespace-nowrap text-[9px] font-semibold leading-snug text-white md:text-[13px]">
           {label}
         </p>
-        <p className="text-[17px] font-black leading-none text-yellow-400 md:text-[26px]">
+        <p className="whitespace-nowrap text-[17px] font-black leading-none text-yellow-400 md:text-[26px]">
           {value}
         </p>
       </div>
@@ -51,7 +49,18 @@ function FeatureItem({
 }
 
 // ─── メインコンポーネント ───────────────────────────────────
+const NAV_LINKS = [
+  { label: 'お悩みの方へ',   href: '#pain' },
+  { label: '選ばれる理由',   href: '#strength' },
+  { label: '施工事例',       href: '#case-study' },
+  { label: '料金について',   href: '#price' },
+  { label: '代表メッセージ', href: '#message' },
+  { label: 'よくある質問',   href: '#faq' },
+  { label: 'お問い合わせ',   href: '#contact' },
+]
+
 export default function Hero() {
+  const [menuOpen, setMenuOpen] = useState(false)
   return (
     <>
       {/* ===== HEADER ===== */}
@@ -65,11 +74,11 @@ export default function Hero() {
               alt="レストレーション"
               className="h-[53px] w-auto flex-shrink-0 md:h-[67px]"
             />
-            <div className="hidden md:flex md:items-center md:gap-4">
-              <div className="h-10 w-px flex-shrink-0 bg-gray-300" />
+            <div className="flex items-center gap-3 md:gap-4">
+              <div className="h-8 w-px flex-shrink-0 bg-gray-300 md:h-10" />
               <div className="leading-[1.65]">
-                <p className="text-[15px] font-bold text-navy">山梨の外壁塗装専門店</p>
-                <p className="text-[15px] font-bold text-navy">雨漏り、屋根修理・補強</p>
+                <p className="text-[13px] font-bold text-navy md:text-[17px]">山梨の外壁塗装専門店</p>
+                <p className="text-[13px] font-bold text-navy md:text-[17px]">雨漏り、屋根修理・補強</p>
               </div>
             </div>
           </div>
@@ -79,21 +88,21 @@ export default function Hero() {
 
             {/* カードブランド（PCのみ） */}
             <div className="hidden md:flex md:flex-col md:items-end md:gap-1">
-              <div className="grid grid-cols-2 gap-[3px]">
-                <div className="flex h-[20px] w-[34px] items-center justify-center rounded-[2px] bg-[#1A1F71]">
-                  <span className="text-[8px] font-black italic tracking-tight text-white">VISA</span>
+              <div className="grid grid-cols-2 gap-[4px]">
+                <div className="flex h-[26px] w-[44px] items-center justify-center rounded-[3px] bg-[#1A1F71]">
+                  <span className="text-[11px] font-black italic tracking-tight text-white">VISA</span>
                 </div>
-                <div className="flex h-[20px] w-[34px] items-center justify-center rounded-[2px] bg-[#EB001B]">
-                  <span className="text-center text-[5.5px] font-black leading-tight text-white">Master<br />card</span>
+                <div className="flex h-[26px] w-[44px] items-center justify-center rounded-[3px] bg-[#EB001B]">
+                  <span className="text-center text-[7px] font-black leading-tight text-white">Master<br />card</span>
                 </div>
-                <div className="flex h-[20px] w-[34px] items-center justify-center rounded-[2px] bg-[#003087]">
-                  <span className="text-[8px] font-black tracking-tight text-white">JCB</span>
+                <div className="flex h-[26px] w-[44px] items-center justify-center rounded-[3px] bg-[#003087]">
+                  <span className="text-[11px] font-black tracking-tight text-white">JCB</span>
                 </div>
-                <div className="flex h-[20px] w-[34px] items-center justify-center rounded-[2px] bg-[#2E77BC]">
-                  <span className="text-[7px] font-black tracking-tighter text-white">AMEX</span>
+                <div className="flex h-[26px] w-[44px] items-center justify-center rounded-[3px] bg-[#2E77BC]">
+                  <span className="text-[10px] font-black tracking-tighter text-white">AMEX</span>
                 </div>
               </div>
-              <p className="text-[10px] text-gray-400">各種カード対応</p>
+              <p className="text-[11px] text-[#444]">各種カード決済対応</p>
             </div>
 
             <div className="hidden h-10 w-px bg-gray-200 md:block" />
@@ -113,7 +122,7 @@ export default function Hero() {
 
             <a
               href="tel:050-1882-4910"
-              className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded border border-navy text-navy md:hidden"
+              className="hidden h-11 w-11 flex-shrink-0 items-center justify-center rounded border border-navy text-navy"
               aria-label="電話をかける"
               onClick={() => trackConversion('phone_click', 'header')}
             >
@@ -124,7 +133,7 @@ export default function Hero() {
               href="https://line.me/ti/p/YEthVfb_JD"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-11 items-center gap-2 rounded border-b-[3px] border-[#048537] bg-[#06B037] px-5 text-[15px] font-bold text-white transition-all hover:translate-y-px hover:border-b-[2px] hover:bg-[#059930] active:translate-y-[2px] active:border-b-0 md:h-12 md:px-5 md:text-[16px]"
+              className="hidden h-11 items-center gap-2 rounded border-b-[3px] border-[#048537] bg-[#06B037] px-5 text-[15px] font-bold text-white transition-all hover:translate-y-px hover:border-b-[2px] hover:bg-[#059930] active:translate-y-[2px] active:border-b-0 md:flex md:h-12 md:px-5 md:text-[16px]"
               onClick={() => trackConversion('line_click', 'header')}
             >
               <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-sm bg-[#06C755]">
@@ -132,9 +141,70 @@ export default function Hero() {
               </span>
               LINEで無料相談
             </a>
+
+            {/* ハンバーガーボタン（SPのみ） */}
+            <button
+              className="flex h-10 w-10 flex-shrink-0 items-center justify-center md:hidden"
+              onClick={() => setMenuOpen(true)}
+              aria-label="メニューを開く"
+            >
+              <Menu className="h-6 w-6 text-navy" strokeWidth={2} />
+            </button>
           </div>
         </div>
       </header>
+
+      {/* ===== SPハンバーガーメニュー ===== */}
+      {menuOpen && (
+        <div className="fixed inset-0 z-[200] flex flex-col bg-white md:hidden">
+          {/* ヘッダー */}
+          <div className="flex items-center justify-between border-b border-gray-200 px-5 py-4">
+            <img src={logoImage} alt="レストレーション" className="h-[46px] w-auto" />
+            <button
+              onClick={() => setMenuOpen(false)}
+              aria-label="メニューを閉じる"
+              className="flex h-10 w-10 items-center justify-center"
+            >
+              <X className="h-6 w-6 text-navy" strokeWidth={2} />
+            </button>
+          </div>
+          {/* ナビリンク */}
+          <nav className="flex-1 overflow-y-auto">
+            {NAV_LINKS.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => setMenuOpen(false)}
+                className="flex items-center justify-between border-b border-gray-100 px-6 py-4 text-[16px] font-bold text-navy"
+              >
+                {link.label}
+                <ChevronRight className="h-4 w-4 text-gray-400" strokeWidth={2} />
+              </a>
+            ))}
+          </nav>
+          {/* CTA */}
+          <div className="border-t border-gray-200 px-5 py-5 flex flex-col gap-3">
+            <a
+              href="https://line.me/ti/p/YEthVfb_JD"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => { setMenuOpen(false); trackConversion('line_click', 'hamburger') }}
+              className="flex items-center justify-center gap-2 rounded border-b-[3px] border-[#048537] bg-[#06B037] py-3 text-[15px] font-bold text-white"
+            >
+              <span className="flex h-6 w-6 items-center justify-center rounded-sm bg-[#06C755] text-[8px] font-black text-white">LINE</span>
+              LINEで無料相談する
+            </a>
+            <a
+              href="tel:050-1882-4910"
+              onClick={() => { setMenuOpen(false); trackConversion('phone_click', 'hamburger') }}
+              className="flex items-center justify-center gap-2 rounded border border-navy py-3 text-[15px] font-bold text-navy"
+            >
+              <Phone className="h-4 w-4 fill-brandorange stroke-brandorange" strokeWidth={2} />
+              050-1882-4910
+            </a>
+          </div>
+        </div>
+      )}
 
       {/* ===== HERO ===== */}
       <section className="relative overflow-hidden bg-cream">
@@ -257,7 +327,7 @@ export default function Hero() {
                     <p className="font-black leading-snug tracking-tight text-white text-[17px] md:text-[19px]">
                       丁寧な仕事で
                     </p>
-                    <p className="font-black leading-snug tracking-tight text-yellow-400 text-[17px] md:text-[19px]">
+                    <p className="font-black leading-snug tracking-tight text-brandorange text-[17px] md:text-[19px]">
                       安心して任せられる塗装を。
                     </p>
                   </div>
@@ -295,7 +365,7 @@ export default function Hero() {
                 aria-hidden="true"
                 className="block h-auto w-[280px] [filter:brightness(0)_saturate(100%)_invert(9%)_sepia(87%)_saturate(520%)_hue-rotate(187deg)_brightness(115%)]"
               />
-              <span className="absolute inset-0 flex items-center justify-center text-[16px] font-bold tracking-wider text-white">
+              <span className="absolute inset-0 flex items-center justify-center pr-10 text-[16px] font-bold tracking-wider text-white">
                 地域密着！山梨で15年の実績
               </span>
             </div>
@@ -365,21 +435,43 @@ export default function Hero() {
         <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] hidden h-14 bg-gradient-to-t from-cream to-transparent md:block" />
         <div className="relative z-10 mx-auto max-w-[960px] px-2 md:px-6">
           <div className="grid grid-cols-3 items-center divide-x divide-gray-300/40">
-            <div className="flex items-center justify-center">
-              <img src={badge5years} alt="アフター保証5年間" className="w-[110px] h-auto -my-3 md:hidden" />
-              <img src={badge5yearsCrop} alt="アフター保証5年間" className="hidden h-auto md:block md:w-[185px] md:contrast-[1.08] md:saturate-[1.08]" />
+            <div className="hidden md:flex items-center justify-center">
+              <img src={badge5yearsCrop} alt="アフター保証5年間" className="h-auto md:w-[185px] md:contrast-[1.08] md:saturate-[1.08]" />
             </div>
-            <div className="flex items-center justify-center">
-              <img src={badge350cases} alt="施工実績350件以上" className="w-[110px] h-auto -my-3 md:hidden" />
-              <img src={badge350casesCrop} alt="施工実績350件以上" className="hidden h-auto md:block md:w-[185px] md:contrast-[1.08] md:saturate-[1.08]" />
+            <div className="hidden md:flex items-center justify-center">
+              <img src={badge350casesCrop} alt="施工実績350件以上" className="h-auto md:w-[185px] md:contrast-[1.08] md:saturate-[1.08]" />
             </div>
-            <div className="flex items-center justify-center">
-              <img src={badge0yen} alt="追加費用0円" className="w-[110px] h-auto -my-3 md:hidden" />
-              <img src={badge0yenCrop} alt="追加費用0円" className="hidden h-auto md:block md:w-[185px] md:contrast-[1.08] md:saturate-[1.08]" />
+            <div className="hidden md:flex items-center justify-center">
+              <img src={badge0yenCrop} alt="追加費用0円" className="h-auto md:w-[185px] md:contrast-[1.08] md:saturate-[1.08]" />
             </div>
           </div>
         </div>
       </section>
+
+      {/* ===== STATS SP（HTMLテキスト版） ===== */}
+      <div className="flex md:hidden items-stretch gap-[1px] bg-[#EAEAEA]">
+        <div className="flex flex-1 flex-col items-center justify-center bg-[#F8F8F8] py-4 px-1">
+          <p className="text-[15px] font-bold text-navy mb-2">アフター保証</p>
+          <div className="inline-flex flex-col items-center">
+            <p className="text-[33px] font-black text-[#B8860B] leading-none">5<span className="text-[13px] font-bold ml-0.5">年間</span></p>
+            <div className="h-[2px] w-[75%] bg-[#B8860B] mt-[4px]" />
+          </div>
+        </div>
+        <div className="flex flex-1 flex-col items-center justify-center bg-[#F8F8F8] py-4 px-1">
+          <p className="text-[15px] font-bold text-navy mb-2">施工実績</p>
+          <div className="inline-flex flex-col items-center">
+            <p className="text-[33px] font-black text-[#B8860B] leading-none">350<span className="text-[13px] font-bold ml-0.5">件以上</span></p>
+            <div className="h-[2px] w-[75%] bg-[#B8860B] mt-[4px]" />
+          </div>
+        </div>
+        <div className="flex flex-1 flex-col items-center justify-center bg-[#F8F8F8] py-4 px-1">
+          <p className="text-[15px] font-bold text-navy mb-2">追加費用</p>
+          <div className="inline-flex flex-col items-center">
+            <p className="text-[33px] font-black text-[#B8860B] leading-none">0<span className="text-[13px] font-bold ml-0.5">円</span></p>
+            <div className="h-[2px] w-[75%] bg-[#B8860B] mt-[4px]" />
+          </div>
+        </div>
+      </div>
 
       {/* ===== FEATURES BAR（紺） ===== */}
       <section className="relative overflow-hidden bg-navy">
@@ -389,7 +481,7 @@ export default function Hero() {
         />
         <div className="relative z-10 mx-auto max-w-[960px] px-4">
           <div className="grid grid-cols-3 divide-x divide-white/20">
-            <FeatureItem icon="yen"   label="現地調査・お見積り" value="無料"    />
+            <FeatureItem icon="yen"   label="現調・お見積り" value="無料"    />
             <FeatureItem icon="clock" label="最短"               value="当日対応" />
             <FeatureItem icon="chat"  label="他社見積もり"       value="相談OK"  />
           </div>
@@ -397,7 +489,7 @@ export default function Hero() {
       </section>
 
       {/* ===== LINE CTA バー（緑） ===== */}
-      <div className="px-4 py-5 md:px-6 md:py-6">
+      <div className="px-3 py-3 md:px-6 md:py-6">
         <a
           href="https://line.me/ti/p/YEthVfb_JD"
           target="_blank"
@@ -405,25 +497,25 @@ export default function Hero() {
           className="mx-auto block max-w-[860px] rounded-[14px] border-b-4 border-[#047a30] bg-[#059A42] transition-all hover:bg-[#048537] active:translate-y-[2px] active:border-b-0"
           onClick={() => trackConversion('line_click', 'hero_line_bar')}
         >
-          <div className="flex items-center justify-center gap-4 px-5 py-4 md:gap-6 md:px-8 md:py-5">
+          <div className="flex items-center justify-center gap-3 px-4 py-3 md:gap-6 md:px-8 md:py-5">
 
             {/* LINE アイコン：吹き出しの中にLINE文字 */}
-            <div className="relative flex h-[62px] w-[62px] flex-shrink-0 items-center justify-center rounded-[14px] bg-white pb-2 md:h-[70px] md:w-[70px] md:pb-3">
-              <MessageSquare className="absolute inset-0 h-full w-full p-[6px] text-[#059A42] md:p-[7px]" strokeWidth={1.5} />
-              <span className="relative text-[12px] font-black leading-none text-[#059A42] md:text-[14px]">LINE</span>
+            <div className="relative flex h-[46px] w-[46px] flex-shrink-0 items-center justify-center rounded-[10px] bg-white pb-1.5 md:h-[70px] md:w-[70px] md:pb-3">
+              <MessageSquare className="absolute inset-0 h-full w-full p-[5px] text-[#059A42] md:p-[7px]" strokeWidth={1.5} />
+              <span className="relative text-[10px] font-black leading-none text-[#059A42] md:text-[14px]">LINE</span>
             </div>
 
             {/* テキスト */}
             <div className="min-w-0">
-              <p className="mb-1 text-[11px] font-bold text-white md:text-[13px]">
+              <p className="mb-1 text-[10px] font-bold text-white md:text-[13px]">
                 24時間受付中・相談だけでも大歓迎！
               </p>
               <div className="flex items-center gap-2">
-                <span className="text-[20px] font-black leading-tight text-white md:text-[28px]">
+                <span className="text-[17px] font-black leading-tight text-white md:text-[28px]">
                   LINEで無料相談する
                 </span>
-                <div className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-white/20 md:h-8 md:w-8">
-                  <ChevronRight className="h-4 w-4 text-white md:h-5 md:w-5" strokeWidth={3} />
+                <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-white/20 md:h-8 md:w-8">
+                  <ChevronRight className="h-3.5 w-3.5 text-white md:h-5 md:w-5" strokeWidth={3} />
                 </div>
               </div>
             </div>
