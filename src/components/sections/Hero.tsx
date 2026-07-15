@@ -488,51 +488,49 @@ export default function Hero() {
         </div>
       </section>
 
-      {/* ===== LINE CTA バー（緑） ===== */}
-      <div className="px-3 py-3 md:px-6 md:py-6">
-        <a
-          href="https://line.me/ti/p/YEthVfb_JD"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mx-auto block max-w-[860px] rounded-[14px] border-b-4 border-[#047a30] bg-[#059A42] transition-all hover:bg-[#048537] active:translate-y-[2px] active:border-b-0"
-          onClick={() => trackConversion('line_click', 'hero_line_bar')}
-        >
-          <div className="flex items-center justify-center gap-3 px-4 py-3 md:gap-6 md:px-8 md:py-5">
-
-            {/* LINE アイコン：吹き出しの中にLINE文字 */}
-            <div className="relative flex h-[46px] w-[46px] flex-shrink-0 items-center justify-center rounded-[10px] bg-white pb-1.5 md:h-[70px] md:w-[70px] md:pb-3">
-              <MessageSquare className="absolute inset-0 h-full w-full p-[5px] text-[#059A42] md:p-[7px]" strokeWidth={1.5} />
-              <span className="relative text-[10px] font-black leading-none text-[#059A42] md:text-[14px]">LINE</span>
-            </div>
-
-            {/* テキスト */}
-            <div className="min-w-0">
-              <p className="mb-1 text-[10px] font-bold text-white md:text-[13px]">
-                24時間受付中・相談だけでも大歓迎！
-              </p>
-              <div className="flex items-center gap-2">
-                <span className="text-[17px] font-black leading-tight text-white md:text-[28px]">
-                  LINEで無料相談する
-                </span>
-                <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-white/20 md:h-8 md:w-8">
-                  <ChevronRight className="h-3.5 w-3.5 text-white md:h-5 md:w-5" strokeWidth={3} />
-                </div>
-              </div>
-            </div>
-
-            {/* 簡単30秒バッジ */}
-            <div className="hidden flex-shrink-0 items-center gap-3 sm:flex">
-              <div className="flex h-[62px] w-[62px] flex-col items-center justify-center rounded-full bg-white md:h-[70px] md:w-[70px]">
-                <span className="text-[10px] font-bold leading-none text-[#059A42]">簡単</span>
-                <span className="text-[24px] font-black leading-none text-[#059A42] md:text-[26px]">30秒</span>
-              </div>
-              <p className="text-[12px] font-bold leading-snug text-[#FCE283] md:text-[13px]">
-                写真を送るだけ<br />でもOK！
-              </p>
-            </div>
-
+      {/* ===== LINE CTA バー ===== */}
+      <div className="mx-auto max-w-content px-5 py-4 md:px-8 md:py-6">
+        <div className="rounded-[12px] border border-[#06C755] bg-white px-6 py-4 md:mx-auto md:max-w-[740px]">
+          <p className="mb-2.5 text-center text-[12px] font-bold text-[#06C755]">
+            ＼ まずはお気軽にご相談を！ ／
+          </p>
+          <div className="mb-3 flex justify-center">
+            <span className="rounded-full border border-[#06C755] px-2.5 py-0.5 text-[14px] font-bold text-[#06C755]">
+              気になる箇所を写真で送るだけでもOK!!
+            </span>
           </div>
-        </a>
+          <div className="flex justify-center">
+            <a
+              href="https://line.me/ti/p/YEthVfb_JD"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative flex h-[64px] w-full items-center justify-center gap-3 rounded-[6px] bg-[#06C755] px-4 text-[16px] font-bold text-white transition-colors hover:bg-[#05a647] md:h-[72px] md:w-full md:justify-center md:gap-0 md:px-14"
+              onClick={() => trackConversion('line_click', 'hero_line_bar')}
+            >
+              <div className="flex h-[38px] w-[38px] flex-shrink-0 items-center justify-center rounded-[8px] bg-white md:absolute md:left-5">
+                <svg viewBox="0 0 32 30" width="24" height="22" fill="none">
+                  <path
+                    d="M16 1C8 1 1 6.8 1 14c0 6.4 5.6 11.8 13.2 13-.3 1.8-.9 4.2-1 4.5-.1.2.1.2.5 0 .5-.3 1.3-.8 13.2-7.7C29.6 21.3 31 17.8 31 14 31 6.8 24 1 16 1z"
+                    fill="#06C755"
+                  />
+                </svg>
+              </div>
+              {/* SP: 1行テキスト */}
+              <span className="md:hidden">LINEで無料相談する</span>
+              {/* PC: 2行テキスト */}
+              <div className="hidden flex-col md:flex">
+                <span className="text-[12px] font-bold text-white/90">24時間受付中・相談だけでも大歓迎！</span>
+                <span className="text-[22px] font-black leading-tight text-white">LINEで無料相談する</span>
+              </div>
+              {/* SP: 右矢印 */}
+              <ChevronRight className="absolute right-4 h-5 w-5 md:hidden" strokeWidth={2.5} />
+              {/* PC: 丸タップボタン */}
+              <div className="absolute right-5 hidden h-[44px] w-[44px] flex-shrink-0 items-center justify-center rounded-full bg-white md:flex">
+                <ChevronRight className="h-5 w-5 text-[#06C755]" strokeWidth={2.5} />
+              </div>
+            </a>
+          </div>
+        </div>
       </div>
     </>
   )

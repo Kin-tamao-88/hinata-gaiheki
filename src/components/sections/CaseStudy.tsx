@@ -123,13 +123,7 @@ export function CaseStudy() {
         <div>
           {cases.map((c, index) => (
             <div key={c.number}>
-              {/* 養生テープセパレーター（2件目以降） */}
-              {index > 0 && (
-                <div
-                  aria-hidden="true"
-                  className="tex-masking-tape my-10 h-[22px] w-full -rotate-[0.2deg] opacity-55 md:my-14"
-                />
-              )}
+              {index > 0 && <div className="mt-8 md:mt-10" />}
 
               {/* ケースブロック */}
               <div className="relative overflow-hidden bg-white/20">
@@ -147,19 +141,19 @@ export function CaseStudy() {
                   <div className="flex flex-col md:flex-row">
 
                     {/* 左情報パネル */}
-                    <div className="relative overflow-hidden border-b border-navy/10 md:w-[170px] md:flex-shrink-0 md:border-b-0 md:border-r md:border-navy/10">
+                    <div className="relative overflow-hidden border-b border-navy/10 md:w-[140px] md:flex-shrink-0 md:border-b-0 md:border-r md:border-navy/10">
                       <div
                         aria-hidden="true"
                         className="tex-cream-board pointer-events-none absolute inset-0 mix-blend-multiply opacity-[0.10]"
                       />
-                      <div className="relative flex items-end gap-4 px-4 py-4 md:flex-col md:items-start md:gap-0 md:py-6 md:pl-5 md:pr-4">
+                      <div className="relative flex items-end gap-2 px-4 py-4 md:flex-col md:items-start md:gap-0 md:py-6 md:pl-5 md:pr-4">
 
                         {/* CASE + 番号 */}
                         <div className="md:mb-3">
                           <span className="block text-[10px] font-black tracking-widest text-brandorange">
                             CASE
                           </span>
-                          <span className="num-ink-grain block text-[44px] font-black leading-none tracking-tight text-navy md:text-[60px]">
+                          <span className="num-ink-grain block text-[50px] font-black leading-none tracking-tight text-navy md:text-[60px]">
                             {c.number}
                           </span>
                         </div>
@@ -167,10 +161,12 @@ export function CaseStudy() {
                         {/* 市町村: 主役 / 外壁塗装: 補足ラベル */}
                         <div>
                           <p className="text-[16px] font-black leading-snug text-navy md:text-[19px]">
-                            {c.property}
+                            <span className="md:block">{c.property.split(' ')[0]}</span>
+                            {' '}
+                            <span className="md:block">{c.property.split(' ')[1]}</span>
                           </p>
                           <div className="mt-2">
-                            <span className="border border-navy/25 px-2.5 py-1 text-[12px] font-bold text-navy/65">
+                            <span className="border-2 border-navy/40 px-3 py-1 text-[13px] font-bold text-navy/80">
                               {c.work}
                             </span>
                           </div>
@@ -188,18 +184,18 @@ export function CaseStudy() {
                         <img
                           src={c.before}
                           alt={`${c.property} 施工前`}
-                          className={`aspect-[4/3] w-full object-cover ${c.beforeObjPos} ${c.beforeTransform}`}
+                          className={`aspect-[6/5] w-full object-cover ${c.beforeObjPos} ${c.beforeTransform}`}
                         />
-                        <span className="absolute left-0 top-0 bg-navy px-3 py-1.5 text-[11px] font-bold tracking-wider text-white">
+                        <span className="absolute left-0 top-0 bg-navy px-4 py-2 text-[13px] font-bold tracking-wider text-white">
                           Before
                         </span>
                       </div>
 
                       {/* SP: 縦向き矢印（下向き）*/}
                       <div className="flex items-center justify-center py-2 md:hidden">
-                        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-brandorange">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-brandorange">
                           <svg
-                            className="h-4 w-4 text-white"
+                            className="h-5 w-5 text-white"
                             viewBox="0 0 24 24"
                             fill="none"
                             stroke="currentColor"
@@ -214,9 +210,9 @@ export function CaseStudy() {
 
                       {/* PC: 横向き矢印（右向き・absolute中央） */}
                       <div className="absolute left-1/2 top-1/2 z-10 hidden -translate-x-1/2 -translate-y-1/2 md:flex">
-                        <div className="flex h-11 w-11 items-center justify-center rounded-full bg-brandorange">
+                        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-brandorange shadow-md">
                           <svg
-                            className="h-5 w-5 text-white"
+                            className="h-6 w-6 text-white"
                             viewBox="0 0 24 24"
                             fill="none"
                             stroke="currentColor"
@@ -234,9 +230,9 @@ export function CaseStudy() {
                         <img
                           src={c.after}
                           alt={`${c.property} 施工後`}
-                          className={`aspect-[4/3] w-full object-cover ${c.afterObjPos} ${c.afterTransform}`}
+                          className={`aspect-[6/5] w-full object-cover ${c.afterObjPos} ${c.afterTransform}`}
                         />
-                        <span className="absolute left-0 top-0 bg-brandorange px-3 py-1.5 text-[11px] font-bold tracking-wider text-white">
+                        <span className="absolute left-0 top-0 bg-brandorange px-4 py-2 text-[13px] font-bold tracking-wider text-white">
                           After
                         </span>
                       </div>
@@ -244,7 +240,7 @@ export function CaseStudy() {
                   </div>
 
                   {/* お客様の声: 紙質感メッセージカード */}
-                  <div className="px-4 pb-4 pt-4 md:px-5 md:pb-5 md:pt-4">
+                  <div className="px-3 pb-3 pt-3 md:px-5 md:pb-6 md:pt-5">
                     <div className="relative overflow-hidden rounded-[8px] border border-navy/[0.12] bg-[#f4ede0]">
                       {/* cream-board を主背景テクスチャに */}
                       <div
@@ -266,7 +262,7 @@ export function CaseStudy() {
                       />
 
                       {/* コンテンツ */}
-                      <div className="relative px-5 py-5 md:px-7 md:py-6">
+                      <div className="relative px-4 py-4 md:px-7 md:py-8">
                         {/*
                           SP: flex-col → アイコン行（上段）→ 本文（下段）
                           PC: flex-row → アイコン | 本文（横並び）
@@ -275,14 +271,14 @@ export function CaseStudy() {
 
                           {/* 人物アイコン + ラベル */}
                           <div className="flex flex-shrink-0 flex-col items-center gap-1.5">
-                            <div className="h-14 w-14 overflow-hidden rounded-full md:h-16 md:w-16">
+                            <div className="h-16 w-16 overflow-hidden rounded-full md:h-[72px] md:w-[72px]">
                               <img
                                 src={c.avatar}
                                 alt={c.voiceName}
                                 className="h-full w-full object-cover object-center"
                               />
                             </div>
-                            <span className="text-[12px] font-bold text-navy">{c.voiceName}</span>
+                            <span className="text-[14px] font-bold text-navy">{c.voiceName}</span>
                           </div>
 
                           {/* 本文: SP=全幅 / PC=flex-1 */}
@@ -292,7 +288,7 @@ export function CaseStudy() {
                                 <p key={li} className="mb-2 last:mb-0">
                                   {line.map((seg, si) =>
                                     seg.hl ? (
-                                      <span key={si} className="font-bold text-brandorange">
+                                      <span key={si} className="font-extrabold text-brandorange">
                                         {seg.text}
                                       </span>
                                     ) : (
