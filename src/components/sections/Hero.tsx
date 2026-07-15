@@ -4,8 +4,12 @@ import logoImage from '../../assets/logo/lr-logo.webp'
 import brushBlackSubcaption from '../../assets/brush/brush-black-subcaption2.webp'
 import brushNavySpeechbubble from '../../assets/brush/brush-navy-speechbubble3.webp'
 import brushYellowUnderline from '../../assets/brush/brush-yellow-underline2.webp'
-import heroStatsPc from '../../assets/hero/hero-stats-pc.webp'
-import heroStatsSp from '../../assets/hero/hero-stats-sp.webp'
+import badge5years from '../../assets/hero/badge-5years-warranty2.webp'
+import badge350cases from '../../assets/hero/badge-350cases2.webp'
+import badge0yen from '../../assets/hero/badge-0yen2.webp'
+import badge5yearsCrop from '../../assets/hero/badge-5years-warranty2-crop.webp'
+import badge350casesCrop from '../../assets/hero/badge-350cases2-crop.webp'
+import badge0yenCrop from '../../assets/hero/badge-0yen2-crop.webp'
 import { trackConversion } from '../../utils/trackConversion'
 
 // ─── Features Bar アイテム ──────────────────────────────────
@@ -131,12 +135,12 @@ export default function Hero() {
         <div className="relative z-10 mx-auto max-w-[1240px] md:flex md:items-stretch">
 
           {/* ─── 左カラム：テキスト（42%） ─── */}
-          <div className="relative flex flex-col justify-center px-6 pb-10 pt-8 md:w-[42%] md:flex-shrink-0 md:pl-10 md:pr-0 md:py-12">
+          <div className="relative flex flex-col justify-center px-6 pb-10 pt-8 md:w-[42%] md:flex-shrink-0 md:pl-10 md:pr-0 md:pt-7 md:pb-6">
             <div aria-hidden="true" className="brush-cream-texture-tile pointer-events-none absolute inset-0 opacity-[0.40] mix-blend-multiply" />
             <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 right-0 w-[80px] bg-gradient-to-r from-transparent to-cream" />
 
             {/* バッジ（ブラシストローク） */}
-            <div className="relative mb-4 self-start -rotate-2">
+            <div className="relative mb-4 md:mb-3 self-start -rotate-2">
               <img
                 src={brushBlackSubcaption}
                 alt=""
@@ -149,7 +153,7 @@ export default function Hero() {
             </div>
 
             {/* H1 */}
-            <h1 className="mb-4 font-black leading-[1.15] tracking-tight text-navy">
+            <h1 className="mb-4 md:mb-3 font-black leading-[1.15] tracking-tight text-navy">
               <span className="block text-[42px] md:text-[61px]">高品質な施工を</span>
               <span className="block text-[42px] md:text-[61px]">
                 <span className="text-brandorange">適正価格</span>で。
@@ -165,7 +169,7 @@ export default function Hero() {
 
             {/* サービスタグ＋サブテキスト：右カラムへ張り出し */}
             <div className="relative z-20 md:w-[135%]">
-              <div className="mb-4 flex flex-wrap items-center gap-2 md:mb-5">
+              <div className="mb-4 flex flex-wrap items-center gap-2 md:mb-3">
                 {['外壁塗装', '雨漏り修理', '屋根修理'].map((tag) => (
                   <span
                     key={tag}
@@ -175,7 +179,7 @@ export default function Hero() {
                   </span>
                 ))}
               </div>
-              <p className="mb-4 text-[15px] font-bold leading-relaxed text-navy md:text-[18px]">
+              <p className="mb-4 md:mb-3 text-[15px] font-bold leading-relaxed text-navy md:text-[18px]">
                 住まいのトラブル・塗り替えは私たちにお任せください。
               </p>
             </div>
@@ -242,18 +246,22 @@ export default function Hero() {
       </section>
 
       {/* ===== STATS（月桂樹） ===== */}
-      <section className="border-y border-gray-200/80 bg-cream py-6 md:py-10">
-        <div className="mx-auto max-w-[960px] px-4">
-          <img
-            src={heroStatsPc}
-            alt="アフター保証5年間・施工実績350件以上・追加費用0円"
-            className="hidden w-full h-auto md:block"
-          />
-          <img
-            src={heroStatsSp}
-            alt="アフター保証5年間・施工実績350件以上・追加費用0円"
-            className="block w-full h-auto md:hidden"
-          />
+      <section className="relative z-20 overflow-hidden border-b border-gray-200/80 bg-cream md:-mt-4 md:pt-2 md:pb-3">
+        <div className="mx-auto max-w-[960px] px-2 md:px-6">
+          <div className="grid grid-cols-3 items-center divide-x divide-gray-300/40">
+            <div className="flex items-center justify-center">
+              <img src={badge5years} alt="アフター保証5年間" className="w-[110px] h-auto -my-3 md:hidden" />
+              <img src={badge5yearsCrop} alt="アフター保証5年間" className="hidden h-auto md:block md:w-[185px] md:contrast-[1.08] md:saturate-[1.08]" />
+            </div>
+            <div className="flex items-center justify-center">
+              <img src={badge350cases} alt="施工実績350件以上" className="w-[110px] h-auto -my-3 md:hidden" />
+              <img src={badge350casesCrop} alt="施工実績350件以上" className="hidden h-auto md:block md:w-[185px] md:contrast-[1.08] md:saturate-[1.08]" />
+            </div>
+            <div className="flex items-center justify-center">
+              <img src={badge0yen} alt="追加費用0円" className="w-[110px] h-auto -my-3 md:hidden" />
+              <img src={badge0yenCrop} alt="追加費用0円" className="hidden h-auto md:block md:w-[185px] md:contrast-[1.08] md:saturate-[1.08]" />
+            </div>
+          </div>
         </div>
       </section>
 
